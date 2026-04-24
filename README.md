@@ -24,7 +24,15 @@ Hey everybody!!!
   - [**CHECK**](#check)
   - [**DEFAULT**](#default)
 - [**Basic SQL commands**](#basic-sql-commands)
-  - [**DDL**](#ddl)
+- [**DDL**](#ddl)
+  - [**CREATE**](#create)
+  - [**ALTER**](#alter)
+  - [**TRUNCATE**](#truncate)
+  - [**DROP**](#drop)
+- [**DML**](#dml)
+- [**DQL**](#dql)
+- [**TCL**](#tcl)
+- [**DCL**](#dcl)
 
 #### **Data**
 
@@ -149,5 +157,68 @@ CREATE TABLE student_details
  - *TCL - COMMIT, ROLLBACK, SAVEPOINT*
  - *DCL - GRANT, REVOKE*
 
-##### **DDL** 
+#### **DDL** 
 *DDL stands for Data Definition Language. DDL commands are used to create, modify or delete the structure of database objects (like tables).*
+
+##### **CREATE**
+*Used to CREATE a new table or database.*
+```sql
+-- Syntax
+CREATE TABLE table_name(
+    column1 datatype constraint,
+    column2 datatype constraint
+);
+
+--Example
+CREATE TABLE student_details(
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    age INT CHECK(age>=18),
+    loc VARCHAR(50) DEFAULT "hyd"
+);
+```
+##### **ALTER**
+*Used to modify an existing table structure.*
+```sql
+-- Syntax for ADD COLUMN
+ALTER TABLE table_name
+ADD column_name datatype;
+
+-- Example
+ALTER TABLE student_details
+ADD branch VARCHAR(20);
+
+-- Syntax for MODIFY COLUMN
+ALTER TABLE table_name
+MODIFY column_name datatype;
+
+-- Example
+ALTER TABLE student_details
+MODIFY name VRACHAR(100);
+```
+##### **TRUNCATE**
+*Used to remove all data from a table but keep structure.*
+```sql
+-- Syntax
+TRUNCATE TABLE table_name;
+
+-- Example
+TRUNCATE TABLE student_details;
+```
+##### **DROP**
+*Used to delete the entire table(structure + data).*
+```sql
+-- Syntax
+DROP TABLE table_name;
+
+-- Example
+DROP TABLE student_details;
+```
+
+#### **DML**
+
+#### **DQL**
+
+#### **TCL**
+
+#### **DCL**
