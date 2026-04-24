@@ -2,12 +2,22 @@ Hey everybody!!!
 
 **SQL**
 
+#### **Table of Contents**
+
+- [**Table of Contents**](#table-of-contents)
+- [**Data**](#data)
+- [**Database**](#database)
+- [**Why do we need database?**](#why-do-we-need-database)
+
+#### **Data**
+
 **Data:** *Data is a collection of raw facts, values, or information.*
 
+#### **Database**
 **Database:** *A Database is an organized collection of data stores electronically so it can be easily accessed, managed and updated.*
 **Example for database:** *College stores student details, marks, attendance. All this is stored in a database.*
 
-**Why do we need database?**
+#### **Why do we need database?**
 ***Without database:*** *Data is stored in files, difficult to search, data duplication, no security with database.*
 
 ***With database:*** *Fast retrieval (getting something), Organized data, Secure, Multi-user access.*
