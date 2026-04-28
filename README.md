@@ -315,3 +315,7 @@ FROM student_details;
 #### **TCL**
 
 #### **DCL**
+
+
+
+ is null, is not null
