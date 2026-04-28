@@ -9,8 +9,8 @@ Hey everybody!!!
 - [**Database**](#database)
 - [**Why do we need database?**](#why-do-we-need-database)
 - [**Types of Databases:**](#types-of-databases)
-  - [**🔹Relational Database (RDBMS):**](#relational-database-rdbms)
-  - [**🔹Non-Relational database (No SQL):**](#non-relational-database-no-sql)
+- [**🔹Relational Database (RDBMS):**](#relational-database-rdbms)
+- [**🔹Non-Relational database (No SQL):**](#non-relational-database-no-sql)
 - [**What is SQL?**](#what-is-sql)
 - [**DBMS** vs **RDMS**](#dbms-vs-rdms)
 - [**Table**](#table)
@@ -55,14 +55,14 @@ Hey everybody!!!
 
 #### **Types of Databases:**
 
-##### **🔹Relational Database (RDBMS):** 
+#### **🔹Relational Database (RDBMS):** 
 *Data is stored in tables (rows & columns)*
    **Example:** *MySQL, PostgreSQL, Oracle database.*
   |   ID   |  Name  |  Marks  |
   |--------|--------|---------|
   |    1   |  Sara  |   89    |
 
-##### **🔹Non-Relational database (No SQL):** 
+#### **🔹Non-Relational database (No SQL):** 
 *Data is stored in JSON, documents, key-value pairs.*
 **Example:** *MongoDB*
 ```json
