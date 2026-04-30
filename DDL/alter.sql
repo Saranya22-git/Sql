@@ -1,9 +1,0 @@
--- ADD COLUMN
-
-ALTER TABLE student
-ADD branch VARCHAR(20);
-
--- MODIFY COLUMN
-
-ALTER TABLE student
-MODIFY branch VARCHAR(100);

@@ -1,0 +1,9 @@
+-- Removes access.
+
+-- Syntax
+REVOKE privilege
+ON table_name
+TO user_name;
+
+-- Example
+REVOKE SELECT ON student_details TO user1;

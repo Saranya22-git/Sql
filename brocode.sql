@@ -111,3 +111,25 @@ ROLLBACK;
 DROP TABLE stu_details;
 
 DROP TABLE stud_details;
+
+-- Filtering data
+
+-- WHERE Clause
+SELECT * FROM stud_details
+WHERE stu_id=1;
+
+-- AND Operator
+SELECT * FROM stud_details
+WHERE stu_name="Saran" AND stu_cgpa=9.9;
+
+-- OR Opeartor
+SELECT * FROM stud_details
+WHERE stu_name="Saran" OR stu_cgpa=9.6;
+
+-- NOT Operator
+SELECT * FROM stud_details
+WHERE NOT stu_id=1;
+
+-- BETWEEN
+SELECT * FROM stud_details
+WHERE stu_cgpa BETWEEN 9.5 OR 9.9;

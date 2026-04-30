@@ -44,6 +44,13 @@ Hey everybody!!!
 - [**DCL**](#dcl)
   - [**GRANT**](#grant)
   - [**REVOKE**](#revoke)
+- [**FILTERING DATA**](#filtering-data)
+  - [**WHERE**](#where-1)
+  - [**AND Operator**](#and-operator)
+  - [**OR Operator**](#or-operator)
+  - [**NOT Operator**](#not-operator)
+  - [**BETWEEN**](#between)
+  - [**IN Operator**](#in-operator)
 
 #### **Data**
 
@@ -391,5 +398,69 @@ TO user_name;
 -- Example
 REVOKE SELECT ON student_details TO user1;
 ```
+#### **FILTERING DATA**
+*Without filtering we get all data, with filtering we get specific data.*
+
+##### **WHERE**
+***WHERE** is used to filter rows based on a condition. Basically WHERE = give me only required data.*
+```sql
+-- Syntax 
+SELECT * FROM table_name
+WHERE condition;
+
+-- Example
+SELECT * FROM student_details
+WHERE stu_id=1;
+```
+
+##### **AND Operator**
+***AND** is used when all conditions must be TRUE.*
+```sql
+-- Syntax
+SELECT * FROM table_name
+WHERE condition1 AND condition2;
+
+-- Example
+SELECT * FROM student_details
+WHERE marks>90 AND name="saran";
+```
+
+##### **OR Operator**
+***OR** is used when at least one condition must be TRUE.*
+```sql
+-- Syntax
+SELECT * FROM table_name
+WHERE condition1 OR condition2;
+
+-- Example
+SELECT * FROM student_details
+WHERE name="Saran" OR name="Tej";
+```
+##### **NOT Operator**
+***NOT** is used to exclude a condition.*
+```sql
+-- Syntax
+SELECT * FROM table_name
+WHERE NOT condition;
+
+-- Example
+SELECT * FROM student_details
+WHERE NOT marks>80;
+```
+
+##### **BETWEEN**
+***BETWEEN** is used to filter a range of values(inclusive).*
+```sql
+-- Syntax
+SELECT * FROM table_name
+WHERE column BETWEEN value1 AND value2;
+
+-- Example
+SELECT * FROM student_details
+WHERE marks BETWEEN 60 AND 80;
+```
+
+##### **IN Operator**
+***IN** is used to match multiple values.*
 
 
