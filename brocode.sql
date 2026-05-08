@@ -439,3 +439,62 @@ SELECT * FROM stud_details
 WHERE stu_cgpa=(
 SELECT MAX(stu_cgpa)
 FROM stud_details);
+
+-- SET OPERATIONS
+
+CREATE TABLE stud_details2(
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    branch VARCHAR(20)
+);
+
+INSERT INTO stud_details2
+VALUES (1, "Saran","AIML"),
+       (2, "Ram", "ECE"),
+       (3, "Sita", "AIDS"),
+       (4, "Soniya", "IT");
+
+SELECT * FROM stud_details2;
+
+-- TYPES OF SET OPERATIONS
+
+-- UNION
+SELECT stu_name FROM stud_details
+UNION
+SELECT name FROM stud_details2;
+
+-- UNION ALL
+SELECT stu_name FROM stud_details
+UNION ALL
+SELECT name FROM stud_details2;
+
+-- INTERSECT
+SELECT stu_name FROM stud_details
+INTERSECT
+SELECT name FROM stud_details2;
+
+-- EXCEPT
+SELECT stu_name FROM stud_details
+EXCEPT
+SELECT name FROM stud_details2;
+
+-- STRING FUNCTIONS
+-- CONCAT()
+SELECT CONCAT(stu_name, ' ', stu_branch)
+FROM stud_details;
+
+-- LENGHT()
+SELECT LENGTH(stu_name) 
+FROM stud_details;
+
+-- UPPER()
+SELECT UPPER(stu_name)
+FROM stud_details;
+
+-- LOWER()
+SELECT LOWER(stu_name)
+FROM stud_details;
+
+-- SUBSTRING()
+SELECT SUBSTRING(stu_name, 1, 4)
+FROM stud_details;

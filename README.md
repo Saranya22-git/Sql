@@ -83,6 +83,19 @@ Hey everybody!!!
   - [**Types of Subqueries**](#types-of-subqueries)
     - [**Single Row Subquery**](#single-row-subquery)
     - [**Multiple Row Subquery**](#multiple-row-subquery)
+    - [**Correlated Subquery**](#correlated-subquery)
+- [**SET OPERATIONS**](#set-operations)
+  - [**Types of Set Operations**](#types-of-set-operations)
+    - [**UNION**](#union)
+    - [**UNION ALL**](#union-all)
+    - [**INTERSECT**](#intersect)
+    - [**EXCEPT**](#except)
+- [**STRING FUNCTIONS**](#string-functions)
+  - [**Common String Functions**](#common-string-functions)
+    - [**CONCAT()**](#concat)
+    - [**LENGTH()**](#length)
+    - [**UPPER()**](#upper)
+    - [**LOWER()**](#lower)
 
 #### **Data**
 
@@ -888,4 +901,150 @@ SELECT * FROM stud_details
 WHERE stu_name IN(
   SELECT stu_name FROM stud_details
 );
+```
+
+###### **Correlated Subquery**
+*Inner query depends on outer query. Runs repeatedly for each row.*
+```sql
+-- Example
+SELECT stu_id, stu_name
+FROM stud_details S1
+WHERE stu_cgpa>(
+SELECT AVG(stu_cgpa) FROM stud_details S2
+WHERE s1.stu_branch=s2.stu_branch
+);
+```
+
+#### **SET OPERATIONS**
+- *Set operations are used to combine results of multiple SELECT queries.*
+- **Important Rule for ALL Set Operations** *Both queries must have:*
+  - *Same number of columns.*
+  - *Same order of columns.*
+  - *Compatible datatypes.*
+
+##### **Types of Set Operations**
+
+###### **UNION**
+*Combines results of two queries. Removes duplicates.*
+```sql
+-- Syntax
+SELECT column_name FROM table1
+UNION
+SELECT column_name FROM table2;
+
+-- Example
+SELECT stu_name FROM stud_details
+UNION
+SELECT name FROM stud_details2;
+```
+
+###### **UNION ALL**
+*Combines results of two queries. It keeps duplicates.*
+```sql
+-- Syntax
+SELECT column_name FROM table1
+UNION ALL
+SELECT column_name FROM table2;
+
+-- Example
+SELECT stu_name FROM stud_details
+UNION ALL
+SELECT name FROM stud_details2;
+```
+
+###### **INTERSECT**
+*Returns only common rows from both queries.*
+```sql
+-- Syntax
+SELECT column_name FROM table1
+INTERSECT
+SELECT column_name FROM table2;
+
+-- Example
+SELECT stu_name FROM stud_details
+INTERSECT
+SELECT name FROM stud_details2;
+```
+
+###### **EXCEPT**
+*Returns rows from first query not present in second query.*
+```sql
+-- Syntax
+SELECT column_name FROM table1
+EXCEPT
+SELECT column_name FROM table2;
+
+-- Example
+SELECT stu_name FROM stud_details
+EXCEPT
+SELECT name FROM stud_details2;
+```
+
+#### **STRING FUNCTIONS**
+*String functions are used to manipulate text data in SQL. Basically, String Functions = Operations on text.*
+
+##### **Common String Functions**
+- CONCAT()
+- LENGTH()
+- UPPER()
+- LOWER()
+- SUBSTRING()
+  
+###### **CONCAT()**
+*Used to combine multiple strings into one string.*
+```sql
+-- Syntax
+SELECT CONCAT(string1, string2,......);
+
+-- Example
+SELECT CONCAT(stu_name, ' ', stu_branch)
+FROM stud_details;
+```
+
+###### **LENGTH()**
+*Returns number of characters in a string.*
+```sql
+-- Syntax
+SELECT LENGTH(column_name)
+FROM table_name;
+
+-- Example
+SELECT LENGTH(stu_name) 
+FROM stud_details;
+```
+
+###### **UPPER()**
+*Converts text into uppercase.*
+```sql
+-- Syntax
+SELECT UPPER(column_name)
+FROM table_name;
+
+-- Example
+SELECT UPPER(stu_name)
+FROM stud_details;
+```
+
+###### **LOWER()**
+*Converts text into lowercase.*
+```sql
+-- Syntax
+SELECT LOWER(column_name)
+FROM table_name;
+
+-- Example
+SELECT LOWER(stu_name)
+FROM stud_details;
+```
+
+###### **SUBSTRING()**
+*Extracts part of a string.*
+```sql
+-- Syntax
+SELECT SUBSTRING(column_name, start, length)
+FROM table_name;
+
+-- Example
+SELECT SUBSTRING(stu_name, 1, 4)
+FROM stud_details;
 ```
