@@ -96,6 +96,9 @@ Hey everybody!!!
     - [**LENGTH()**](#length)
     - [**UPPER()**](#upper)
     - [**LOWER()**](#lower)
+    - [**SUBSTRING()**](#substring)
+- [**DATE FUNCTIONS**](#date-functions)
+  - [**Common Date Functions**](#common-date-functions)
 
 #### **Data**
 
@@ -1048,3 +1051,49 @@ FROM table_name;
 SELECT SUBSTRING(stu_name, 1, 4)
 FROM stud_details;
 ```
+
+#### **DATE FUNCTIONS**
+*Date Functions are used to work with dates and time in SQL. Basically, Date Functions = Operations on date/time data.*
+
+**Why Date Functions are important?**
+- *Real-world database contain Order dates, Login times, Employee joining dates, Transaction timestamps.*
+- *Companies use date functions for Reports, Analytics, Filtering, Tracking trends.*
+
+##### **Common Date Functions**
+- *NOW()*
+- *CURRENT_DATE*
+- *DATE_FORMAT()*
+
+**NOW():** *Returns current date and current time.*
+***When to use:** Login timestamps, Transaction tracking, Current system time.*
+```sql
+-- Syntax
+SELECT NOW();
+
+-- Example
+SELECT NOW();
+```
+
+**CURRENT_DATE():** *Returns only current date.*
+```sql
+-- Syntax
+SELECT CURRENT_DATE();
+
+-- Example
+SELECT CURRENT_DATE();
+```
+
+**DATE_FORMAT():** *Formats date into custom format.*
+```sql
+-- Syntax
+SELECT DATE_FORMAT(date_column, 'format');
+```
+
+**Common Format Symbols**
+|  Symbol    |   Meaning   |
+|------------|-------------|
+|  %d        |     Day     |
+|  %m        |    Month    | 
+|  %Y        |     Year    |
+|  %H        |     Hour    |
+|  %i        |    Minutes  |
