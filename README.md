@@ -1063,6 +1063,9 @@ FROM stud_details;
 - *NOW()*
 - *CURRENT_DATE*
 - *DATE_FORMAT()*
+- *YEAR()*
+- *MONTH()*
+- *DAY()*
 
 **NOW():** *Returns current date and current time.*
 ***When to use:** Login timestamps, Transaction tracking, Current system time.*
@@ -1087,6 +1090,11 @@ SELECT CURRENT_DATE();
 ```sql
 -- Syntax
 SELECT DATE_FORMAT(date_column, 'format');
+
+-- Example
+SELECT DATE_FORMAT(NOW(), '%d-%m-%y');
+
+SELECT DATE_FORMAT(NOW(), '%d-%m-%y  %H:%I');
 ```
 
 **Common Format Symbols**
@@ -1097,3 +1105,22 @@ SELECT DATE_FORMAT(date_column, 'format');
 |  %Y        |     Year    |
 |  %H        |     Hour    |
 |  %i        |    Minutes  |
+
+
+**YEAR():** *Extracts year.*
+```sql
+-- Syntax with example
+SELECT YEAR(NOW());
+```
+
+**MONTH():** *Extracts month.*
+```sql
+-- Syntax with example
+SELECT MONTH(NOW());
+```
+
+**DAY():** *Extracts day.*
+```sql
+-- Syntax with example
+SELECT DAY(NOW());
+```
