@@ -19,14 +19,18 @@ Hey everybody!!!
 - [**Database Concepts**](#database-concepts)
   - [**Table**](#table)
   - [**Row**](#row)
-- [**Column**](#column)
-- [**Primary Key**](#primary-key)
-- [**Foreign Key**](#foreign-key)
-- [**Constraints**](#constraints)
-  - [**NOT NULL**](#not-null)
-  - [**UNIQUE**](#unique)
-  - [**CHECK**](#check)
-  - [**DEFAULT**](#default)
+  - [**Column**](#column)
+  - [**Schema**](#schema)
+  - [**Relationships between Tables**](#relationships-between-tables)
+  - [**Primary Key**](#primary-key)
+  - [**Foreign Key**](#foreign-key)
+  - [**Constraints**](#constraints)
+    - [**NOT NULL**](#not-null)
+    - [**UNIQUE**](#unique)
+    - [**CHECK**](#check)
+    - [**DEFAULT**](#default)
+    - [**Primary Key**](#primary-key-1)
+    - [**Foreign Key**](#foreign-key-1)
 - [**Basic SQL commands**](#basic-sql-commands)
 - [**DDL**](#ddl)
   - [**CREATE**](#create)
@@ -193,17 +197,42 @@ Hey everybody!!!
   - *This entire structure is called Table.*
 
 ##### **Row**
-**Row:** *Row is also called as Record. Row is a One single entity.*
+ 
+- *Row is also called as Record or Tuple*. 
+- *Row is a One single entity.*
+- *A row represents one complete record in a table.*
+- *One horizontal entry = Row*
 
 **Example:**   *1   |  Sara  |   89    |*
 
-#### **Column**
-**Column:** *Column is also called as Field. Column is an Attribute (Property).*
+##### **Column**
+
+- *Column is also called as Field or Attribute.* 
+- *A Column represents one Attribute/Property of data.*
+- *Vertical category = Column.*
 
 **Example:** *Name, Marks, id*
 
-#### **Primary Key**
-**Primary Key:** *A primary key is a column (or set of columns) that uniquely identifies each row in a table.*
+##### **Schema**
+
+- *Schema is the blueprint/design of a database.*
+- *Includes table names, column names, datatypes, relationships, constraints.*
+  
+**Example:**
+```sql
+CREATE TABLE students (
+    id INT,
+    name VARCHAR(50),
+    marks INT
+);
+```
+##### **Relationships between Tables**
+
+- *Relationships connect tables using keys.*
+  
+##### **Primary Key**
+
+*A primary key is a column (or set of columns) that uniquely identifies each row in a table.*
 
   - Must be unique
   - Cannot be NULL
@@ -217,7 +246,8 @@ CREATE TABLE student_details
                     name VARCHAR(20)
                     );
 ```
-#### **Foreign Key**
+
+##### **Foreign Key**
 **Foreign Key:** *A foreign key is a columns that creates a realtionship between two tables. It refers to the primary key of another table.*
 
 **Example:**   
@@ -235,10 +265,11 @@ CREATE TABLE student_details
                 FOREIGN KEY (student_id) REFERENCES student_details(id)
             );
 ```
-#### **Constraints**
+
+##### **Constraints**
 *Constraints are rules applied to columns to maintain data accuracy and integrity.*
 
-##### **NOT NULL** 
+###### **NOT NULL** 
 *Ensures column cannot have NULL values.*
   ```sql
         CREATE TABLE student_details(
@@ -246,7 +277,8 @@ CREATE TABLE student_details
             name VARCHAR(20) NOT NULL
         );
   ```
-##### **UNIQUE** 
+
+###### **UNIQUE** 
 *Ensures all values in a column are different.*
  ```sql
         CREATE TABLE student_details (
@@ -254,20 +286,33 @@ CREATE TABLE student_details
             name VARCHAR(20)
         );
  ```
-##### **CHECK** 
+###### **CHECK** 
 *Ensures values meet a condition.*
  ```sql
         CREATE TABLE student_details (
             age INT CHECK (age>=18)
         );
  ```
-##### **DEFAULT** 
+###### **DEFAULT** 
 *Assigns default value if none provided.*
  ```sql
         CREATE TABLE student_details (
             location VARCHAR(50) DEFAULT 'HYD'
         );
  ```
+
+###### **Primary Key**
+
+###### **Foreign Key**
+
+**Examples for Constraints:**
+```sql
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    marks INT CHECK(marks >= 0)
+);
+```
 
  #### **Basic SQL commands**
  *SQL commands are used to interact with the database. There are 5 types of SQL commands. They are:*
