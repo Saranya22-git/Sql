@@ -46,6 +46,9 @@ Hey everybody!!!
     - [**DATE**](#date)
     - [**TIME**](#time)
     - [**DATETIME**](#datetime)
+    - [**TIMESTAMP**](#timestamp)
+  - [**Boolean**](#boolean)
+  - [**Enum**](#enum)
 - [**Basic SQL commands**](#basic-sql-commands)
 - [**DDL**](#ddl)
   - [**CREATE**](#create)
@@ -427,6 +430,35 @@ dob DATE
 
 ###### **DATETIME**
 
+- *Stores both date and time.*
+
+**Example:**
+```sql
+created_at DATETIME
+```
+
+###### **TIMESTAMP**
+
+- *Stores timestamp values.*
+
+##### **Boolean**
+
+- *Stores TRUE or FALSE values.*
+  
+**Example:**
+```sql
+is_active BOOLEAN
+```
+
+##### **Enum**
+
+- *Stores one value from predefined list.*
+- *It prevents invalid values.*
+  
+**Example:**
+```sql
+gender ENUM('Male','Female')
+```
  #### **Basic SQL commands**
  *SQL commands are used to interact with the database. There are 5 types of SQL commands. They are:*
  - *DDL - CREATE, ALTER, DROP, TRUNCATE*
