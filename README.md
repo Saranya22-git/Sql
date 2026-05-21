@@ -31,6 +31,7 @@ Hey everybody!!!
     - [**DEFAULT**](#default)
     - [**Primary Key**](#primary-key-1)
     - [**Foreign Key**](#foreign-key-1)
+- [**SQL Data Types**](#sql-data-types)
 - [**Basic SQL commands**](#basic-sql-commands)
 - [**DDL**](#ddl)
   - [**CREATE**](#create)
@@ -313,6 +314,16 @@ CREATE TABLE students (
     marks INT CHECK(marks >= 0)
 );
 ```
+
+---
+
+#### **SQL Data Types**
+
+**What are Data Types?**
+
+*Data types define what kind of data a column can store.*
+
+**Why Data Types are important?**
 
  #### **Basic SQL commands**
  *SQL commands are used to interact with the database. There are 5 types of SQL commands. They are:*
