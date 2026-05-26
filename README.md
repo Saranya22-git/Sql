@@ -153,13 +153,13 @@ Hey everybody!!!
 
 *DBMS(Database Management System) is software used to create and manage databases. Basically, DBMS = Software that manages database.*
 
-**Examples:** *MySQL, Oracle Database, Microsoft SQL Server* 
+  **Examples:** *MySQL, Oracle Database, Microsoft SQL Server* 
 
 #### **What is RDBMS?**
 
 *RDBMS(Relational Database Management System) stores data in related tables. Basicaly, RDBMS = Data stored in tables with relationships.*
 
-**Example:**
+  **Example:**
 
   |   ID   |  Name  |  Marks  |
   |--------|--------|---------|
@@ -190,13 +190,13 @@ Hey everybody!!!
 ##### **🔹Non-Relational database (NoSQL):** 
 *Data is stored in JSON, documents, key-value pairs.*
 
-**Example:** *MongoDB*
-```json
-{
-    "name":"sara",
-    "marks":89
-}
-```
+   **Example:** *MongoDB*
+    ```json
+       {
+          "name":"sara",
+          "marks":89
+       }
+     ```
 
 ---
 
