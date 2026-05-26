@@ -221,7 +221,7 @@ Hey everybody!!!
 - *A row represents one complete record in a table.*
 - *One horizontal entry = Row*
 
-**Example:**   *1   |  Sara  |   89    |*
+   **Example:**   *1   |  Sara  |   89    |*
 
 #### **Column**
 
@@ -229,21 +229,21 @@ Hey everybody!!!
 - *A Column represents one Attribute/Property of data.*
 - *Vertical category = Column.*
 
-**Example:** *Name, Marks, id*
+    **Example:** *Name, Marks, id*
 
 #### **Schema**
 
 - *Schema is the blueprint/design of a database.*
 - *Includes table names, column names, datatypes, relationships, constraints.*
   
-**Example:**
-```sql
-CREATE TABLE students (
+   **Example:**
+   ```sql
+   CREATE TABLE students (
     id INT,
     name VARCHAR(50),
     marks INT
-);
-```
+   );
+   ```
 #### **Relationships between Tables**
 
 - *Relationships connect tables using keys.*
