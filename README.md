@@ -133,9 +133,38 @@ Hey everybody!!!
 
 #### **Data**
 
-**Data:** *Data is a collection of raw facts, values, or information.*
+**Data:** *Data is a collection of raw facts, figures, observations or values that can be stored and processed. Simply Data=Information in ra form.*
 
-**Examples of Data:** *Ram, 101, 95, Hyderabad*
+**Examples of Data:** 
+
+- **Student data:** *Name = Rahul* *Age = 20* *Branch = CSE*
+     These values are data. 
+- **Instagram:** *Username = coding_girl* *Followers = 1500* *Posts = 120*
+
+**NOTE:** *Data by itself may not be useful.* 
+
+**Example:**
+
+95
+76
+45
+86
+
+*These numbers alone don't tell anything. But if we know Marks of Students. Now data becomes meaningful.*
+
+**Data vs Information**
+
+**Data:** *Raw facts.*
+
+**Example:** 
+
+100
+200
+300
+
+**Information:** *Processed and meaningful data.*
+
+**Example:** *Total Sales = $689.*
 
 #### **Database**
 
