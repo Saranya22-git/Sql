@@ -4,8 +4,8 @@ Hey everybody!!!
 
 #### **Table of Contents**
 
-- [**Introduction to Databases**](#introduction-to-databases)
-  - [**Data**](#data)
+- [**Database Fundamentals**](#database-fundamentals)
+  - [**Introduction to Databases**](#introduction-to-databases)
   - [**Database**](#database)
   - [**Why do we need database?**](#why-do-we-need-database)
   - [**What is DBMS?**](#what-is-dbms)
@@ -129,17 +129,44 @@ Hey everybody!!!
     - [**ROW\_NUMBER()**](#row_number)
     - [**RANK()**](#rank)
 
-### **Introduction to Databases**
+### **Database Fundamentals**
 
-#### **Data**
+#### **Introduction to Databases**
 
-**Data:** *Data is a collection of raw facts, figures, observations or values that can be stored and processed. Simply Data=Information in ra form.*
+**What is Data?**
+
+- *Data is a collection of raw facts, figures, observations or values that can be processed to produce meaningful information.*
+- *In simple words, data is any piece of information before it is organized and analyzed.*
 
 **Examples of Data:** 
+| Roll No | Name | Marks |
+| ------- | ---- | ----- |
+| 101     | Ravi | 85    |
 
-- **Student data:** *Name = Rahul* *Age = 20* *Branch = CSE*
-     These values are data. 
-- **Instagram:** *Username = coding_girl* *Followers = 1500* *Posts = 120*
+*Here*
+- *101 is data*
+- *Ravi is data*
+- *85 is data*
+
+**Characteristics of Data**
+
+*Good data should be:*
+
+1. **Accurate:** *Correct Information.*
+    **Example:** *Age=22 Not Age=220*
+
+2. **Complete:** *No missing values.*
+    **Example for complete data:**
+    | Name | Age |
+    | ---- | --- |
+    | Ravi | 22  |
+
+    **Example for incomplete data:**
+    | Name | Age  |
+    | ---- | ---- |
+    | Ravi | NULL |
+
+3. **Consistent:**
 
 **NOTE:** *Data by itself may not be useful.* 
 
