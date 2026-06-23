@@ -153,9 +153,11 @@ Hey everybody!!!
 *Good data should be:*
 
 1. **Accurate:** *Correct Information.*
+   
     **Example:** *Age=22 Not Age=220*
 
 2. **Complete:** *No missing values.*
+   
     **Example for complete data:**
     | Name | Age |
     | ---- | --- |
@@ -166,7 +168,21 @@ Hey everybody!!!
     | ---- | ---- |
     | Ravi | NULL |
 
-3. **Consistent:**
+3. **Consistent:** *Same data should not conflict.*
+
+    **Example:** *Customer DOB = 01-01-2000*
+
+    **In another system:** *Customer DOB = 05-05-2000*
+
+    *This is inconsistent.*
+
+4. **Relevant:** *Data should be useful.*
+    
+    **Example:**
+     - *For salary calculation we need:*
+       - *Employee ID*
+       - *Salary* 
+     - *Not needed favourite movie.* 
 
 **NOTE:** *Data by itself may not be useful.* 
 
