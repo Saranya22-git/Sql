@@ -237,7 +237,7 @@ Hey everybody!!!
 
 **Information:** *Processed and meaningful data.*
 
- **Example:** *Total Sales = $689.*
+ **Example:** *Total Sales = ₹600.*
 
 **Example:** *Suppose Amazon stores:*
  - *Order1 = ₹1000*
@@ -253,6 +253,16 @@ Hey everybody!!!
 ---
 
 **Why data is important?**
+
+*Modern companies run completely on data.*
+
+**Example:**
+ - **Netflix:** *Stores watch history, likes, search history. Used data for recommendations.*
+ - **Amazon:** *Stores purchases, cart items, search history. Used data for product recommendations.*
+ - **Google Maps:** *Stores locations, traffic, speed. Used data for route optimization.*
+ - **Banks:** *Stores transactions, balances, loans. Used data for customer management.*
+
+---
 
 
 #### **Database**
