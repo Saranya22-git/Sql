@@ -148,6 +148,8 @@ Hey everybody!!!
 - *Ravi is data*
 - *85 is data*
 
+---
+
 **Characteristics of Data**
 
 *Good data should be:*
@@ -184,30 +186,74 @@ Hey everybody!!!
        - *Salary* 
      - *Not needed favourite movie.* 
 
-**NOTE:** *Data by itself may not be useful.* 
+---
 
-**Example:**
+**Types of Data**
 
-95
-76
-45
-86
+1. **Structured Data:** *Data stored in rows and columns.*
 
-*These numbers alone don't tell anything. But if we know Marks of Students. Now data becomes meaningful.*
+    **Example:**
+    | ID | Name | Salary |
+    | -- | ---- | ------ |
+    | 1  | Ravi | 50000  |
+    
+    **Examples:** *SQL Databases, MySQL, PostgreSQL.*
+
+2. **Semi-Structured Data:** *Has some structure but not tables.*
+
+    **Example:**
+     ```json
+      {
+        "name":"Ravi",
+        "age":22
+      }
+     ```
+
+     **Examples:** *JSON, XML*
+
+3. **Unstructured Data:** *No fixed format.*
+
+    **Examples:**
+
+     - *Images*
+     - *Videos*
+     - *Audio*
+     - *PDFs*
+     - *Emails*
+  
+    **Example:** *Vacation photo.jpg this is data but not in rows and columns.*
+
+---
 
 **Data vs Information**
 
 **Data:** *Raw facts.*
 
-**Example:** 
+ **Example:** 
 
-100
-200
-300
+    100
+    200
+    300
 
 **Information:** *Processed and meaningful data.*
 
-**Example:** *Total Sales = $689.*
+ **Example:** *Total Sales = $689.*
+
+**Example:** *Suppose Amazon stores:*
+ - *Order1 = ₹1000*
+ - *Order2 = ₹2000*
+ - *Order3 = ₹3000*
+  
+*These are data.*
+
+*After calculation: Total sales = ₹6000*
+
+*This becomes information.*
+
+---
+
+**Why data is important?**
+
 
 #### **Database**
 
