@@ -8,6 +8,7 @@ Hey everybody!!!
   - [**Introduction to Databases**](#introduction-to-databases)
     - [**Data**](#data)
     - [**Database**](#database)
+    - [**DBMS**](#dbms)
   - [**What is DBMS?**](#what-is-dbms)
   - [**What is RDBMS?**](#what-is-rdbms)
   - [**DBMS** vs **RDMS**](#dbms-vs-rdms)
@@ -433,6 +434,241 @@ Hey everybody!!!
 **Database:** *Run a query like SELECT * FROM Students WHERE Name='Rahul'; The database returns the result quickly.*
 
 ---
+
+##### **DBMS**
+
+**What is DBMS (Database Management System)?**
+
+- *A DBMS is Software that allows users and applications to create, store, retrieve, update and manage data in a database.*
+- *Without a DBMS, interacting with the database would be extremely difficult.*
+- *In simple, A DBMS is software that acts as a bridge between the user/application and the database.*
+
+**Example:** *Imagine a library.*
+- *Books=Data*
+- *Library=Database*
+- *Librarian=DBMS*
+- *Student=User*
+
+*If you want a book, you don't search every shelf yourself. You ask the librarian.*
+
+*The librarian:*
+- *Finds the book*
+- *Issues the book*
+- *Updates records*
+- *Maintains organization*
+
+*Similarly, a DBMS:*
+- *Finds data*
+- *Stores data*
+- *Updates data*
+- *Deletes data*
+- *Maintain security*
+
+---
+
+**How does a DBMS work?**
+
+*Suppose you open a banking app and check your balance.*
+
+- **Step-1:** *User Request. You tap "Check Balance".*
+- **Step-2:** *Application. The banking app send a request.*
+- **Step-3:** *DBMS. The DBMS receives the request and understands what data is needed.*
+- **Step-4:** *Database. The DBMS retrieves your account information from the database.*
+- **Step-5:** *Result. The DBMS sends the balance back to the banking app, which displays it.*
+
+**Flow:** *User -> Application -> DBMS -> Database <- DBMS -> Application <- User.*
+
+*The user never interacts with the database directly. The DBMS handles all communication.*
+
+---
+
+**Why do we need a DBMS?**
+
+- *Imagine storing employee data in Excel file.*
+- *Problems:*
+  - *Duplicate records*
+  - *Slow Searching*
+  - *Difficult updates*
+  - *Poor security*
+  - *Multiple users editing the same file*
+  - *No relationships between files*
+
+*A DBMS solves these problems.*
+
+---
+
+**Functions of a DBMS**
+
+*These are the main responsibilities of a DBMS.*
+
+1. **Data Storage:** *Stores data efficiently.*
+
+**Example:** *Employee details are stored in database tables instead of random files.*
+
+2. **Data Retrieval:** *Fetch required information quickly.*
+
+**Examples:** 
+```sql
+SELECT * FROM Employees;
+```
+*The DBMS retrieves all employee records.*
+
+3. **Data Insertion:** *Add new records.*
+
+**Example:** *A new employee joins the company. The DBMS inserts the employee into the database.*
+
+4. **Data Update:** *Modifies existing records.*
+
+**Example:** *Employee salary changes. The DBMS updates only that employee's record.*
+
+5. **Data Deletion:** *Removes records.*
+
+**Example:** *An employee resigns. The DBMS deletes the employee's details if required.*
+
+6. **Security:** *Controls who can access data.*
+
+**Example:**
+| User     | Permission           |
+| -------- | -------------------- |
+| Customer | View own account     |
+| Employee | Update customer data |
+| Manager  | Approve loans        |
+| DBA      | Full access          |
+
+*Not everyone gets the same permission.*
+
+7. **Backup & Recovery:** *Protects against data loss.*
+
+**Example:** *If the database server crashes, backups help restore the data.*
+
+8. **Concurrency Control:** *Allows many users to access the database at the same time safely.*
+
+**Example:** *Imagine two ATM machines accessing the same account. Balance = ₹10,000. Person A withdraws ₹2,000. Person B withdraws ₹3,000 at the same time. The DBMS ensures the final balance becomes ₹10,000 - ₹2,000 - ₹3,000 = ₹5,000 without losing or corrupting data.*
+
+9.  **Data Integrity:** *Ensures stored data remains accurate and valid.*
+
+**Example:** *Age should not be -10. A DBMS can prevent invalid values.*
+
+---
+
+**Components of a DBMS**
+
+*A DBMS consists of several components.*
+1. **Hardware:** *The physical devices.*
+
+**Example:**
+- *Servers*
+- *Hard disks*
+- *SSDs*
+- *Network devices*
+
+
+2. **Software:** *The DBMS software itself.*
+
+**Example:**
+- *MySQL*
+- *PostgreSQL*
+- *Oracle Database*
+- *Microsoft SQL Server*
+
+
+3. **Database:** *The actual stored data.*
+
+**Example:**
+- *Employee table*
+- *Customer table*
+- *Orders table*
+
+
+4. **Users:** *People who use the database.*
+
+**Example:**
+- *Customers*
+- *Developers*
+- *Database Administrators(DBAs)*
+- *Data Analysis*
+
+
+5. **Procedures:** *Rules and instructions for using and maintaining the database.*
+
+**Example:**
+- *Daily backup procedure*
+- *Password policy*
+- *Data entry guidelines*
+
+---
+
+**Advantages of a DBMS**
+
+- *Reduces data redundancy (duplicate data)*
+- *Provides better security*
+- *Enables data sharing*
+- *Supports multiple users*
+- *Improves data consistency*
+- *Offers backup and recovery*
+- *Supports relationships between data*
+- *Makes data retrieval faster*
+- *Simplifies database management*
+
+**Disadvantages of a DBMS**
+
+- *Can be expensive*
+- *Requires skilled administrators*
+- *Consumes system resources*
+- *Initial setup can be complex*
+- *Maintenance costs may be high*
+
+---
+
+**Examples of DBMS usage:**
+
+**Banking:** *Stores:*
+- *Customer accounts*
+- *Transactions*
+- *Loans*
+
+**Hospital:** *Stores:*
+- *Patient records*
+- *Doctors*
+- *Appointments*
+- *Medical history*
+
+**College:** *Stores:*
+- *Students*
+- *Faculty*
+- *Courses*
+- *Attendance*
+- *Results*
+
+--- 
+
+**Popular DBMS Software**
+
+| DBMS                 | Common Usage                    |
+| -------------------- | ------------------------------- |
+| MySQL                | Web applications                |
+| PostgreSQL           | Enterprise applications         |
+| Oracle Database      | Large enterprises               |
+| Microsoft SQL Server | Business applications           |
+| SQLite               | Mobile and desktop applications |
+
+*These are examples of DBMS Software.*
+
+---
+
+**Database vs DBMS**
+
+| Database                     | DBMS                                 |
+| ---------------------------- | ------------------------------------ |
+| Collection of organized data | Software used to manage the database |
+| Stores information           | Performs operations on the data      |
+| Passive (stores data)        | Active (manages data)                |
+| Example: Employee database   | Example: MySQL                       |
+
+---
+
+
+
 
 
 
