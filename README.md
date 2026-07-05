@@ -9,10 +9,8 @@ Hey everybody!!!
     - [**Data**](#data)
     - [**Database**](#database)
     - [**DBMS**](#dbms)
-  - [**What is DBMS?**](#what-is-dbms)
-  - [**What is RDBMS?**](#what-is-rdbms)
-  - [**DBMS** vs **RDMS**](#dbms-vs-rdms)
-  - [**What is SQL?**](#what-is-sql)
+    - [**RDBMS**](#rdbms)
+    - [**SQL**](#sql)
   - [**Types of Databases:**](#types-of-databases)
     - [**🔹Relational Database (RDBMS):**](#relational-database-rdbms)
     - [**🔹Non-Relational database (NoSQL):**](#non-relational-database-nosql)
@@ -193,7 +191,7 @@ Hey everybody!!!
 
 **Types of Data**
 
-1. **Structured Data:** *Data stored in rows and columns.*
+1. **Structured Data:** *Data stored or organized into rows and columns.*
 
     **Example:**
     | ID | Name | Salary |
@@ -202,7 +200,7 @@ Hey everybody!!!
     
     **Examples:** *SQL Databases, MySQL, PostgreSQL.*
 
-2. **Semi-Structured Data:** *Has some structure but not tables.*
+2. **Semi-Structured Data:** *Data that has some organization but isn't stored as tables.*
 
     **Example:**
      ```json
@@ -214,7 +212,7 @@ Hey everybody!!!
 
      **Examples:** *JSON, XML*
 
-3. **Unstructured Data:** *No fixed format.*
+3. **Unstructured Data:** *Data without a fixed format.*
 
     **Examples:**
 
@@ -436,6 +434,16 @@ Hey everybody!!!
 ---
 
 ##### **DBMS**
+
+**Why was DBMS invented?**
+
+- *Imagine you have 500 books in your house.* 
+  - *Can books Organize themselves?*
+  - *Can books tell you where another book is?*
+  - *Can books issue themselves?*
+- *No. You need someone to manage them. Similarly, A database stores data. Someone must manage it. That "someone " is called DBMS.*
+
+---
 
 **What is DBMS (Database Management System)?**
 
@@ -666,22 +674,12 @@ SELECT * FROM Employees;
 | Example: Employee database   | Example: MySQL                       |
 
 ---
+ 
+##### **RDBMS**
 
+**What is an RDBMS?**
 
-
-
-
-
-
-#### **What is DBMS?**
-
-*DBMS(Database Management System) is software used to create and manage databases. Basically, DBMS = Software that manages database.*
-
-  **Examples:** *MySQL, Oracle Database, Microsoft SQL Server* 
-
-#### **What is RDBMS?**
-
-*RDBMS(Relational Database Management System) stores data in related tables. Basicaly, RDBMS = Data stored in tables with relationships.*
+*RDBMS(Relational Database Management System) is a type of DBMS that stores data in the form of tables (relations) and maintains relationships between those tables.*
 
   **Example:**
 
@@ -689,17 +687,104 @@ SELECT * FROM Employees;
   |--------|--------|---------|
   |    1   |  Sara  |   89    |
 
-#### **DBMS** vs **RDMS**
+---
 
-- *DBMS stores data in files, while RDBMS stores data in structured tables with relationships between them.*
-- *In DBMS the security is low compared to RDBMS.*
+**Why are tables used?**
 
+*Tables make data easy to read, easy to search, easy to update, easy to organize.*
 
-#### **What is SQL?**
+---
 
-- *SQL stands for Structured Query Language.*
-- *SQL is used to communicate with databases.*
-- *It is used to create database, Insert data, Update data, Delete data, Fetch data.*
+**DBMS** vs **RDBMS**
+
+| DBMS                            | RDBMS                           |
+| ------------------------------- | ------------------------------- |
+| Stores data                     | Stores data in tables           |
+| May not support relationships   | Supports relationships          |
+| Less structured                 | Highly structured               |
+| Suitable for small applications | Suitable for large applications |
+
+---
+
+**Popular RDBMS Software**
+
+| Software             | Company               |
+| -------------------- | --------------------- |
+| MySQL                | Oracle                |
+| PostgreSQL           | Open Source Community |
+| Oracle Database      | Oracle                |
+| Microsoft SQL Server | Microsoft             |
+
+---
+
+##### **SQL**
+
+**What is SQL?**
+
+- *SQL (Structured Query Language) is a standard language used to communicate with relational databases for storing, retrieving, updating and managing data.*
+
+---
+
+**Examples:**
+
+- **Amazon:** *Customer searches "Laptop". Amazon sends an SQL query to the database. The database returns matching products.*
+- **Instagram:** *You log in. SQL helps retrieve your account information.*
+- **Netflix:** *You search "Money Heist" SQL helps find that show.*
+- **Banking:** *You check your balance. The banking app sends a request. SQL helps retrieve your account details.*
+
+---
+
+**How SQL works?**
+
+*User -> Application -> SQL Query -> RDBMS -> Database -> RDBMS -> Application -> User*
+
+- **Step-1:** *You search for Laptop.*
+- **Step-2:** *Amazon converts your request into SQL.*
+- **Step-3:** *SQL asks the RDBMS*
+- **Step-4:** *The RDBMS seraches the database.*
+- **Step-5:** *Results comeback*
+- **Step-6:** *You see the laptops. Simple*
+
+---
+
+**Is SQL a programming language?**
+
+*No. SQL is not a general-purpose programming language like Python or Java. It is a query language. Its main purpose is to work with relational databases.*
+
+---
+
+**What can SQL do?**
+
+*SQL can perform many operations.*
+
+1. **Retrieve Data:** *Find all employees.*
+
+**Example:** 
+```sql
+SELECT * FROM Employees;
+```
+
+2. **Insert Data:** *A new customer signs up. SQL can add the customer's information.*
+3. **Update Data:** *Rahul changes his phone number. SQL updates only rahul's record.*
+4. **Delete Data:** *An employee resigns. SQL can remove the employee's record if required.*
+5. **Filter Data:** *Suppose your manager says "Show employees whose salary is greater than ₹50,000". SQL can filter those records.*
+6. **Sort Data:** *Show employees from highest salary to lowest salary. SQL can sort the results.*
+7. **Calculate Data:** *Average salary, Total sales, Maximum marks, Minimum price. SQL performs these calculations quickly.*
+
+---
+
+**Where is SQL used?**
+
+- **Banking:** *Check account balance, View transactions, Transfer money.*
+- **Amazon:** *Search outputs, Place orders, Track deliveries.*
+- **Instagram:** *Login, Show posts, Display followers, Load comments.*
+- **Netflix:** *Search movies, Watch history, Recommendations.*
+- **Hospital:** *Patient records, Appointments, Doctors, Billing.*
+- **Colleges:** *Student details, Attendance, Marks, Fees*
+- **Airlines:** *Flight bookings, Seat availability, Passenger information*
+
+---
+
 
 #### **Types of Databases:**
 
