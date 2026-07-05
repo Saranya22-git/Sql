@@ -11,6 +11,7 @@ Hey everybody!!!
     - [**DBMS**](#dbms)
     - [**RDBMS**](#rdbms)
     - [**SQL**](#sql)
+    - [**Features of SQL**](#features-of-sql)
   - [**Types of Databases:**](#types-of-databases)
     - [**🔹Relational Database (RDBMS):**](#relational-database-rdbms)
     - [**🔹Non-Relational database (NoSQL):**](#non-relational-database-nosql)
@@ -782,6 +783,21 @@ SELECT * FROM Employees;
 - **Hospital:** *Patient records, Appointments, Doctors, Billing.*
 - **Colleges:** *Student details, Attendance, Marks, Fees*
 - **Airlines:** *Flight bookings, Seat availability, Passenger information*
+
+---
+
+##### **Features of SQL**
+
+1. **Easy to Learn:** *SQL has very simple syntax.*
+2. **Easy to read:** *Even without learning SQL you can understand.*
+3. **Standard Language:** *Most SQL commands remain the same in any software.*
+4. **Fast Data Retrieval:** *SQL is optimized to retrieve data efficiently when used with an RDBMS.*
+5. **Supports Large Databases:** *SQL-based databases can handle very large amounts of data (with the right database system and hardware).*
+6. **Data Manipulation:** *"Manipulation" simply means changing data. SQL allows us to Add new data, Update existing data, Delete data, Retrieve data.*
+7. **Security:** *SQL databases support security features through the DBMS, such as User accounts, Permissions, Roles, Access control.*
+8. **Multi-user support:** *SQL databases are designed to support many users simultaneously when managed by an RDBMS.*
+9. **Data Integrity:** *This helps maintain accurate and consistent data.*
+10. **Supports Relationships:** *SQL makes it easy to work with these related tables.*
 
 ---
 
