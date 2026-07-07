@@ -15,7 +15,7 @@ Hey everybody!!!
     - [**Database Applications**](#database-applications)
     - [**Types of Databases**](#types-of-databases)
       - [**Relational Database**](#relational-database)
-      - [**Non-Relational database**](#non-relational-database)
+      - [**Non-Relational database(NoSQL)**](#non-relational-databasenosql)
 - [**Database Concepts**](#database-concepts)
   - [**Table**](#table)
   - [**Row**](#row)
@@ -868,17 +868,97 @@ SELECT * FROM Employees;
 
 ---
 
-###### **Non-Relational database** 
+###### **Non-Relational database(NoSQL)** 
 
-*Data is stored in JSON, documents, key-value pairs.*
+**What is NoSQL?**
 
-   **Example:** *MongoDB*
-  ```json
-       {
-          "name":"sara",
-          "marks":89
-       }
-  ```
+*A NoSQL database is a non-relational database designed to store and manage large volumes of flexible or unstructured data using models such as documents, key-value pairs, columns or graphs.*
+
+---
+
+**Types of NoSQL Databases**
+
+*There are four major types.*
+
+1. **Document Database:** *Stores data like documents.*
+
+**Example:**
+
+```json
+{
+  "name": "Rahul",
+  "age": 22,
+  "city": "Hyderabad"
+}
+```
+
+*No rows, no columns. Just one document.*
+
+**Examples:** *MongoDB, CouchDB*
+
+2. **Key-Value Database:** *Every value has one key.*
+
+**Example:**
+
+Key
+
+Rahul
+
+↓
+
+Value
+
+Hyderabad
+
+*Like a dictionary in Python.*
+
+**Examples:** *Redis, Amazon DynamoDB*
+
+3. **Column-Family Database:** *Stores data by columns instead of traditional rows. Used for very large datasets.*
+
+**Examples:** *Apache Cassandra, Apache HBase.*
+
+4. **Graph Database:** *Used when relationships are the most important thing.*
+
+**Example:** *Facebook*
+
+Rahul
+
+↓
+
+Friend
+
+↓
+
+Priya
+
+↓
+
+Friend
+
+↓
+
+Aman
+
+*This network is naturally represented as a graph.*
+
+**Examples:** *Neo4j, Amazon Neptune*
+
+---
+
+**Advantages of NoSQL**
+
+- *Flexible Structure*
+- *Handles very large amounts of data*
+- *Can scale across many servers*
+- *Good for rapidly changing data*
+- *Fast for certain types of applications*
+
+**Disadvantages**
+
+- *Relationships can be more complex*
+- *Standard SQL usually cannot be used directly*
+- *Data consistency models may differ depending on the database.*
 
 ---
 
