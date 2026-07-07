@@ -12,9 +12,10 @@ Hey everybody!!!
     - [**RDBMS**](#rdbms)
     - [**SQL**](#sql)
     - [**Features of SQL**](#features-of-sql)
-  - [**Types of Databases:**](#types-of-databases)
-    - [**🔹Relational Database (RDBMS):**](#relational-database-rdbms)
-    - [**🔹Non-Relational database (NoSQL):**](#non-relational-database-nosql)
+    - [**Database Applications**](#database-applications)
+    - [**Types of Databases**](#types-of-databases)
+      - [**Relational Database**](#relational-database)
+      - [**Non-Relational database**](#non-relational-database)
 - [**Database Concepts**](#database-concepts)
   - [**Table**](#table)
   - [**Row**](#row)
@@ -801,18 +802,74 @@ SELECT * FROM Employees;
 
 ---
 
+##### **Database Applications**
 
-#### **Types of Databases:**
+**What is a Database Application?**
 
-##### **🔹Relational Database (RDBMS):** 
-*Data is stored in tables (rows & columns)*
+*A database application is a software application that interacts with a database to perform operations such as storing, retrieving, updating and deleting data.*
 
-   **Example:** *MySQL, PostgreSQL, Oracle database.*
-  |   ID   |  Name  |  Marks  |
-  |--------|--------|---------|
-  |    1   |  Sara  |   89    |
+---
 
-##### **🔹Non-Relational database (NoSQL):** 
+##### **Types of Databases**
+
+###### **Relational Database**
+
+**What is a Relational Database?**
+
+*A Relational Database is a type of database that stores data in the form of tables (relations) and uses relationships between tables to organize and retrieve data efficiently.*
+
+**Example:** 
+
+|   ID   |  Name  |  Marks  |
+|--------|--------|---------|
+|    1   |  Sara  |   89    |
+
+---
+
+**Characteristics of a Relational Database**
+
+*A Relational database:*
+
+- **Stores data in tables:** *Everything is organized into rows and columns.*
+- **Uses relationships:** *Tables are connected using IDs.*
+- **Reduces duplicate data:** *The same information doesn't need to be stored repeatedly.*
+- **Maintains Consistency:** *One update can automatically keep related information consistent.*
+- **Supports SQL:** *Relational databases use SQL to communicate and manage data.*
+
+---
+
+**Popular Relational Databases**
+
+| Database             | Used For                |
+| -------------------- | ----------------------- |
+| MySQL                | Web Applications        |
+| PostgreSQL           | Enterprise Applications |
+| Oracle Database      | Large Companies         |
+| Microsoft SQL Server | Business Applications   |
+| SQLite               | Mobile & Desktop Apps   |
+
+---
+
+**Advantages of Relational Databases**
+
+- *Organized data*
+- *Easy Searching*
+- *Easy Updating*
+- *Reduces duplication*
+- *Supports Relationships*
+- *Strong security*
+- *Data consistency*
+
+**Disadvantages**
+
+- *More complex to design*
+- *Less flexible if the data structure changes frequently*
+- *Harder to scale for some very large distributed systems*
+
+---
+
+###### **Non-Relational database** 
+
 *Data is stored in JSON, documents, key-value pairs.*
 
    **Example:** *MongoDB*
