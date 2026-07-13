@@ -16,6 +16,10 @@ Hey everybody!!!
     - [**Types of Databases**](#types-of-databases)
       - [**Relational Database**](#relational-database)
       - [**Non-Relational database(NoSQL)**](#non-relational-databasenosql)
+    - [**SQL vs NoSQL**](#sql-vs-nosql)
+    - [**Client-Server Architecture**](#client-server-architecture)
+    - [**Database Architecture Basics**](#database-architecture-basics)
+      - [**OLTP**](#oltp)
 - [**Database Concepts**](#database-concepts)
   - [**Table**](#table)
   - [**Row**](#row)
@@ -961,6 +965,132 @@ Aman
 - *Data consistency models may differ depending on the database.*
 
 ---
+
+##### **SQL vs NoSQL**
+
+**SQL vs NoSQL**
+
+| SQL                         | NoSQL                                                                          |
+| --------------------------- | ------------------------------------------------------------------------------ |
+| Relational Database         | Non-Relational Database                                                        |
+| Stores data in tables       | Stores data in documents, key-value pairs, columns, or graphs                  |
+| Uses SQL language           | Uses database-specific query methods/APIs (some also support SQL-like queries) |
+| Fixed schema                | Flexible schema                                                                |
+| Best for structured data    | Best for flexible or rapidly changing data                                     |
+| Strong relationships        | Flexible relationships depending on the database                               |
+| Examples: MySQL, PostgreSQL | Examples: MongoDB, Redis                                                       |
+
+---
+
+**Which one is better?**
+
+*Neither, It depends on the problem.*
+
+---
+
+**When should we use SQL?**
+
+*Use SQL when:*
+- *Data is highly structured*
+- *Relationships are important*
+- *Accuracy is critical*
+
+**Examples:** *Banks, Hospitals, Colleges, Payroll. (Accounting Systems)*
+
+---
+
+**When should we use NoSQL?**
+
+*Use NoSQL when:*
+- *Data changes frequently*
+- *The structure is flexible*
+- *Very large-scale distributed systems are needed*
+
+**Examples:** *Social Media, Gaming, Real-Time Analytics. (Caching) Some recommendation systems.*
+
+---
+
+##### **Client-Server Architecture**
+
+**What is Client?**
+
+*A Client is a computer, mobile device, or software application that sends requests to a server to access data or services.*
+
+**Examples:** *Laptop, Mobile Phone, Web Browser (Chrome, Edge, Firefox), Instagram App, Amazon App. Whenever these request data, they act as clients.*
+
+---
+
+**What is a Server?**
+
+*A Server is a computer or software system that provides services, resources, or data to clients over a network.*
+
+**Example:** *Imagine YouTube millions of users request videos. The YouTube server:*
+- *Stores videos*
+- *Receives requests*
+- *Finds the requested video*
+- *Sends it back*
+
+---
+
+**Client vs Server**
+
+| Client                  | Server               |
+| ----------------------- | -------------------- |
+| Requests data           | Provides data        |
+| Starts communication    | Responds to requests |
+| Example: Chrome Browser | Example: Web Server  |
+
+---
+
+**Complete flow**
+
+*Suppose you search for Laptop on Amazon.*
+
+**Step-1:** *You type Laptop*
+
+**Step-2:** *Amazon App sends a request*
+
+**Step-3:** *The server receives a request*
+
+**Step-4:** *The server sends an SQL query to the RDBMS*
+
+**Step-5:** *The RDBMS searches the database*
+
+**Step-6:** *The database returns the data*
+
+**Step-7:** *The server sends the result back*
+
+**Step-8:** *Amazon app displays the products*
+
+---
+
+**Why don't we connect directly to the database?**
+
+*Because of Security, Validation, Performance, User management. If everyone could connect directly to the database, anyone could Delete records, Change balances, Read private data. The server protects the database.*
+
+---
+
+**Advantages of Client-Server Architecture**
+
+- **Better Security:** *Clients cannot directly modify the database.*
+- **Centralized data:** *All data is stored in one place.*
+- **Easy Maintenance:** *Update the server, and every client benefits.*
+- **Multi-user Support:** *Millions of users can access the system simultaneously*
+- **Better Performance:** *The server manages requests efficiently*
+
+---
+
+##### **Database Architecture Basics**
+
+###### **OLTP**
+
+**What is OLTP?**
+
+*OLTP stands for Online Transaction Processing. OLTP is a database system optimized for processing a large number of short, real-time transactions such as inserts, updates, deletes and lookups.*
+
+
+
+
 
 ### **Database Concepts**
 
