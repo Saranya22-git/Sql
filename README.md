@@ -1089,7 +1089,7 @@ Aman
 
 *OLTP stands for Online Transaction Processing. OLTP is a database system optimized for processing a large number of short, real-time transactions such as inserts, updates, deletes and lookups.*
 
-                             OR
+                            *OR*
 
 *OLTP is a system designed to handle day-to-day transactions quickly and accurately.*
 
