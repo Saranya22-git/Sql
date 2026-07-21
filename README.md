@@ -1089,7 +1089,7 @@ Aman
 
 *OLTP stands for Online Transaction Processing. OLTP is a database system optimized for processing a large number of short, real-time transactions such as inserts, updates, deletes and lookups.*
 
-OR
+                             OR
 
 *OLTP is a system designed to handle day-to-day transactions quickly and accurately.*
 
@@ -1112,10 +1112,12 @@ OR
 
 *OLTP systems are designed for:*
 - **Fast Transactions** 
+   
    **Example:** *ATM withdrawal*
 - **Many Users** *Millions of customers can use Amazon simultaneously*
 - **Real-time processing** *When you pay, your order is updated immediately*
 - **Frequent INSERT, UPDATE, DELETE** 
+   
    **Examples:** *New customer signs up, Order status changes, Product stock decreases.*
 
 ---
@@ -1132,7 +1134,7 @@ OR
 
 *OLAP (Online Analytical Processing) is a system optimized for analyzing large volumes of historical data to support reporting, business intelligence, and decision-making.*
 
-OR
+                             OR
 
 *OLAP is a system designed to analyze large amounts of data for reporting and decision-making.*
 
@@ -1168,6 +1170,7 @@ OR
 *Imagine a supermarket*
 
 **Customer:** *Buys milk. This is OLTP*
+
 **Store Manager:** *At the end of the month, asks Which product sold the most?, Which branch earned the highest profit?. This is OLAP.*
 
 ---
