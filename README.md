@@ -21,6 +21,7 @@ Hey everybody!!!
     - [**Database Architecture Basics**](#database-architecture-basics)
       - [**OLTP**](#oltp)
       - [**OLAP**](#olap)
+      - [**Database vs Data Warehouse**](#database-vs-data-warehouse)
 - [**Database Concepts**](#database-concepts)
   - [**Table**](#table)
   - [**Row**](#row)
@@ -1188,6 +1189,49 @@ OR
 
 ---
 
+###### **Database vs Data Warehouse**
+
+**Database**
+
+*A database is an organized collection of data used to store and manage the current operational data of an application.*
+
+**Data Warehouse**
+
+*A Data Warehouse is a centralized system that stores historical and integrated data from multiple sources to support business intelligence, reporting, and analytical queries.*
+
+---
+
+**Real-Life Analogy**
+
+*Imagine your college*
+
+**Database**
+
+*The office stores today's attendance, fee payments, student registrations. This is daily work.*
+
+**Data Warehouse**
+
+*At the end of every year, the college stores:*
+- *Last 10 years results*
+- *Admission statistics*
+- *Pass percentages*
+- *Placement records*
+
+*This information is used for analysis and reports.*
+
+---
+
+**Database vs Data Warehouse**
+
+| Database                           | Data Warehouse                                             |
+| ---------------------------------- | ---------------------------------------------------------- |
+| Stores current operational data    | Stores historical data                                     |
+| Used for daily transactions        | Used for analysis and reporting                            |
+| Supports OLTP                      | Supports OLAP                                              |
+| Frequently updated                 | Updated periodically (often in batches or scheduled loads) |
+| Used by customers and applications | Used by managers, analysts, and executives                 |
+
+---
 
 
 
