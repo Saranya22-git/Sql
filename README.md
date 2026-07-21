@@ -1272,7 +1272,91 @@ OR
 
 ###### **ETL vs ELT**
 
+**ETL**
 
+*ETL (Extract, Transform, Load) is a data integration process in which data is extracted from one or more sources, transformed into the required format, and then loaded into a target system such as a Data Warehouse.*
+
+OR
+
+*ETL is the process of collecting data from different sources, cleaning and transforming it, and then loading it into a Data Warehouse.*
+
+---
+
+**Understanding each step**
+
+**E → Extract:** *Extract means collect data.*
+  
+  **Sources:** *Database, Excel files, APIs, Website, Mobile App, CSV files.*
+
+  **Example:** *Amazon collects customer data from multiple systems.*
+
+**T → Transform:** *Transform means prepare the data.*
+
+  *Common transformations include removing duplicate records, correcting errors, standardizing formats, handling missing values, combining data from different sources.*
+
+  **Example:** *Change Rahul Kumar and R. Kumar into one consistent format if appropriate.*
+
+**L → Load:** *Load means store the cleaned data in the target system.*
+
+  *Usually Data Warehouse. Now analysts can use reliable data for reporting.*
+
+---
+
+**Real-World Example**
+
+*Imagine a hospital. Data comes from Reception, Laboratory, Pharmacy, Billing. Each department has different formats.*
+
+**ETL:** *Extracts the data → Transforms it into one consistent format → Loads it into the Data Warehouse. Managers can now generate reports.*
+
+---
+
+**ELT**
+
+*ELT (Extract, Load, Transform) is a data integration process in which raw data is first loaded into the target system and then transformed using the processing capabilities of that system.*
+
+---
+
+**ETL vs ELT**
+
+| ETL                                                           | ELT                                                                             |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Extract → Transform → Load                                    | Extract → Load → Transform                                                      |
+| Data is transformed before loading                            | Data is transformed after loading                                               |
+| Useful when data should be cleaned before entering the target | Useful when the target system can efficiently process large amounts of raw data |
+
+---
+
+**Real-Life Analogy**
+
+*Imagine washing clothes*
+
+**ETL**
+1. *Wash Clothes*
+2. *Dry them*
+3. *Put them in the cupboard*
+
+*Everything is cleaned before storage.*
+
+**ELT**
+
+1. *Put clothes into the cupboard*
+2. *Later, organize and fold them*
+
+*Storage happens first. Organization happens later.*
+
+---
+
+**Advantages**
+
+**ETL**
+- *High-quality data before loading*
+- *Good for environments with strict data quality requirements*
+
+**ELT**
+- *Faster loading of raw data*
+- *Takes advantage of powerful modern data warehouses.*
+
+---
 
 ### **Database Concepts**
 
