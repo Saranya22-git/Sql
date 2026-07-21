@@ -22,6 +22,8 @@ Hey everybody!!!
       - [**OLTP**](#oltp)
       - [**OLAP**](#olap)
       - [**Database vs Data Warehouse**](#database-vs-data-warehouse)
+      - [**Data Mart**](#data-mart)
+      - [**ETL vs ELT**](#etl-vs-elt)
 - [**Database Concepts**](#database-concepts)
   - [**Table**](#table)
   - [**Row**](#row)
@@ -1232,6 +1234,43 @@ OR
 | Used by customers and applications | Used by managers, analysts, and executives                 |
 
 ---
+
+###### **Data Mart**
+
+**What is a Data Mart?**
+
+*A Data Mart is a subject-oriented subset of a Data Warehouse designed to meet the reporting and analytical needs of a particular department or business unit.*
+
+---
+
+**Real-Life Analogy**
+
+- *Imagine a big library. The entire library contains books on every subject. This is like a Data Warehouse.*
+- *Now imagine the Computer Science department. They don't need every book. They only need computer science books. So the library creates a dedicated section. That section is like a Data Mart.*
+
+---
+
+**Data Warehouse vs Data Mart**
+
+| Data Warehouse                           | Data Mart                      |
+| ---------------------------------------- | ------------------------------ |
+| Stores data for the whole organization   | Stores data for one department |
+| Very large                               | Smaller                        |
+| Used by multiple departments             | Used by one department or team |
+| Contains integrated enterprise-wide data | Contains subject-specific data |
+
+---
+
+**Advantages of a Data Mart**
+
+- **Faster query performance** *because it contains less data.*
+- **Better security** *departments access only the data they need.*
+- **Easier reporting** *Reports focus on one business area.*
+- **Simpler management** *Smaller datasets are easier to maintain.*
+
+---
+
+###### **ETL vs ELT**
 
 
 
