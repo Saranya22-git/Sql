@@ -37,11 +37,11 @@ Hey!!
 
 1. **Qualitative Data (Categorical Data):** *Qualitative data describes qualities or characteristics. It is non-numerical data.*
 
-  **Examples:** *Name, Gender, City, Department, Blood Group etc.,*
+    **Examples:** *Name, Gender, City, Department, Blood Group etc.,*
 
 2. **Quantitative Data (Numerical Data):** *Quantitave data represents numbers that can be measured or counted.*
 
-  **Example:** *Age, Salary, Marks, Height, Weight etc.,*
+    **Example:** *Age, Salary, Marks, Height, Weight etc.,*
 
 ---
 
@@ -49,10 +49,10 @@ Hey!!
 
 1. **Discrete Data:** *Data that can be counted.*
 
-  **Example:** *Number of Students, Number of employees, Number of books etc.,*
+    **Example:** *Number of Students, Number of employees, Number of books etc.,*
 
 2. **Continuous Data:** *Data that can be measured and may contain decimal values.*
 
-  **Example:** *Height, Weight, Temperature, Distance, Time etc.,*
+    **Example:** *Height, Weight, Temperature, Distance, Time etc.,*
 
 ---
