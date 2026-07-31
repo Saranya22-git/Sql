@@ -1,355 +1,365 @@
-# 🔰 PHASE 1 — DATABASE FUNDAMENTALS
+# 🚀 SQL 
 
-## 📌 1. Introduction to Databases
+# 🔰 PHASE 0 — SQL & DATABASE FOUNDATION
 
-### Topics
+## 📌 0.1 Introduction to Data
 
-* What is Data?
-* What is Database?
-* What is DBMS?
-* What is RDBMS?
-* What is SQL?
-* Why SQL is used
-* Features of SQL
-* Database Applications
+- What is Data?
+- Data vs Information
+- Types of Data
 
-### Types of Databases
+## 📌 0.2 Database Basics
 
-* Relational Databases
-* Non-Relational Databases (NoSQL)
+- What is a Database?
+- What is DBMS?
+- What is RDBMS?
+- What is SQL?
+- Why SQL?
+- SQL vs Programming Languages
+- SQL vs MySQL
+- Database Applications
 
-### SQL vs NoSQL
+## 📌 0.3 Types of Databases
 
-### Client-Server Architecture
+- Relational Databases
+- NoSQL Databases
+- SQL vs NoSQL
 
----
+## 📌 0.4 Database Architecture
 
-## 📌 2. Database Concepts
+- Client-Server Architecture
+- Two-Tier Architecture
+- Three-Tier Architecture
+- OLTP vs OLAP
+- Database vs Data Warehouse
+- Data Mart
+- ETL vs ELT
 
-### Topics
+## 📌 0.5 SQL Environment Setup
 
-* Tables
-* Rows
-* Columns
-* Records
-* Fields
-* Schema
-* Instance
-* Metadata
-
----
-
-## 📌 3. Keys ⭐
-
-### Types of Keys
-
-* Primary Key
-* Foreign Key
-* Candidate Key
-* Alternate Key
-* Composite Key
-* Super Key
-
-### Concepts
-
-* Relationships
-* Referential Integrity
+- Install MySQL Server
+- Install MySQL Workbench
+- Connect to MySQL
+- Create Your First Database
+- Run Your First SQL Query
 
 ---
 
-## 📌 4. Constraints ⭐
+# 🔰 PHASE 1 — DATABASE CONCEPTS
 
-### Constraints
+## 📌 1.1 Core Concepts
 
-* NOT NULL
-* UNIQUE
-* PRIMARY KEY
-* FOREIGN KEY
-* CHECK
-* DEFAULT
+- Tables
+- Rows
+- Columns
+- Records
+- Fields
+- Schema
+- Instance
+- Metadata
 
-### Foreign Key Actions
+## 📌 1.2 Relationships
 
-* ON DELETE CASCADE
-* ON DELETE SET NULL
-* ON UPDATE CASCADE
-
-### Column Properties
-
-* AUTO_INCREMENT
-* UNSIGNED
-* ZEROFILL
+- One-to-One
+- One-to-Many
+- Many-to-Many
+- Referential Integrity
 
 ---
 
-## 📌 5. SQL Data Types ⭐
+# 🔰 PHASE 2 — DATABASE DESIGN
 
-### Numeric
+## 📌 2.1 Entity Relationship Modeling
 
-* INT
-* BIGINT
-* SMALLINT
-* TINYINT
-* FLOAT
-* DOUBLE
-* DECIMAL
+- Entity
+- Attribute
+- Relationship
+- Cardinality
+- Participation
 
-### String
+## 📌 2.2 Keys
 
-* CHAR
-* VARCHAR
-* TEXT
+- Primary Key
+- Foreign Key
+- Candidate Key
+- Alternate Key
+- Composite Key
+- Super Key
+- Natural Key
+- Surrogate Key
+- Business Key
 
-### Date & Time
+## 📌 2.3 Constraints
 
-* DATE
-* TIME
-* DATETIME
-* TIMESTAMP
+- NOT NULL
+- UNIQUE
+- PRIMARY KEY
+- FOREIGN KEY
+- CHECK
+- DEFAULT
 
-### Other Types
+## 📌 2.4 Foreign Key Actions
 
-* BOOLEAN
-* ENUM
+- ON DELETE CASCADE
+- ON DELETE SET NULL
+- ON DELETE RESTRICT
+- ON DELETE NO ACTION
+- ON UPDATE CASCADE
+- ON UPDATE SET NULL
+- ON UPDATE RESTRICT
+- ON UPDATE NO ACTION
 
----
+## 📌 2.5 Column Properties
 
-# 🔰 PHASE 2 — SQL COMMANDS
-
-## 📌 6. SQL Command Categories
-
-### DDL
-
-* CREATE
-* ALTER
-* DROP
-* TRUNCATE
-* RENAME
-
-### DML
-
-* INSERT
-* UPDATE
-* DELETE
-
-### DQL
-
-* SELECT
-
-### TCL
-
-* COMMIT
-* ROLLBACK
-* SAVEPOINT
-
-### DCL
-
-* GRANT
-* REVOKE
+- AUTO_INCREMENT
+- GENERATED Columns
+- UNSIGNED
+- ZEROFILL
 
 ---
 
-# 🔰 PHASE 3 — SQL OPERATORS
+# 🔰 PHASE 3 — SQL DATA TYPES
 
-## 📌 7. Arithmetic Operators
+## 📌 3.1 Numeric Types
 
-* *
-* *
-* *
-* /
-* MOD()
+- TINYINT
+- SMALLINT
+- MEDIUMINT
+- INT
+- BIGINT
+- DECIMAL
+- FLOAT
+- DOUBLE
 
----
+## 📌 3.2 Character Types
 
-## 📌 8. Comparison Operators
+- CHAR
+- VARCHAR
+- TEXT
+- TINYTEXT
+- MEDIUMTEXT
+- LONGTEXT
 
-* =
-* !=
-* <>
-* >
-* <
-* > =
-* <=
+## 📌 3.3 Date & Time Types
 
----
+- DATE
+- TIME
+- DATETIME
+- TIMESTAMP
+- YEAR
 
-## 📌 9. Logical Operators
+## 📌 3.4 Binary Types
 
-* AND
-* OR
-* NOT
+- BINARY
+- VARBINARY
+- BLOB
 
----
+## 📌 3.5 Other Types
 
-## 📌 10. Special Operators
-
-* BETWEEN
-* IN
-* LIKE
-* EXISTS
-* IS NULL
-* IS NOT NULL
-
----
-
-## 📌 11. Wildcards
-
-* %
-* _
+- BOOLEAN
+- ENUM
+- SET
+- JSON
 
 ---
 
-# 🔰 PHASE 4 — FILTERING & SORTING
+# 🔰 PHASE 4 — SQL COMMANDS
 
-## 📌 12. Filtering Data ⭐
+## 📌 4.1 DDL (Data Definition Language)
 
-* WHERE
-* DISTINCT
-* AND
-* OR
-* NOT
-* BETWEEN
-* IN
-* LIKE
-* IS NULL
-* IS NOT NULL
+- CREATE
+- ALTER
+- DROP
+- TRUNCATE
+- RENAME
 
----
+## 📌 4.2 DML (Data Manipulation Language)
 
-## 📌 13. Sorting Data
+- INSERT
+- UPDATE
+- DELETE
+- MERGE (UPSERT)
 
-* ORDER BY
-* ASC
-* DESC
+## 📌 4.3 DQL (Data Query Language)
 
----
+- SELECT
 
-## 📌 14. Limiting Results ⭐
+## 📌 4.4 TCL (Transaction Control Language)
 
-* LIMIT
-* OFFSET
-* TOP
-* FETCH NEXT
+- COMMIT
+- ROLLBACK
+- SAVEPOINT
 
----
+## 📌 4.5 DCL (Data Control Language)
 
-# 🔰 PHASE 5 — SQL FUNCTIONS
-
-## 📌 15. Aggregate Functions ⭐⭐⭐
-
-* COUNT()
-* SUM()
-* AVG()
-* MIN()
-* MAX()
-
-### Concepts
-
-* NULL Handling
-* Aggregate with WHERE
-* Aggregate with GROUP BY
+- GRANT
+- REVOKE
 
 ---
 
-## 📌 16. String Functions ⭐⭐
+# 🔰 PHASE 5 — SQL OPERATORS
 
-### Basic
+## 📌 5.1 Arithmetic Operators
 
-* CONCAT()
-* LENGTH()
-* UPPER()
-* LOWER()
-* SUBSTRING()
-* TRIM()
-* REPLACE()
-* REVERSE()
+- +
+- -
+- *
+- /
+- MOD()
 
-### Advanced
+## 📌 5.2 Comparison Operators
 
-* LEFT()
-* RIGHT()
-* LPAD()
-* RPAD()
-* POSITION()
-* INSTR()
+- =
+- !=
+- <>
+- >
+- <
+- >=
+- <=
 
----
+## 📌 5.3 Logical Operators
 
-## 📌 17. Date Functions ⭐⭐
+- AND
+- OR
+- NOT
 
-### Basic
+## 📌 5.4 Special Operators
 
-* NOW()
-* CURRENT_DATE
-* CURRENT_TIME
-* DATE_FORMAT()
-* YEAR()
-* MONTH()
-* DAY()
+- IN
+- NOT IN
+- EXISTS
+- NOT EXISTS
+- BETWEEN
+- LIKE
+- IS NULL
+- IS NOT NULL
+- ANY
+- ALL
+- SOME
 
-### Advanced
+## 📌 5.5 Wildcards
 
-* DATEDIFF()
-* DATE_ADD()
-* DATE_SUB()
-* EXTRACT()
-* LAST_DAY()
-* DAYNAME()
-* MONTHNAME()
-
----
-
-## 📌 18. Numeric Functions
-
-* ROUND()
-* CEIL()
-* FLOOR()
-* ABS()
-* POWER()
+- %
+- _
 
 ---
 
-## 📌 19. NULL Functions ⭐
+# 🔰 PHASE 6 — DATA RETRIEVAL
 
-* COALESCE()
-* IFNULL()
-* ISNULL()
-* NULLIF()
+## 📌 6.1 Filtering
 
----
+- WHERE
+- DISTINCT
 
-# 🔰 PHASE 6 — GROUPING & ANALYSIS
+## 📌 6.2 Sorting
 
-## 📌 20. GROUP BY ⭐⭐⭐
+- ORDER BY
+- ASC
+- DESC
 
-* GROUP BY
-* Multiple Column GROUP BY
-* Aggregation
+## 📌 6.3 Limiting Results
 
----
+- LIMIT
+- OFFSET
+- TOP
+- FETCH FIRST
+- FETCH NEXT
 
-## 📌 21. HAVING ⭐⭐⭐
+## 📌 6.4 Aliases
 
-* HAVING
-* WHERE vs HAVING
-
----
-
-## 📌 22. CASE Statements ⭐
-
-* CASE
-* WHEN
-* THEN
-* ELSE
-* END
+- Column Alias
+- Table Alias
+- AS Keyword
 
 ---
 
-# 🔰 PHASE 7 — SQL EXECUTION ORDER ⭐⭐⭐
+# 🔰 PHASE 7 — SQL FUNCTIONS
 
-## 📌 23. Logical Query Processing
+## 📌 7.1 Aggregate Functions
 
-Learn the actual execution order:
+- COUNT()
+- SUM()
+- AVG()
+- MIN()
+- MAX()
+
+## 📌 7.2 String Functions
+
+- CONCAT()
+- LENGTH()
+- UPPER()
+- LOWER()
+- SUBSTRING()
+- TRIM()
+- REPLACE()
+- REVERSE()
+- LEFT()
+- RIGHT()
+- LPAD()
+- RPAD()
+- POSITION()
+- INSTR()
+
+## 📌 7.3 Date Functions
+
+- NOW()
+- CURRENT_DATE
+- CURRENT_TIME
+- DATE_ADD()
+- DATE_SUB()
+- DATEDIFF()
+- EXTRACT()
+- LAST_DAY()
+- DAYNAME()
+- MONTHNAME()
+
+## 📌 7.4 Numeric Functions
+
+- ROUND()
+- CEIL()
+- FLOOR()
+- ABS()
+- POWER()
+- SQRT()
+- RAND()
+
+## 📌 7.5 NULL Functions
+
+- COALESCE()
+- IFNULL()
+- ISNULL()
+- NULLIF()
+
+## 📌 7.6 Conditional Functions
+
+- CASE
+- IF()
+
+---
+
+# 🔰 PHASE 8 — GROUPING & AGGREGATION
+
+## 📌 8.1 GROUP BY
+
+- Single Column GROUP BY
+- Multiple Column GROUP BY
+
+## 📌 8.2 HAVING
+
+- HAVING
+- WHERE vs HAVING
+
+## 📌 8.3 Advanced Grouping
+
+- ROLLUP
+- CUBE
+- GROUPING SETS
+
+---
+
+# 🔰 PHASE 9 — SQL EXECUTION ORDER
+
+## 📌 Logical Query Processing
 
 1. FROM
 2. JOIN
@@ -357,430 +367,421 @@ Learn the actual execution order:
 4. GROUP BY
 5. HAVING
 6. SELECT
-7. ORDER BY
-8. LIMIT
-
-Interview Favorite Topic
-
----
-
-# 🔰 PHASE 8 — JOINS ⭐⭐⭐
-
-## 📌 24. JOINS
-
-### Types
-
-* INNER JOIN
-* LEFT JOIN
-* RIGHT JOIN
-* FULL OUTER JOIN
-* CROSS JOIN
-* SELF JOIN
-
-### Concepts
-
-* Matching Rows
-* Non-Matching Rows
-* NULL Handling
-
-### Interview Topics
-
-* INNER JOIN vs LEFT JOIN
-* SELF JOIN
-* Multiple Joins
+7. DISTINCT
+8. ORDER BY
+9. LIMIT
 
 ---
 
-# 🔰 PHASE 9 — ADVANCED QUERYING
+# 🔰 PHASE 10 — JOINS
 
-## 📌 25. Subqueries ⭐⭐⭐
+## 📌 Types of Joins
 
-### Types
+- INNER JOIN
+- LEFT JOIN
+- RIGHT JOIN
+- FULL OUTER JOIN
+- CROSS JOIN
+- SELF JOIN
+- NATURAL JOIN
 
-* Single Row
-* Multi Row
-* Correlated
-* Nested
+## 📌 Advanced Joins
 
-### Usage
+- Semi Join
+- Anti Join
 
-* WHERE
-* SELECT
-* FROM
+## 📌 Concepts
 
----
-
-## 📌 26. Set Operations
-
-* UNION
-* UNION ALL
-* INTERSECT
-* EXCEPT
+- Matching Rows
+- Non-Matching Rows
+- NULL Handling
 
 ---
 
-## 📌 27. Common Table Expressions (CTE) ⭐⭐⭐
+# 🔰 PHASE 11 — SUBQUERIES
 
-### Topics
+## 📌 Types
 
-* WITH Clause
-* Recursive CTE
+- Single Row Subquery
+- Multiple Row Subquery
+- Correlated Subquery
+- Nested Subquery
 
----
+## 📌 Usage
 
-## 📌 28. Temporary Tables
+- WHERE
+- SELECT
+- FROM
 
-* CREATE TEMP TABLE
-* Temporary Data Processing
+## 📌 Performance
 
----
-
-## 📌 29. Views
-
-* CREATE VIEW
-* UPDATE VIEW
-* DROP VIEW
-
----
-
-# 🔰 PHASE 10 — ADVANCED SQL
-
-## 📌 30. Window Functions ⭐⭐⭐
-
-### Ranking
-
-* ROW_NUMBER()
-* RANK()
-* DENSE_RANK()
-
-### Navigation
-
-* LEAD()
-* LAG()
-
-### Advanced
-
-* FIRST_VALUE()
-* LAST_VALUE()
-* NTH_VALUE()
-* NTILE()
-* PERCENT_RANK()
-* CUME_DIST()
-
-### Concepts
-
-* OVER()
-* PARTITION BY
-* ORDER BY
+- EXISTS vs IN
+- ANY
+- ALL
 
 ---
 
-## 📌 31. Stored Procedures ⭐⭐
+# 🔰 PHASE 12 — SET OPERATIONS
 
-* CREATE PROCEDURE
-* Parameters
-* CALL Procedure
-
----
-
-## 📌 32. User Defined Functions ⭐⭐
-
-* CREATE FUNCTION
-* Return Values
+- UNION
+- UNION ALL
+- INTERSECT
+- EXCEPT (MINUS)
 
 ---
 
-## 📌 33. Stored Procedure vs Function ⭐⭐
+# 🔰 PHASE 13 — COMMON TABLE EXPRESSIONS (CTE)
 
-Interview Topic
+## 📌 CTE
 
----
-
-## 📌 34. Triggers
-
-### Types
-
-* BEFORE INSERT
-* AFTER INSERT
-* BEFORE UPDATE
-* AFTER UPDATE
-* BEFORE DELETE
-* AFTER DELETE
+- WITH Clause
+- Recursive CTE
 
 ---
 
-## 📌 35. Transactions & ACID ⭐⭐⭐
+# 🔰 PHASE 14 — VIEWS
 
-### ACID
-
-* Atomicity
-* Consistency
-* Isolation
-* Durability
+- Simple View
+- Complex View
+- Updatable View
+- Materialized View
 
 ---
 
-# 🔰 PHASE 11 — DATABASE DESIGN
+# 🔰 PHASE 15 — TEMPORARY OBJECTS
 
-## 📌 36. Relationships
-
-* One-to-One
-* One-to-Many
-* Many-to-Many
+- Temporary Tables
+- Table Variables (SQL Server)
+- Common Temporary Data Patterns
 
 ---
 
-## 📌 37. Normalization ⭐⭐⭐
+# 🔰 PHASE 16 — WINDOW FUNCTIONS
 
-* 1NF
-* 2NF
-* 3NF
-* BCNF
+## 📌 OVER Clause
 
----
+- OVER()
+- PARTITION BY
+- ORDER BY
 
-## 📌 38. Denormalization
+## 📌 Ranking Functions
 
-* Advantages
-* Disadvantages
-* Tradeoffs
+- ROW_NUMBER()
+- RANK()
+- DENSE_RANK()
+- NTILE()
 
----
+## 📌 Navigation Functions
 
-## 📌 39. ER Diagrams
+- LEAD()
+- LAG()
 
-* Entities
-* Attributes
-* Relationships
+## 📌 Value Functions
 
----
+- FIRST_VALUE()
+- LAST_VALUE()
+- NTH_VALUE()
 
-# 🔰 PHASE 12 — PERFORMANCE & OPTIMIZATION
+## 📌 Analytical Patterns
 
-## 📌 40. Indexes ⭐⭐⭐
+- Running Total
+- Moving Average
+- Cumulative Sum
+- Running Difference
+- Percent of Total
+- Percent Rank
+- CUME_DIST()
 
-### Types
+## 📌 Window Frames
 
-* Clustered Index
-* Non-Clustered Index
-* Composite Index
-* Covering Index
-* Unique Index
-
----
-
-## 📌 41. Query Optimization ⭐⭐⭐
-
-### Topics
-
-* Execution Plans
-* Index Tuning
-* Full Table Scan
-* Query Cost Analysis
+- ROWS BETWEEN
+- RANGE BETWEEN
 
 ---
 
-# 🔰 PHASE 13 — DATABASE OBJECTS
+# 🔰 PHASE 17 — STORED PROGRAMMING
 
-## 📌 42. Database Objects
+## 📌 Stored Procedures
 
-* Tables
-* Views
-* Indexes
-* Stored Procedures
-* Functions
-* Triggers
+- CREATE PROCEDURE
+- Parameters
+- CALL Procedure
 
----
+## 📌 User Defined Functions
 
-# 🔰 PHASE 14 — DATA ANALYST SQL ⭐⭐⭐
+- CREATE FUNCTION
+- Return Values
 
-## 📌 43. Data Cleaning
+## 📌 Triggers
 
-* Handling NULLs
-* Removing Duplicates
-* Standardization
-* Text Cleaning
+- BEFORE INSERT
+- AFTER INSERT
+- BEFORE UPDATE
+- AFTER UPDATE
+- BEFORE DELETE
+- AFTER DELETE
 
----
+## 📌 Events (MySQL)
 
-## 📌 44. Business SQL Problems
+- Event Scheduler
 
-### Salary Problems
+## 📌 Sequences
 
-* Highest Salary
-* Second Highest Salary
-* Nth Highest Salary
-
-### Employee Problems
-
-* Employee Hierarchy
-* Department Wise Analysis
-
-### Sales Problems
-
-* Top Customers
-* Bottom Customers
-* Running Totals
-* Monthly Sales
+- CREATE SEQUENCE
+- NEXTVAL
+- CURRVAL
 
 ---
 
-## 📌 45. Analytics SQL ⭐⭐⭐
+# 🔰 PHASE 18 — TRANSACTIONS & CONCURRENCY
 
-### Product Analytics
+## 📌 Transactions
 
-* DAU
-* WAU
-* MAU
-* Conversion Rate
+- COMMIT
+- ROLLBACK
+- SAVEPOINT
 
-### Sales Analytics
+## 📌 ACID Properties
 
-* MoM Growth
-* YoY Growth
-* Revenue Analysis
+- Atomicity
+- Consistency
+- Isolation
+- Durability
 
-### Customer Analytics
+## 📌 Isolation Levels
 
-* Cohort Analysis
-* Retention Analysis
-* Customer Lifetime Value
+- Read Uncommitted
+- Read Committed
+- Repeatable Read
+- Serializable
 
-### E-commerce Analytics
+## 📌 Concurrency Problems
 
-* Cart Abandonment
-* Repeat Customers
+- Dirty Read
+- Non-Repeatable Read
+- Phantom Read
+- Lost Update
 
----
+## 📌 Locking
 
-## 📌 46. Pivot & Unpivot ⭐⭐
-
-* PIVOT
-* UNPIVOT
-* Crosstab Reports
-
----
-
-# 🔰 PHASE 15 — DATA WAREHOUSING
-
-## 📌 47. Data Warehousing Basics
-
-### Topics
-
-* Fact Tables
-* Dimension Tables
-* Star Schema
-* Snowflake Schema
+- Shared Lock
+- Exclusive Lock
+- Row Lock
+- Table Lock
+- Deadlock
 
 ---
 
-# 🔰 PHASE 16 — INTERVIEW PREPARATION
+# 🔰 PHASE 19 — DATABASE NORMALIZATION
 
-## 📌 48. SQL Interview Questions ⭐⭐⭐
+## 📌 Normal Forms
 
-### Core
+- 1NF
+- 2NF
+- 3NF
+- BCNF
+- 4NF
+- 5NF
 
-* Joins
-* Group By
-* Having
-* Subqueries
-* CTEs
-* Window Functions
+## 📌 Denormalization
 
-### Advanced
-
-* Indexes
-* ACID
-* Normalization
-* Optimization
+- Advantages
+- Disadvantages
+- Trade-offs
 
 ---
 
-## 📌 49. SQL Practice
+# 🔰 PHASE 20 — INDEXING & QUERY OPTIMIZATION
 
-* HackerRank SQL
-* LeetCode SQL
-* StrataScratch
-* GeeksforGeeks SQL
+## 📌 Indexes
 
----
+- Clustered Index
+- Non-Clustered Index
+- Composite Index
+- Covering Index
+- Unique Index
+- Full-Text Index
 
-## 📌 50. SQL Mini Projects
+## 📌 Query Optimization
 
-### Beginner
-
-* Student Management System
-* Library Management System
-
-### Intermediate
-
-* Banking Database
-* Employee Management System
-
-### Advanced
-
-* E-Commerce Database
-* Sales Analytics Dashboard
-* HR Analytics Dashboard
+- EXPLAIN
+- Execution Plan
+- Full Table Scan
+- Index Scan
+- Index Seek
+- Query Cost Analysis
+- Index Tuning
 
 ---
 
-# 🔥 TOPICS TO MASTER FOR PLACEMENTS & MNC INTERVIEWS
+# 🔰 PHASE 21 — PARTITIONING
 
-⭐⭐⭐ Highest Priority
-
-* SQL Fundamentals
-* Keys & Constraints
-* Data Types
-* DDL/DML/DQL
-* Filtering
-* Aggregate Functions
-* GROUP BY
-* HAVING
-* CASE
-* JOINS
-* Subqueries
-* CTEs
-* Window Functions
-* Ranking Queries
-* Indexes
-* Normalization
-* ACID Properties
-* Data Analyst Business Queries
+- Range Partitioning
+- List Partitioning
+- Hash Partitioning
+- Composite Partitioning
 
 ---
 
-# 🏆 FINAL LEARNING ORDER
+# 🔰 PHASE 22 — DATA WAREHOUSING
 
-Database Fundamentals
-→ Keys & Constraints
-→ Data Types
-→ SQL Commands
-→ Operators
-→ Filtering & Sorting
-→ Functions
-→ GROUP BY
-→ HAVING
-→ CASE
-→ Execution Order
-→ JOINS
-→ Subqueries
-→ CTEs
-→ Views
-→ Window Functions
-→ Procedures & Functions
-→ Triggers
-→ Transactions
-→ Database Design
-→ Indexes
-→ Query Optimization
-→ Data Cleaning
-→ Business SQL
-→ Analytics SQL
-→ Data Warehousing
-→ Projects
-→ Interview Preparation
+## 📌 Data Warehouse Concepts
 
-END GOAL:
-SQL Developer + Data Analyst + Placement Ready + MNC Interview Ready + Real-World Project Ready 🚀
+- Fact Tables
+- Dimension Tables
+- Star Schema
+- Snowflake Schema
+
+## 📌 Slowly Changing Dimensions
+
+- Type 1
+- Type 2
+- Type 3
+
+## 📌 Fact Table Types
+
+- Transaction Fact
+- Snapshot Fact
+- Accumulating Snapshot Fact
+
+---
+
+# 🔰 PHASE 23 — DATABASE SECURITY
+
+## 📌 Security Concepts
+
+- Users
+- Roles
+- Permissions
+- Access Control
+
+## 📌 SQL Injection
+
+- SQL Injection
+- Parameterized Queries
+- Prevention Techniques
+
+---
+
+# 🔰 PHASE 24 — SQL PERFORMANCE TUNING
+
+- Query Optimization
+- Execution Plans
+- Index Tuning
+- Query Refactoring
+- Performance Best Practices
+
+---
+
+# 🔰 PHASE 25 — SQL FOR DATA ANALYTICS
+
+## 📌 Data Cleaning
+
+- Handling NULLs
+- Removing Duplicates
+- Duplicate Detection
+- Standardization
+- Text Cleaning
+- Data Validation
+- Outlier Detection
+
+## 📌 Business SQL
+
+- Highest Salary
+- Second Highest Salary
+- Nth Highest Salary
+- Department-wise Analysis
+- Running Totals
+- Monthly Sales
+- Customer Segmentation
+
+## 📌 Product Analytics
+
+- DAU
+- WAU
+- MAU
+- Conversion Rate
+- Funnel Analysis
+
+## 📌 Customer Analytics
+
+- Cohort Analysis
+- Retention Analysis
+- Churn Analysis
+- Customer Lifetime Value (CLV)
+
+## 📌 KPI Reporting
+
+- Revenue
+- Profit Margin
+- Growth Rate
+
+## 📌 Pivoting
+
+- PIVOT
+- UNPIVOT
+- Crosstab Reports
+
+---
+
+# 🔰 PHASE 26 — REAL-WORLD SQL PROJECTS
+
+- College Management System
+- Hospital Management System
+- Banking System
+- E-Commerce Database
+- Netflix Database
+- Food Delivery Database
+- Library Management System
+- HR Management System
+
+---
+
+# 🔰 PHASE 27 — SQL INTERVIEW PREPARATION
+
+## 📌 Beginner SQL Questions
+
+## 📌 Intermediate SQL Questions
+
+## 📌 Advanced SQL Questions
+
+## 📌 SQL Coding Patterns
+
+- Second Highest Salary
+- Nth Highest Salary
+- Top N Per Group
+- Duplicate Records
+- Remove Duplicates
+- Running Totals
+- Gap & Island Problems
+- Consecutive Login Days
+- Latest Record Per User
+- Employee Manager Problems
+- Recursive CTE Problems
+
+## 📌 Practice Platforms
+
+- LeetCode SQL
+- HackerRank SQL
+- DataLemur
+- StrataScratch
+
+## 📌 Mock Interviews
+
+- HR Round
+- Technical SQL Round
+- Live SQL Coding
+- Project Discussion
+
+---
+# 🎯 COURSE OUTCOME
+
+After completing this roadmap, you will be able to:
+
+- Design relational databases
+- Write beginner to advanced SQL queries
+- Optimize SQL queries
+- Understand database internals
+- Build real-world SQL projects
+- Solve SQL interview questions confidently
+- Work with SQL in Data Analytics, Data Engineering, AI/ML, and Software Engineering roles
