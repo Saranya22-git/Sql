@@ -2,17 +2,18 @@ Hey everybody!!!
 
 **SQL**
 
-#### **Table of Contents**
+# **Table of Contents**
 
-- [**Database Fundamentals**](#database-fundamentals)
-  - [**Introduction to Databases**](#introduction-to-databases)
-    - [**Data**](#data)
-    - [**Database**](#database)
-    - [**DBMS**](#dbms)
-    - [**RDBMS**](#rdbms)
-    - [**SQL**](#sql)
-    - [**Features of SQL**](#features-of-sql)
-    - [**Database Applications**](#database-applications)
+- [**Table of Contents**](#table-of-contents)
+  - [**Database Fundamentals**](#database-fundamentals)
+    - [**Introduction to Databases**](#introduction-to-databases)
+      - [**Data**](#data)
+      - [**Database**](#database)
+      - [**DBMS**](#dbms)
+      - [**RDBMS**](#rdbms)
+      - [**SQL**](#sql)
+      - [**Features of SQL**](#features-of-sql)
+      - [**Database Applications**](#database-applications)
     - [**Types of Databases**](#types-of-databases)
       - [**Relational Database**](#relational-database)
       - [**Non-Relational database(NoSQL)**](#non-relational-databasenosql)
@@ -24,125 +25,125 @@ Hey everybody!!!
       - [**Database vs Data Warehouse**](#database-vs-data-warehouse)
       - [**Data Mart**](#data-mart)
       - [**ETL vs ELT**](#etl-vs-elt)
-- [**Database Concepts**](#database-concepts)
-  - [**Table**](#table)
-  - [**Row**](#row)
-  - [**Column**](#column)
-  - [**Schema**](#schema)
-  - [**Relationships between Tables**](#relationships-between-tables)
-  - [**Primary Key**](#primary-key)
-  - [**Foreign Key**](#foreign-key)
-  - [**Constraints**](#constraints)
-    - [**NOT NULL**](#not-null)
-    - [**UNIQUE**](#unique)
-    - [**CHECK**](#check)
-    - [**DEFAULT**](#default)
-    - [**Primary Key**](#primary-key-1)
-    - [**Foreign Key**](#foreign-key-1)
-- [**SQL Data Types**](#sql-data-types)
-  - [**Numeric Data Types:**](#numeric-data-types)
-    - [**INT**](#int)
-    - [**BIGINT**](#bigint)
-    - [**FLOAT**](#float)
-    - [**DOUBLE**](#double)
-    - [**DECIMAL**](#decimal)
-  - [**String Data Types:**](#string-data-types)
-    - [**CHAR**](#char)
-    - [**VARCHAR**](#varchar)
-    - [**TEXT**](#text)
-  - [**Date and Time Data Types:**](#date-and-time-data-types)
-    - [**DATE**](#date)
-    - [**TIME**](#time)
-    - [**DATETIME**](#datetime)
-    - [**TIMESTAMP**](#timestamp)
-  - [**Boolean**](#boolean)
-  - [**Enum**](#enum)
-- [**SQL commands**](#sql-commands)
-  - [**DDL**](#ddl)
-    - [**DDL Commands**](#ddl-commands)
-      - [**CREATE**](#create)
-      - [**ALTER**](#alter)
-    - [**TRUNCATE**](#truncate)
-    - [**DROP**](#drop)
-  - [**DML**](#dml)
-    - [**INSERT**](#insert)
-    - [**UPDATE**](#update)
-    - [**DELETE**](#delete)
-  - [**DQL**](#dql)
-    - [**SELECT**](#select)
-    - [**WHERE**](#where)
-    - [**DISTINCT**](#distinct)
-  - [**TCL**](#tcl)
-    - [**COMMIT**](#commit)
-    - [**ROLLBACK**](#rollback)
-    - [**SAVEPOINT**](#savepoint)
-  - [**DCL**](#dcl)
-    - [**GRANT**](#grant)
-    - [**REVOKE**](#revoke)
-  - [**FILTERING DATA**](#filtering-data)
-    - [**WHERE**](#where-1)
-    - [**AND Operator**](#and-operator)
-    - [**OR Operator**](#or-operator)
-    - [**NOT Operator**](#not-operator)
-    - [**BETWEEN**](#between)
-    - [**IN Operator**](#in-operator)
-    - [**LIKE**](#like)
-    - [**IS NULL**](#is-null)
-    - [**IS NOT NULL**](#is-not-null)
-  - [**Sorting Data**](#sorting-data)
-    - [**ORDER BY Clause**](#order-by-clause)
-    - [**Using ORDER BY with WHERE**](#using-order-by-with-where)
-    - [**Using ORDER BY with column position**](#using-order-by-with-column-position)
-  - [**Aggregate Functions**](#aggregate-functions)
-    - [**COUNT()**](#count)
-    - [**SUM()**](#sum)
-    - [**AVG()**](#avg)
-    - [**MIN()**](#min)
-    - [**MAX()**](#max)
-    - [**Aggregate + WHERE**](#aggregate--where)
-    - [**Aggregate ignores NULL values.**](#aggregate-ignores-null-values)
-    - [**Aggregate returns ONE value.**](#aggregate-returns-one-value)
-  - [**GROUP BY \& HAVING**](#group-by--having)
-    - [**GROUP BY**](#group-by)
-    - [**HAVING Clause**](#having-clause)
-  - [**JOINS**](#joins)
-    - [**Types of Joins**](#types-of-joins)
-      - [**INNER JOIN**](#inner-join)
-      - [**LEFT JOIN**](#left-join)
-      - [**RIGHT JOIN**](#right-join)
-      - [**FULL JOIN**](#full-join)
-      - [**NATURAL JOIN**](#natural-join)
-      - [**CROSS JOIN**](#cross-join)
-      - [**SELF JOIN**](#self-join)
-  - [**SUBQUERIES**](#subqueries)
-    - [**Types of Subqueries**](#types-of-subqueries)
-      - [**Single Row Subquery**](#single-row-subquery)
-      - [**Multiple Row Subquery**](#multiple-row-subquery)
-      - [**Correlated Subquery**](#correlated-subquery)
-  - [**SET OPERATIONS**](#set-operations)
-    - [**Types of Set Operations**](#types-of-set-operations)
-      - [**UNION**](#union)
-      - [**UNION ALL**](#union-all)
-      - [**INTERSECT**](#intersect)
-      - [**EXCEPT**](#except)
-  - [**STRING FUNCTIONS**](#string-functions)
-    - [**Common String Functions**](#common-string-functions)
-      - [**CONCAT()**](#concat)
-      - [**LENGTH()**](#length)
-      - [**UPPER()**](#upper)
-      - [**LOWER()**](#lower)
-      - [**SUBSTRING()**](#substring)
-  - [**DATE FUNCTIONS**](#date-functions)
-    - [**Common Date Functions**](#common-date-functions)
-  - [**WINDOW FUNCTIONS**](#window-functions)
-    - [**ROW\_NUMBER()**](#row_number)
-    - [**RANK()**](#rank)
+  - [**Database Concepts**](#database-concepts)
+    - [**Table**](#table)
+      - [**Row**](#row)
+      - [**Column**](#column)
+      - [**Schema**](#schema)
+      - [**Relationships between Tables**](#relationships-between-tables)
+      - [**Primary Key**](#primary-key)
+      - [**Foreign Key**](#foreign-key)
+      - [**Constraints**](#constraints)
+        - [**NOT NULL**](#not-null)
+        - [**UNIQUE**](#unique)
+        - [**CHECK**](#check)
+        - [**DEFAULT**](#default)
+        - [**Primary Key**](#primary-key-1)
+        - [**Foreign Key**](#foreign-key-1)
+    - [**SQL Data Types**](#sql-data-types)
+      - [**Numeric Data Types:**](#numeric-data-types)
+        - [**INT**](#int)
+        - [**BIGINT**](#bigint)
+        - [**FLOAT**](#float)
+        - [**DOUBLE**](#double)
+        - [**DECIMAL**](#decimal)
+      - [**String Data Types:**](#string-data-types)
+        - [**CHAR**](#char)
+        - [**VARCHAR**](#varchar)
+        - [**TEXT**](#text)
+      - [**Date and Time Data Types:**](#date-and-time-data-types)
+        - [**DATE**](#date)
+        - [**TIME**](#time)
+        - [**DATETIME**](#datetime)
+        - [**TIMESTAMP**](#timestamp)
+      - [**Boolean**](#boolean)
+      - [**Enum**](#enum)
+    - [**SQL commands**](#sql-commands)
+      - [**DDL**](#ddl)
+        - [**DDL Commands**](#ddl-commands)
+          - [**CREATE**](#create)
+          - [**ALTER**](#alter)
+        - [**TRUNCATE**](#truncate)
+        - [**DROP**](#drop)
+      - [**DML**](#dml)
+        - [**INSERT**](#insert)
+        - [**UPDATE**](#update)
+        - [**DELETE**](#delete)
+      - [**DQL**](#dql)
+        - [**SELECT**](#select)
+        - [**WHERE**](#where)
+        - [**DISTINCT**](#distinct)
+      - [**TCL**](#tcl)
+        - [**COMMIT**](#commit)
+        - [**ROLLBACK**](#rollback)
+        - [**SAVEPOINT**](#savepoint)
+      - [**DCL**](#dcl)
+        - [**GRANT**](#grant)
+        - [**REVOKE**](#revoke)
+      - [**FILTERING DATA**](#filtering-data)
+        - [**WHERE**](#where-1)
+        - [**AND Operator**](#and-operator)
+        - [**OR Operator**](#or-operator)
+        - [**NOT Operator**](#not-operator)
+        - [**BETWEEN**](#between)
+        - [**IN Operator**](#in-operator)
+        - [**LIKE**](#like)
+        - [**IS NULL**](#is-null)
+        - [**IS NOT NULL**](#is-not-null)
+      - [**Sorting Data**](#sorting-data)
+        - [**ORDER BY Clause**](#order-by-clause)
+        - [**Using ORDER BY with WHERE**](#using-order-by-with-where)
+        - [**Using ORDER BY with column position**](#using-order-by-with-column-position)
+      - [**Aggregate Functions**](#aggregate-functions)
+        - [**COUNT()**](#count)
+        - [**SUM()**](#sum)
+        - [**AVG()**](#avg)
+        - [**MIN()**](#min)
+        - [**MAX()**](#max)
+        - [**Aggregate + WHERE**](#aggregate--where)
+        - [**Aggregate ignores NULL values.**](#aggregate-ignores-null-values)
+        - [**Aggregate returns ONE value.**](#aggregate-returns-one-value)
+      - [**GROUP BY \& HAVING**](#group-by--having)
+        - [**GROUP BY**](#group-by)
+        - [**HAVING Clause**](#having-clause)
+      - [**JOINS**](#joins)
+        - [**Types of Joins**](#types-of-joins)
+          - [**INNER JOIN**](#inner-join)
+          - [**LEFT JOIN**](#left-join)
+          - [**RIGHT JOIN**](#right-join)
+          - [**FULL JOIN**](#full-join)
+          - [**NATURAL JOIN**](#natural-join)
+          - [**CROSS JOIN**](#cross-join)
+          - [**SELF JOIN**](#self-join)
+      - [**SUBQUERIES**](#subqueries)
+        - [**Types of Subqueries**](#types-of-subqueries)
+          - [**Single Row Subquery**](#single-row-subquery)
+          - [**Multiple Row Subquery**](#multiple-row-subquery)
+          - [**Correlated Subquery**](#correlated-subquery)
+      - [**SET OPERATIONS**](#set-operations)
+        - [**Types of Set Operations**](#types-of-set-operations)
+          - [**UNION**](#union)
+          - [**UNION ALL**](#union-all)
+          - [**INTERSECT**](#intersect)
+          - [**EXCEPT**](#except)
+      - [**STRING FUNCTIONS**](#string-functions)
+        - [**Common String Functions**](#common-string-functions)
+          - [**CONCAT()**](#concat)
+          - [**LENGTH()**](#length)
+          - [**UPPER()**](#upper)
+          - [**LOWER()**](#lower)
+          - [**SUBSTRING()**](#substring)
+      - [**DATE FUNCTIONS**](#date-functions)
+        - [**Common Date Functions**](#common-date-functions)
+      - [**WINDOW FUNCTIONS**](#window-functions)
+        - [**ROW\_NUMBER()**](#row_number)
+        - [**RANK()**](#rank)
 
-### **Database Fundamentals**
+## **Database Fundamentals**
 
-#### **Introduction to Databases**
+### **Introduction to Databases**
 
-##### **Data**
+#### **Data**
 
 **What is Data?**
 
@@ -275,7 +276,7 @@ Hey everybody!!!
 
 ---
 
-##### **Database**
+#### **Database**
 
 **What is Database?**
 
@@ -443,7 +444,7 @@ Hey everybody!!!
 
 ---
 
-##### **DBMS**
+#### **DBMS**
 
 **Why was DBMS invented?**
 
@@ -685,7 +686,7 @@ SELECT * FROM Employees;
 
 ---
  
-##### **RDBMS**
+#### **RDBMS**
 
 **What is an RDBMS?**
 
@@ -727,7 +728,7 @@ SELECT * FROM Employees;
 
 ---
 
-##### **SQL**
+#### **SQL**
 
 **What is SQL?**
 
@@ -795,7 +796,7 @@ SELECT * FROM Employees;
 
 ---
 
-##### **Features of SQL**
+#### **Features of SQL**
 
 1. **Easy to Learn:** *SQL has very simple syntax.*
 2. **Easy to read:** *Even without learning SQL you can understand.*
@@ -810,7 +811,7 @@ SELECT * FROM Employees;
 
 ---
 
-##### **Database Applications**
+#### **Database Applications**
 
 **What is a Database Application?**
 
@@ -818,9 +819,9 @@ SELECT * FROM Employees;
 
 ---
 
-##### **Types of Databases**
+### **Types of Databases**
 
-###### **Relational Database**
+#### **Relational Database**
 
 **What is a Relational Database?**
 
@@ -876,7 +877,7 @@ SELECT * FROM Employees;
 
 ---
 
-###### **Non-Relational database(NoSQL)** 
+#### **Non-Relational database(NoSQL)** 
 
 **What is NoSQL?**
 
@@ -970,7 +971,7 @@ Aman
 
 ---
 
-##### **SQL vs NoSQL**
+### **SQL vs NoSQL**
 
 **SQL vs NoSQL**
 
@@ -1014,7 +1015,7 @@ Aman
 
 ---
 
-##### **Client-Server Architecture**
+### **Client-Server Architecture**
 
 **What is Client?**
 
@@ -1084,9 +1085,9 @@ Aman
 
 ---
 
-##### **Database Architecture Basics**
+### **Database Architecture Basics**
 
-###### **OLTP**
+#### **OLTP**
 
 **What is OLTP?**
 
@@ -1131,7 +1132,7 @@ OR
 
 ---
 
-###### **OLAP**
+#### **OLAP**
 
 **What is OLAP?**
 
@@ -1191,7 +1192,7 @@ OR
 
 ---
 
-###### **Database vs Data Warehouse**
+#### **Database vs Data Warehouse**
 
 **Database**
 
@@ -1235,7 +1236,7 @@ OR
 
 ---
 
-###### **Data Mart**
+#### **Data Mart**
 
 **What is a Data Mart?**
 
@@ -1270,7 +1271,7 @@ OR
 
 ---
 
-###### **ETL vs ELT**
+#### **ETL vs ELT**
 
 **ETL**
 
@@ -1358,9 +1359,9 @@ OR
 
 ---
 
-### **Database Concepts**
+## **Database Concepts**
 
-#### **Table**
+### **Table**
 
 **Table:** *A table is a collection of related data organized into rows and columns. Basically, Collection of data (like Excel Sheet)*
 
