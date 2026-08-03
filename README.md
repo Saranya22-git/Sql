@@ -15,6 +15,8 @@ Hey!!
     - [**DBMS**](#dbms)
     - [**RDBMS**](#rdbms)
     - [**SQL**](#sql)
+    - [**Why SQL?**](#why-sql)
+    - [**SQL vs Programming Language**](#sql-vs-programming-language)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -228,4 +230,129 @@ Results
 *Without SQL, we cannot communicate with an RDBMS.*
 
 ---
+
+### **Why SQL?**
+
+**Why SQL is used?**
+
+*SQL is used to communicate with an RDBMS to create, retrieve, update, delete and manage data stored in a database.*
+
+---
+
+**What can we do using SQL?**
+
+*SQL is used for many operations.*
+
+1. **Create Databases:** *A Company wants to create a new database. SQL can create it.*
+
+    ```sql
+    CREATE DATABASE CompanyDB;
+    ```
+
+2. **Create Tables:** *Inside CompanyDB, create an Employee Table.*
+
+    ```sql
+    CREATE TABLE Employees (...);
+    ```
+
+3. **Insert Data:** *A new employee joins. SQL inserts the employee record.*
+
+    ```sql
+    INSERT INTO Employees ...
+    ```
+
+4. **Retrieve Data:** *HR wants to see all employees.*
+
+    ```sql
+    SELECT * FROM Employees;
+    ```
+
+5. **Update Data:** *An employee changes their phone number. SQL updates only that record.*
+
+    ```sql
+    UPDATE Employees ...
+    ```
+
+6. **Delete Data:** *An employee leaves the company. SQL removes the record if required.*
+
+    ```sql
+    DELETE FROM Employees ...
+    ```
+
+7. **Search Specific Data:** *Find employees whose salary is greater than ₹50,000. SQL can filter the data.*
+
+8. **Sort Data:** *Display employees from highest salary to lowest salary. SQL can sort the results.*
+   
+9. **Combine Data:** *Show Employee Name, Department Name. Even if they are stored in different tables.*
+
+10. **Generate Reports:** *A manager wants to know Total sales this month, Highest salary, Average attendance. SQL can generate these reports.*
+
+---
+
+**Real-World uses of SQL**
+
+- **Banking:** *Check account balance, Deposit money, Withdraw money, Transaction history.*
+- **Amazon:** *Search products, Add to cart, Place orders, Track orders.*
+- **Instagram:** *Login, Upload posts, Like posts, Follow users.*
+- **Netflix:** *Search movies, Watch history, Recommendations, User profiles.*
+- **Hospital:** *Patient records, Doctor schedules, Appointments, Billing.*
+
+---
+
+### **SQL vs Programming Language**
+
+*SQL is not a general-purpose programming language. It is a query language used to communicate with relational databases.*
+
+---
+
+**Why isn't SQL a programming language?**
+
+- *Programming languages like Python, Java, C++, C# can be used to build websites, mobile apps, games, AI applications, desktop software these can perform calculations, make decisions, use loops, create functions, and control the flow of an application.*
+- *SQL only works with data inside a database. It can Store data, retrieve data, update data, delete data, manage database objects. It cannot create a website or build an android app by itself.*
+- *That's why SQL is called a query language.*
+
+---
+
+**SQL vs Programming Language**
+
+| SQL                        | Programming Language            |
+| -------------------------- | ------------------------------- |
+| Query language             | General-purpose language        |
+| Works with databases       | Builds applications             |
+| Retrieves and manages data | Creates software                |
+| Uses SQL statements        | Uses programming syntax         |
+| Cannot build apps alone    | Can build complete applications |
+
+---
+
+**How SQL and Programming Languages work together?**
+
+```txt
+User
+   │
+   ▼
+Application (Python / Java / C#)
+   │
+   ▼
+SQL Query
+   │
+   ▼
+RDBMS
+   │
+   ▼
+Database
+```
+
+1. *User searches for ```Laptop```.*
+2. *The application (written in Java or Python) receives the request.*
+3. *The application sends an SQL query.*
+4. *The RDBMS executes the query.*
+5. *Results are returned to the application.*
+6. *The application displays the products.*
+
+*SQL and programming languages work together they don't replace each other.*
+
+---
+
+
 
