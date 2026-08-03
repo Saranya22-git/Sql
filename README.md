@@ -13,6 +13,8 @@ Hey!!
   - [**Database Basics**](#database-basics)
     - [**Database**](#database)
     - [**DBMS**](#dbms)
+    - [**RDBMS**](#rdbms)
+    - [**SQL**](#sql)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -131,5 +133,77 @@ Hey!!
 
 **What can a DBMS do?**
 
-* DBMS helps you Create databases, Create tables, Store data, Retrieve data, Update data*
+*DBMS helps you Create databases, Create tables, Store data, Retrieve data, Update data, Delete data, Secure data, Backup data, Manage multiple users, Control access to data.*
 
+---
+
+**Examples of DBMS**
+
+*Some popular DBMS software. These are all DBMS software.*
+
+| DBMS                 | Type            |
+| -------------------- | --------------- |
+| MySQL                | Relational DBMS |
+| PostgreSQL           | Relational DBMS |
+| Oracle Database      | Relational DBMS |
+| Microsoft SQL Server | Relational DBMS |
+| SQLite               | Relational DBMS |
+| MariaDB              | Relational DBMS |
+
+---
+
+**Database vs DBMS**
+
+| Database                   | DBMS                              |
+| -------------------------- | --------------------------------- |
+| Collection of related data | Software used to manage databases |
+| Stores the data            | Manages the data                  |
+| Passive (data)             | Active (software)                 |
+
+---
+
+### **RDBMS**
+
+**What is RDBMS?**
+
+*An RDBMS (Relational Database Management System) is a type of DBMS that stores data in the form of tables and establishes relationship between those tables using keys.*
+
+---
+
+**Example:** *Imagine a college. Instead of one huge table, create separate tables*
+
+```txt
+College Database
+
+Students
+Faculty
+Courses
+Departments
+Attendance
+Results
+```
+
+*These tables are connected. For example, One student can enroll in many courses, One department has many students, One faculty member teaches many courses.*
+
+---
+
+**Why do Companies use as RDBMS?**
+
+- *Companies such as Amazon, Flipkart, Swiggy, Netflix, Banks, Hospitals store millions of records.*
+- *An RDBMS helps them reduce duplicate data, organize information into related tables, retrieve data efficiently, keep data consistent.*
+
+---
+
+**Characteristics**
+
+- *Stores data in tables*
+- *Supports relationship between tables*
+- *Reduce data redundancy (duplicate data)*
+- *Uses SQL for data operations*
+- *Maintains data integrity and consistency*
+
+---
+
+### **SQL**
+
+****
