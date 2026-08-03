@@ -206,4 +206,25 @@ Results
 
 ### **SQL**
 
-****
+**What is SQL?**
+
+*SQL (Structured Query Language) is the standard language used to communicate with a Relational Database Management System (RDBMS) to store, retrieve, update, delete, and manage data.*
+
+---
+
+**Why do we need SQL?**
+
+*Imagine Amazon has millions of products stored in its database. Suppose you search for ```Laptop```.*
+- *How does Amazon find all laptops?*
+- *Do you directly open the database?*
+
+*Instead*
+1. *You type Laptop is the search box*
+2. *The application converts your request into an SQL query*
+3. *SQL sends the request to the RDBMS*
+4. *The RDBMS searche the database*
+5. *The matching products are returned.*
+
+*Without SQL, we cannot communicate with an RDBMS.*
+
+---
