@@ -219,12 +219,13 @@ Results
 - *Do you directly open the database?*
 
 *Instead*
-1. *You type Laptop is the search box*
+1. *You type Laptop in the search box*
 2. *The application converts your request into an SQL query*
 3. *SQL sends the request to the RDBMS*
-4. *The RDBMS searche the database*
+4. *The RDBMS searches the database*
 5. *The matching products are returned.*
 
 *Without SQL, we cannot communicate with an RDBMS.*
 
 ---
+
