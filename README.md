@@ -451,3 +451,55 @@ Database
 
 ### **NoSQL Databases**
 
+*NoSQL (Not only SQL) is a type of database that stores data in formats other than tables, such as documents, key-value pairs, columns, or graphs.*
+
+---
+
+**Types of NoSQL Databases**
+
+1. **Document Database:** *Stores data as documents (usually (JSON).*
+
+    **Example:**
+    ```json
+    {
+        "name": "Rahul",
+        "age": 12,
+        "skills": ["Python","SQL"]
+    }
+    ```
+
+    **Popular Software:** *MongoDB, CouchDB*
+
+2. **Key-Value Database:** *Stores data as Key → Value*
+
+    **Example:**
+    ```txt
+    User101 → Rahul
+    User102 → Saran
+    ```
+
+    **Popular Software:** *Redis, Amazon DynamoDB*
+
+3. **Column-Family Database:** *Stores data by columns instead of traditional rows. Used for very large datasets.*
+
+    **Popular Software:** *Apache Cassandra, HBase*
+
+4. **Graph Database:** *Stores relationships between data.*
+
+    **Example:**
+    ```txt
+    Rahul
+    |
+    Friend
+    |
+    Saran
+    ```
+    
+    *Used in Social Networks, Recommendation Systems, Fraud Detection.*
+
+    **Popular Software:** *Neo4j*
+
+---
+
+
+
