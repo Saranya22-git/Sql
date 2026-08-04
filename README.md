@@ -18,6 +18,9 @@ Hey!!
     - [**Why SQL?**](#why-sql)
     - [**SQL vs Programming Language**](#sql-vs-programming-language)
     - [**SQL vs MySQL**](#sql-vs-mysql)
+    - [**Database Applications**](#database-applications)
+  - [**Types of Databases**](#types-of-databases)
+    - [**Relational Databases**](#relational-databases)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -395,6 +398,31 @@ Database
 | Used by many RDBMS products          | Uses SQL to perform operations                                                 |
 
 ---
+
+### **Database Applications**
+
+*A Database application is any software or system that stores, retrieves, updates, and manages data using a database.*
+
+---
+
+**Real-Worl Database Applications**
+
+1. **Banking System:** *A bank stores millions of customer records.*
+2. **E-commerce:** *Amazon, Flipkart*
+3. **Social Media:** *Instagram, Facebook, X, LinkedIn*
+4. **OTT Platforms:** *Netflix, Prime Video, Disney+*
+5. **Hospital Management**
+6. **College Management**
+7. **Airline Reservations**
+8. **Ride Booking:** *Uber, Ola*
+9. **Food Delivery:** *Swiggy, Zomato*
+10. **Company HR System**
+
+---
+
+## **Types of Databases**
+
+### **Relational Databases**
 
 
 
