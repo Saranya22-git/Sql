@@ -17,6 +17,7 @@ Hey!!
     - [**SQL**](#sql)
     - [**Why SQL?**](#why-sql)
     - [**SQL vs Programming Language**](#sql-vs-programming-language)
+    - [**SQL vs MySQL**](#sql-vs-mysql)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -351,6 +352,47 @@ Database
 6. *The application displays the products.*
 
 *SQL and programming languages work together they don't replace each other.*
+
+---
+
+### **SQL vs MySQL**
+
+**What is SQL?**
+
+*SQL (Structured Query Language) is a standard language used to communicate with relational databases.*
+
+**What is MySQL?**
+
+*MySQL is an open-source Relational Database Management System (RDBMS) that uses SQL to manage databases.*
+
+---
+
+**How SQL and MySQL work together?**
+
+*Suppose you write this query ```SELECT * FROM Students;*
+
+**Step-1:** *You write the SQL query*
+
+**Step-2:** *MySQL receives the query*
+
+**Step-3:** *MySQL checks whether the query is correct*
+
+**Step-4:** *MySQL searches the database*
+
+**Step-5:** *MySQL returns the result*
+
+---
+
+**SQL vs MySQL**
+
+| SQL                                  | MySQL                                                                          |
+| ------------------------------------ | ------------------------------------------------------------------------------ |
+| Language                             | Software (RDBMS)                                                               |
+| Stands for Structured Query Language | Stands for "My" + SQL (named after co-founder Michael Widenius's daughter, My) |
+| Used to communicate with databases   | Used to create and manage databases                                            |
+| Standard language                    | One implementation of an RDBMS                                                 |
+| Cannot store data by itself          | Stores and manages data                                                        |
+| Used by many RDBMS products          | Uses SQL to perform operations                                                 |
 
 ---
 
