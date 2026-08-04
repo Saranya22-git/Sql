@@ -21,6 +21,7 @@ Hey!!
     - [**Database Applications**](#database-applications)
   - [**Types of Databases**](#types-of-databases)
     - [**Relational Databases**](#relational-databases)
+    - [**NoSQL Databases**](#nosql-databases)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -424,5 +425,29 @@ Database
 
 ### **Relational Databases**
 
+*A Relational Database is a database that stores data in the form of tables (rows and columns) and establishes relationship between those tables.*
 
+---
+
+**Characteristics of a Relational Database**
+
+1. *Stores data in tables*
+2. *Data is Organized into rows and columns*
+3. *Tables are related*
+4. *Uses keys*
+5. *Uses SQL*
+
+---
+
+**Relational Database vs RDBMS**
+
+| Relational Database          | RDBMS                              |
+| ---------------------------- | ---------------------------------- |
+| Collection of related tables | Software that manages those tables |
+| Stores data                  | Manages the database               |
+| Example: CollegeDB           | Example: MySQL                     |
+
+---
+
+### **NoSQL Databases**
 
