@@ -22,6 +22,7 @@ Hey!!
   - [**Types of Databases**](#types-of-databases)
     - [**Relational Databases**](#relational-databases)
     - [**NoSQL Databases**](#nosql-databases)
+    - [**SQL vs NoSQL**](#sql-vs-nosql)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -498,6 +499,35 @@ Database
     *Used in Social Networks, Recommendation Systems, Fraud Detection.*
 
     **Popular Software:** *Neo4j*
+
+---
+
+### **SQL vs NoSQL**
+
+| SQL                                   | NoSQL                                                                     |
+| ------------------------------------- | ------------------------------------------------------------------------- |
+| Relational Database                   | Non-Relational Database                                                   |
+| Stores data in tables                 | Stores data in documents, key-value, columns, or graphs                   |
+| Fixed schema                          | Flexible schema                                                           |
+| Uses SQL language                     | Uses database-specific query methods (some support SQL-like syntax)       |
+| Best for structured data              | Best for unstructured and semi-structured data                            |
+| Strong relationships between tables   | Relationships are usually handled differently                             |
+| ACID transactions are a core strength | Often optimized for scalability and flexibility (depends on the database) |
+| Excellent for complex JOIN queries    | Many NoSQL databases avoid JOINs or handle relationships differently      |
+
+---
+
+**When should we use SQL?**
+
+*Use SQL when data is highly structured, tables have relationships, accuracy and cosistency are critical, financial transactions are involved.*
+
+**Examples:** *Banking, Hospital Management, College Management, Airline Reservation, Payroll Systems*
+
+**When should we use NoSQL?**
+
+*Use NoSQL when data structure changes frequently, large amounts of unstructured data are stored, high scalability is needed, fast reads/writes are important.*
+
+**Examples:** *Social media, Chat Applications, IoT systems, Recommendation engines, Gaming platforms*
 
 ---
 
