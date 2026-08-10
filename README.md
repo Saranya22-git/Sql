@@ -23,6 +23,8 @@ Hey!!
     - [**Relational Databases**](#relational-databases)
     - [**NoSQL Databases**](#nosql-databases)
     - [**SQL vs NoSQL**](#sql-vs-nosql)
+  - [**Database Architecture**](#database-architecture)
+    - [**Client-Server Architecture**](#client-server-architecture)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -530,6 +532,34 @@ Database
 **Examples:** *Social media, Chat Applications, IoT systems, Recommendation engines, Gaming platforms*
 
 ---
+
+## **Database Architecture**
+
+### **Client-Server Architecture**
+
+*Client-Server architecture is a model in which a client requests a service or data, and a server processes the request and sends back the response.*
+
+---
+
+**What is a Client?**
+
+*A Client is the application or device that requests a service from a server.*
+
+**Examples:** *Web browser, Mobile application, Desktop application, SQL Client, MySQL Workbench.*
+
+*For example. when you use MySQL Workbench and execute ```SELECT * FROM Employees;```. MySQL Workbench acts as the Client.*
+
+---
+
+**What is a Server?**
+
+*A Server is a system that receives requests, processes them, and provides a respone or service.*
+
+*In a database system, the database server receives SQL queries, processes queries, accesses stored data, performs required operations, sends results back.*
+
+---
+
+
 
 
 
