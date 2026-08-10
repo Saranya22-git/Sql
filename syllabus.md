@@ -35,14 +35,6 @@
 - Data Mart
 - ETL vs ELT
 
-## 📌 0.5 SQL Environment Setup
-
-- Install MySQL Server
-- Install MySQL Workbench
-- Connect to MySQL
-- Create Your First Database
-- Run Your First SQL Query
-
 ---
 
 # 🔰 PHASE 1 — DATABASE CONCEPTS

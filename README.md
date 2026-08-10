@@ -29,6 +29,8 @@ Hey!!
     - [**Three-Tier Architecture**](#three-tier-architecture)
     - [**OLTP vs OLAP**](#oltp-vs-olap)
     - [**Database vs Data Warehouse**](#database-vs-data-warehouse)
+    - [**Data Mart**](#data-mart)
+    - [**ETL vs ELT**](#etl-vs-elt)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -672,6 +674,96 @@ Database
 ---
 
 ### **Database vs Data Warehouse**
+
+**Database:** *A databse is a system used to store and manage current operational data for applications and day-to-day transactions.*
+
+**Data Warehouse:** *A data warehouse is a centralized system that stores integrated and often historical data from multiple sources for reporting, analysis, and decision-making.*
+
+---
+
+**Database vs Data Warehouse**
+
+| Database                                      | Data Warehouse                              |
+| --------------------------------------------- | ------------------------------------------- |
+| Mainly supports operational applications      | Mainly supports analytics and reporting     |
+| Current operational data is important         | Historical and integrated data is important |
+| Used for transactions                         | Used for analysis                           |
+| Frequently INSERT/UPDATE/DELETE               | Mostly analytical SELECT queries            |
+| Usually optimized for transactional workloads | Optimized for analytical workloads          |
+| Supports OLTP workloads                       | Supports OLAP workloads                     |
+| Used by applications                          | Used by analysts, managers, BI systems      |
+| Example: customer orders                      | Example: multi-year sales analysis          |
+
+---
+
+### **Data Mart**
+
+*A Data Mart is a smaller, subject-specific part of a data warehouse that is designed for a particular department, business function, or analytical purpose.*
+
+---
+
+**Types of Data Marts**
+
+1. **Dependent Data Mart:** *A dependent data mart gets its data from an existing data warehouse.*
+2. **Independent Data Mart:** *An independent data mart gets data directly from operational systems or other sources rather than from a central data warehouse.*
+3. **Hybrid Data Mart:** *A hybrid data mart can combine data from data warehouse, operational databases and other external sources.*
+
+---
+
+### **ETL vs ELT**
+
+**What is ETL?**
+
+- *ETL stands for ```E - Extract``` ```T - Transform``` ```L - Load```*
+- *It is a process used to move data from one or more sources into a target system such as a data warehouse.*
+- *ETL is a data integration process in which data is extracted from source systems, transformed into the required format, and then loaded into the target data warehouse or system.*
+
+---
+
+- **Step-1** **Extract:** *Extract means collecting data from source systems.*
+
+    *Sources can include SQL databases, Excel files, CSV files, APIs, CRM systems, Application databases.*
+
+- **Step-2** **Transform:** *Now we clean and prepare the data. Transformation can include Removing duplicates, Handling NULL values, Changing data types, Standardizing formats, Calculating columns, Joining data, Filtering records.*
+
+    **Example:** *Suppose the source contains*
+    ```txt
+    Name       City
+    Rahul      hyd
+    Priya      HYDERABAD
+    Arjun      Hyderabad
+    ```
+
+    *We might standardize the city*
+    ```txt
+    Name       City
+    Rahul      Hyderabad
+    Priya      Hyderabad
+    Arjun      Hyderabad
+    ```
+
+- **Step-3** **Load:** *After transformation, the cleaned data is loaded into the target system.*
+
+---
+
+**What is ELT?**
+
+- *ELT stands for ```E - Extract``` ```L - Load``` ```T - Transform```.*
+- *ELT is the data integration process in which data is extracted from source systems, loaded into the target data warehouse or data platform, and transformed there.*
+
+---
+
+**ETV vs ELT**
+
+| ETL                                                   | ELT                                                      |
+| ----------------------------------------------------- | -------------------------------------------------------- |
+| Extract → Transform → Load                            | Extract → Load → Transform                               |
+| Transformation happens before loading                 | Transformation happens after loading                     |
+| Data is cleaned before entering the target            | Raw data can be loaded first                             |
+| Traditionally common with traditional warehouses      | Common with modern cloud data platforms                  |
+| Requires transformation infrastructure before loading | Uses target system's processing power for transformation |
+
+---
 
 
 
