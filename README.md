@@ -25,6 +25,9 @@ Hey!!
     - [**SQL vs NoSQL**](#sql-vs-nosql)
   - [**Database Architecture**](#database-architecture)
     - [**Client-Server Architecture**](#client-server-architecture)
+    - [**Two-Tier Architecture**](#two-tier-architecture)
+    - [**Three-Tier Architecture**](#three-tier-architecture)
+    - [**OLTP vs OLAP**](#oltp-vs-olap)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -559,6 +562,61 @@ Database
 
 ---
 
+### **Two-Tier Architecture**
+
+*Two-tier architecture is a client-server architecture in which the client directly communicates with the database server.*
+
+---
+
+**Two-Tier Architecture Components**
+
+*There are only two major parts.*
+
+1. **Client:** *The client contains the user interface and often some application/business logic.*
+
+    **Example:** *```Employee Management App``` ther user interacts with it.*
+
+2. **Database Server:** *The database server manages the database. It handles SQL queries, data retrieval, data insertion, data updates, data deletion, database access.*
+
+---
+
+**IMPORTANT POINT:** *The client directly connects to the database server.*
+
+---
+
+### **Three-Tier Architecture**
+
+*Three-tier architecture is an architecture in which an application is divided into three separate layers ```Presentation Layer```, ```Application Layer```, and ```Data Layer```.*
+
+---
+
+1. **Presentation Layer:** *This is the part the user sees and interacts with.*
+
+    **Examples:** *Website, Mobile App, Login Page, Search Box, Buttons, Forms.*
+
+2. **Application Layer:** *This is the middle layer. It receives requests from the presentation layer and decides what should happen.*
+
+    *It handles things like business rules, authentication, validation, calculations, processing requests, communicating with the database.*
+
+3. **Data Layer:** *This is where the application's data is stored and managed.*
+
+    *It usually contains database, database server, tables, stored data.*
+
+---
+
+**Comparison**
+
+| Two-Tier                              | Three-Tier                                    |
+| ------------------------------------- | --------------------------------------------- |
+| 2 layers                              | 3 layers                                      |
+| Client → Database                     | Client → Application → Database               |
+| Direct database connection            | Application layer between client and database |
+| Common in simpler/legacy applications | Common in modern web applications             |
+| Less separation of responsibilities   | Better separation of responsibilities         |
+
+---
+
+### **OLTP vs OLAP**
 
 
 
