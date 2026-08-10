@@ -28,6 +28,7 @@ Hey!!
     - [**Two-Tier Architecture**](#two-tier-architecture)
     - [**Three-Tier Architecture**](#three-tier-architecture)
     - [**OLTP vs OLAP**](#oltp-vs-olap)
+    - [**Database vs Data Warehouse**](#database-vs-data-warehouse)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -617,6 +618,63 @@ Database
 ---
 
 ### **OLTP vs OLAP**
+
+**What is OLTP?**
+
+- *OLTP (Online Transaction Processing) is a system designed to handle a large number of day-to-day transactions quickly and reliably.*
+- *For example placing an order, making a payment, booking a ticket, transferring money, updating customer information.*
+
+**Example:** *Amazon*
+
+*You purchase a laptop. The system needs to:*
+1. *Create your order*
+2. *Record the payment*
+3. *Reduce product stock*
+4. *Store shipping information*
+
+*These are day-to-day operations.*
+
+---
+
+**What is OLAP?**
+
+*OLAP (Online Analytical Processing) is a system designed for analyzing large amounts of data to identify trends, patterns, and insights.*
+
+**Example:** *A company wants to know "Which product category generated the highest revenue last year?" The system may analyze Millions of orders, Customer data, product data, dates, regions.*
+
+---
+
+**OLTP vs OLAP**
+
+| OLTP                                   | OLAP                                   |
+| -------------------------------------- | -------------------------------------- |
+| Online Transaction Processing          | Online Analytical Processing           |
+| Runs day-to-day operations             | Analyzes business data                 |
+| Transaction-oriented                   | Analysis-oriented                      |
+| Many small transactions                | Fewer but complex analytical queries   |
+| Usually current operational data       | Often historical/integrated data       |
+| Fast INSERT/UPDATE/DELETE              | Heavy SELECT/aggregation queries       |
+| Used by operational users/applications | Used by analysts, managers, data teams |
+| Example: Order processing              | Example: Sales analysis                |
+
+---
+
+**Database used in OLTP vs OLAP**
+
+**OLTP:** *Usually works with an operational database.*
+
+**Examples:** *MySQL, PostgreSQL, SQL Server, Oracle*
+
+**OLAP:** *Often works with a data warehouse or analytical system.*
+
+**Examples:** *Snowflake, Amazon Redshift, Google BigQuery, Azure Synapse.*
+
+---
+
+### **Database vs Data Warehouse**
+
+
+
 
 
 
