@@ -31,6 +31,10 @@ Hey!!
     - [**Database vs Data Warehouse**](#database-vs-data-warehouse)
     - [**Data Mart**](#data-mart)
     - [**ETL vs ELT**](#etl-vs-elt)
+- [**Database Concepts**](#database-concepts)
+  - [**Core Concepts**](#core-concepts)
+    - [**Tables**](#tables)
+    - [**Rows**](#rows)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -382,7 +386,7 @@ Database
 
 **How SQL and MySQL work together?**
 
-*Suppose you write this query ```SELECT * FROM Students;*
+*Suppose you write this query ```SELECT * FROM Students;```*
 
 **Step-1:** *You write the SQL query*
 
@@ -764,6 +768,75 @@ Database
 | Requires transformation infrastructure before loading | Uses target system's processing power for transformation |
 
 ---
+
+# **Database Concepts**
+
+## **Core Concepts**
+
+### **Tables**
+
+**What is a Table?**
+
+*A Table is a structured collection of related data organized into rows and columns in a relational database.*
+
+**Example:**
+
+| employee_id | name  | department | salary |
+| ----------: | ----- | ---------- | -----: |
+|         101 | Rahul | IT         |  60000 |
+|         102 | Priya | HR         |  55000 |
+|         103 | Arjun | Sales      |  50000 |
+
+---
+
+**Structure of a Table**
+
+*A Table mainly consists of Columns and Rows. For example:*
+
+| Employee_ID | Name  | Salary |
+| ----------- | ----- | ------ |
+|         101 | Rahul |  60000 |
+|         102 | Priya |  55000 |
+|         103 | Arjun |  50000 |
+
+*Here:*
+- *```Employee_ID, Name, Salary``` → Columns*
+- *Each horizontal entry → Rows*
+
+---
+
+**Creating a Table using SQL**
+
+```sql
+CREATE TABLE table_name (
+    column_name datatype,
+    column_name datatype,
+    ......
+);
+```
+
+---
+
+**Inserting Data**
+
+```sql
+INSERT INTO table_name (column_name1, column_name2,....)
+VALUES (value1, value2,..........);
+```
+
+---
+
+**Retrieving Data**
+
+```sql
+SELECT * FROM table_name;
+```
+
+---
+
+### **Rows**
+
+
 
 
 
