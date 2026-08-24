@@ -44,8 +44,6 @@
 - Tables
 - Rows
 - Columns
-- Records
-- Fields
 - Schema
 - Instance
 - Metadata

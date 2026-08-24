@@ -36,7 +36,11 @@ Hey!!
     - [**Tables**](#tables)
     - [**Rows**](#rows)
     - [**Column**](#column)
-    - [**Records**](#records)
+    - [**Schema**](#schema)
+    - [**Instance**](#instance)
+    - [**Metadata**](#metadata)
+  - [**Relationships**](#relationships)
+    - [\*\*\*\*](#)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -949,7 +953,181 @@ SELECT * FROM employees;
 
 ---
 
-### **Records**
+### **Schema**
+
+*A database schema is the logical structure or blueprint of a database that defines how data is organized, including tables, columns, relationships, constraints, views, and other database objects.*
+
+**Example:**
+```sql
+CREATE TABLE employees (
+    employee_id INT,
+    name VARCHAR(50),
+    department VARCHAR(50),
+    salary DECIMAL(10,2)
+);
+```
+
+*This is the structure/schema of the table*
+
+```sql
+INSERT INTO employees
+(employee_id, name, department, salary)
+VALUES
+(101, 'Rahul', 'IT', 60000),
+(102, 'Priya', 'HR', 55000);
+```
+
+*These values are data, not the schema*
+
+---
+
+*Suppose company database has*
+
+```txt
+CompanyDB
+│
+├── employees
+├── departments
+└── projects
+```
+
+*and the ```employees``` table has*
+
+```txt
+employees
+│
+├── employee_id
+├── name
+├── department
+└── salary
+```
+
+*The schema describes this organization. It can also describe*
+
+```txt
+employee_id → INT
+name → VARCHAR
+salary → DECIMAL
+```
+
+*and relationship such as*
+
+```txt
+employees → departments
+```
+
+*and constraints such as*
+
+```txt
+employee_id → PRIMARY KEY
+```
+
+*So schema is more than just the table names. It represents the database's overall logical structure.*
+
+---
+
+**How do we see the Structure in MySQL?**
+
+**Syntax:**
+```sql
+DESC table_name;
+```
+
+**Example:**
+```sql
+DESC employees;
+```
+
+```sql
+DESCRIBE employees;
+```
+
+*It shows things like*
+
+```txt
+Field          Type
+--------------------------
+employee_id    INT
+name           VARCHAR(50)
+department     VARCHAR(50)
+salary         DECIMAL(10,2)
+```
+
+---
+
+### **Instance**
+
+*A database Instance is the actual data stored in the database at a particular point in time.*
+
+---
+
+**What changes the Instance?**
+
+*Operations that modify the actual data*
+
+```txt
+INSERT - Adds data
+UPDATE - Changes existing data
+DELETE - Removes data
+```
+
+**What changes the Schema?**
+
+*Operations that modify the structure such as*
+
+```txt
+ALTER TABLE
+```
+
+---
+
+**Schema vs Instance**
+
+| Schema                                    | Instance                    |
+| ----------------------------------------- | --------------------------- |
+| Defines the structure                     | Represents the actual data  |
+| Relatively stable                         | Changes frequently          |
+| Defines tables, columns, data types, etc. | Contains actual rows/values |
+| Blueprint                                 | Current snapshot/state      |
+
+---
+
+### **Metadata**
+
+*Metadata is data that describes other data.*
+
+**Example:** *Imagine a photography*
+
+**Actual data:** *The photography itself*
+
+**Metadata:** *Information about the photography*
+
+```txt
+File name: vacation.jpg
+File type: JPEG
+Size: 5 MB
+Dimensions: 4000 × 3000
+Date created: ...
+```
+
+---
+
+**Metadata vs Schema**
+
+**Schema:** *Defines the structure/blueprint of the database*
+
+**Metadata:** *Provides information describing the data/database objects*
+
+*They are closely related but they're not exactly the same thing.*
+
+---
+
+## **Relationships**
+
+### ****
+
+
+
 
 
 
