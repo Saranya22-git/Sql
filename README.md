@@ -35,6 +35,8 @@ Hey!!
   - [**Core Concepts**](#core-concepts)
     - [**Tables**](#tables)
     - [**Rows**](#rows)
+    - [**Column**](#column)
+    - [**Records**](#records)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -782,7 +784,7 @@ Database
 **Example:**
 
 | employee_id | name  | department | salary |
-| ----------: | ----- | ---------- | -----: |
+| ----------- | ----- | ---------- | ------ |
 |         101 | Rahul | IT         |  60000 |
 |         102 | Priya | HR         |  55000 |
 |         103 | Arjun | Sales      |  50000 |
@@ -793,14 +795,14 @@ Database
 
 *A Table mainly consists of Columns and Rows. For example:*
 
-| Employee_ID | Name  | Salary |
-| ----------- | ----- | ------ |
-|         101 | Rahul |  60000 |
-|         102 | Priya |  55000 |
-|         103 | Arjun |  50000 |
+| employee_id | name  | department | salary |
+| ----------- | ----- | ---------- | ------ |
+|         101 | Rahul | IT         |  60000 |
+|         102 | Priya | HR         |  55000 |
+|         103 | Arjun | Sales      |  50000 |
 
 *Here:*
-- *```Employee_ID, Name, Salary``` → Columns*
+- *```Employee_ID, Name, Department, Salary``` → Columns*
 - *Each horizontal entry → Rows*
 
 ---
@@ -815,6 +817,16 @@ CREATE TABLE table_name (
 );
 ```
 
+**Example:**
+```sql
+CREATE TABLE employees (
+    employee_id INT, 
+    name VARCHAR(50),
+    department VARCHAR(50),
+    salary DECIMAL(10,2)
+);
+```
+
 ---
 
 **Inserting Data**
@@ -822,6 +834,17 @@ CREATE TABLE table_name (
 ```sql
 INSERT INTO table_name (column_name1, column_name2,....)
 VALUES (value1, value2,..........);
+```
+
+**Example:**
+```sql
+INSERT INTO employees (employee_id, name, department, salary)
+VALUES (101, 'Rahul', 'IT', 60000);
+```
+
+```sql
+INSERT INTO employees (employee_id, name, department, salary)
+VALUES (102, 'Priya', 'HR', 55000);
 ```
 
 ---
@@ -832,6 +855,11 @@ VALUES (value1, value2,..........);
 SELECT * FROM table_name;
 ```
 
+**Example:**
+```sql
+SELECT * FROM employees;
+```
+
 ---
 
 ### **Rows**
@@ -839,17 +867,92 @@ SELECT * FROM table_name;
 *A row is a single horizontal entry in a table that represents one record or one instance of an entity.*
 
 **Example:**
-| Student_ID | Name  | Branch | CGPA |
-| ---------: | ----- | ------ | ---: |
-|        101 | Rahul | CSE    |  8.5 |
-|        102 | Priya | AI&DS  |  9.2 |
-|        103 | Arjun | ECE    |  8.8 |
+| employee_id | name  | department | salary |
+| ----------- | ----- | ---------- | ------ |
+|         101 | Rahul | IT         |  60000 |
+|         102 | Priya | HR         |  55000 |
+|         103 | Arjun | Sales      |  50000 |
 
 **Row 1:** *This represents Rahul's complete student information.*
 
 ```txt
-101 | Rahul | CSE | 8.5
+101 | Rahul | IT | 60000
 ```
+
+---
+
+**Adding a Row using SQL**
+
+```sql
+INSERT INTO employees (employee_id, name, department, salary)
+VALUES (103, 'Arjun', 'Sales', 50000);
+```
+
+---
+
+### **Column**
+
+*A Column is a vertical set of values in a table that represents one attribute or property of the data.*
+
+**Example:**
+| employee_id | name  | department | salary |
+| ----------- | ----- | ---------- | ------ |
+|         101 | Rahul | IT         |  60000 |
+|         102 | Priya | HR         |  55000 |
+|         103 | Arjun | Sales      |  50000 |
+
+*Here we have 4 columns*
+```txt
+employee_id
+name
+department
+salary
+```
+
+---
+
+**Selecting a Specific column**
+
+**Syntax:**
+```sql
+SELECT column_name FROM table_name;
+```
+
+**Example:**
+```sql
+SELECT name FROM employees;
+```
+
+---
+
+**Selecting Multiple Columns**
+
+**Syntax:**
+```sql
+SELECT column1, column2 FROM table_name;
+```
+
+**Example:**
+```sql
+SELECT name, department FROM employees;
+```
+
+---
+
+**Selecting All Columns**
+
+```sql
+SELECT * FROM employees;
+```
+
+*```*``` means all columns in this context*
+
+---
+
+### **Records**
+
+
+
 
 
 
