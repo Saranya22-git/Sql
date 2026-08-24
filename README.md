@@ -40,7 +40,8 @@ Hey!!
     - [**Instance**](#instance)
     - [**Metadata**](#metadata)
   - [**Relationships**](#relationships)
-    - [\*\*\*\*](#)
+    - [**One-to-One**](#one-to-one)
+    - [**One-to-Many**](#one-to-many)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -1124,7 +1125,80 @@ Date created: ...
 
 ## **Relationships**
 
-### ****
+### **One-to-One**
+
+*A one-to-one (1:1) relationship is a relationship where one record in one table is associated with at most one record in another table, and vice versa.*
+
+**Example:** *Suppose our ```employees``` table contains*
+```txt
+employees
++-------------+--------+------------+--------+
+| employee_id | name   | department | salary |
++-------------+--------+------------+--------+
+| 101         | Rahul  | IT         |  60000 |
+| 102         | Priya  | HR         |  55000 |
+| 103         | Arjun  | Sales      |  50000 |
++-------------+--------+------------+--------+
+```
+
+*Now suppose we have additional sensitive/private information*
+
+```txt
+employee_profiles
++-------------+--------------+------------+
+| employee_id | phone        | address    |
++-------------+--------------+------------+
+| 101         | 9876543210   | Hyderabad  |
+| 102         | 9123456780   | Vijayawada |
+| 103         | 9988776655   | Chennai    |
++-------------+--------------+------------+
+```
+
+*Here*
+
+```txt
+employees              employee_profiles
+
+101 Rahul       ←──→   101 Hyderabad
+102 Priya       ←──→   102 Vijayawada
+103 Arjun       ←──→   103 Chennai
+```
+
+- *Each employee has one profile*
+- *Each profile belongs to one employee*
+- *Therefor One-to-One relationship*
+
+---
+
+**Syntax:**
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department VARCHAR(50),
+    salary DECIMAL(10,2)
+);
+```
+
+```sql
+CREATE TABLE employee_profiles (
+    employee_id INT PRIMARY KEY,
+    phone VARCHAR(15),
+    address VARCHAR(100),
+
+    FOREIGN KEY (employee_id)
+        REFERENCES employees(employee_id)
+);
+```
+
+- *The Primary Key of ```employee_profiles```*
+- *A Foreign Key referencing ```employees```*
+- *This helps enforce the one-to-one relationship*
+
+---
+
+### **One-to-Many**
+
 
 
 
