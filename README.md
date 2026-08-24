@@ -679,7 +679,7 @@ Database
 
 ### **Database vs Data Warehouse**
 
-**Database:** *A databse is a system used to store and manage current operational data for applications and day-to-day transactions.*
+**Database:** *A database is a system used to store and manage current operational data for applications and day-to-day transactions.*
 
 **Data Warehouse:** *A data warehouse is a centralized system that stores integrated and often historical data from multiple sources for reporting, analysis, and decision-making.*
 
@@ -836,6 +836,20 @@ SELECT * FROM table_name;
 
 ### **Rows**
 
+*A row is a single horizontal entry in a table that represents one record or one instance of an entity.*
+
+**Example:**
+| Student_ID | Name  | Branch | CGPA |
+| ---------: | ----- | ------ | ---: |
+|        101 | Rahul | CSE    |  8.5 |
+|        102 | Priya | AI&DS  |  9.2 |
+|        103 | Arjun | ECE    |  8.8 |
+
+**Row 1:** *This represents Rahul's complete student information.*
+
+```txt
+101 | Rahul | CSE | 8.5
+```
 
 
 
