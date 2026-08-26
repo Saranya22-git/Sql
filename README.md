@@ -42,6 +42,7 @@ Hey!!
   - [**Relationships**](#relationships)
     - [**One-to-One**](#one-to-one)
     - [**One-to-Many**](#one-to-many)
+    - [**Many-to-Many**](#many-to-many)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -1199,7 +1200,21 @@ CREATE TABLE employee_profiles (
 
 ### **One-to-Many**
 
+*A one-to-many (1:M) relationship is a relationship where one record in one table can be associated with many records in another table, while each record in the second table is associated with one record in the first table.*
 
+**Example:**
+
+- **Company:** *1 Department → Many Employees*
+- **Customers & Orders:** *1 Customer → Many Orders*
+- **Teacher & Students:** *1 Teacher → Many Students*
+- **Category & Products:** *1 Category → Many Products*
+- **YouTube Channel & Videos:** *1 Channel → Many Videos*
+
+---
+
+### **Many-to-Many**
+
+**
 
 
 
