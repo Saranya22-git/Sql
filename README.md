@@ -47,6 +47,7 @@ Hey!!
 - [**Database Design**](#database-design)
   - [**Entity Relationship Modeling**](#entity-relationship-modeling)
     - [**Entity**](#entity)
+    - [**Attribute**](#attribute)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -1434,8 +1435,50 @@ CREATE TABLE employees (
 
 *An entity is a real-world object or concept about which we want to store information in a database.*
 
+**Example:**
+```txt
+Company Database
+│
+├── Employees
+├── Departments
+└── Projects
+```
 
+*Here*
+- *Employee → Entity*
+- *Department → Entity*
+- *Project → Entity*
 
+---
+
+**Employee as an Entity**
+
+*Suppose we want to store*
+```txt
+Employee
+├── employee_id
+├── name
+├── department
+└── salary
+```
+
+*Employee is the entity*
+
+*The individual employee ```101 | Rahul | IT | 60000``` is an instance of that entity.*
+
+---
+
+**Entity vs Table**
+
+**Entity:** *A concept from the real world that we want to represent. ```Employee```*
+
+**Table:** *The database structure we use to store information about that entity. ```Employees```*
+
+---
+
+### **Attribute**
+
+**
 
 
 
