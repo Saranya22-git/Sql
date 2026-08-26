@@ -43,6 +43,10 @@ Hey!!
     - [**One-to-One**](#one-to-one)
     - [**One-to-Many**](#one-to-many)
     - [**Many-to-Many**](#many-to-many)
+    - [**Referential Integrity**](#referential-integrity)
+- [**Database Design**](#database-design)
+  - [**Entity Relationship Modeling**](#entity-relationship-modeling)
+    - [**Entity**](#entity)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -1214,11 +1218,231 @@ CREATE TABLE employee_profiles (
 
 ### **Many-to-Many**
 
-**
+*A many-to-many (M:N) relationship is a relationship where one record in Table A can be associated with many records in Table B, and one record in Table B can also be associated with many records in Table A.*
+
+**Example:** *One student can take many courses ```Students ↔ Courses```*
+
+---
+
+**Why can't we directly store it?**
+
+*Suppose we have*
+
+**Students**
+
+| student_id | name  |
+| ---------- | ----- |
+|        101 | Rahul |
+|        102 | Priya |
+|        103 | Arjun |
+
+
+**Courses**
+
+| course_id | course_name |
+| --------- | ----------- |
+|         1 | SQL         |
+|         2 | Python      |
+|         3 | Excel       |
+
+
+*Now*
+- *Rahul takes SQL and Python*
+- *Priya takes SQL and Excel*
+- *Arjun takes SQL and Python*
+- *If we try to put everything directly into one table, we might get*
+
+| student_id | student_name | courses     |
+| ---------- | ------------ | ----------- |
+|        101 | Rahul        | SQL, Python |
+|        102 | Priya        | SQL, Excel  |
+|        103 | Arjun        | SQL, Python |
+
+- *This creates problems because one column is containing multiple values. Instead we use a junction table.*
+
+---
+
+*A many-to-many relationship is usually implemented using a third table called as*
+- *Junction table*
+- *Bridge table*
+- *Associative table*
+
+*These terms can refer to the same basic idea.*
+
+---
+
+**SQL Syntax**
+
+**Create Students**
+```sql
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+```
+
+**Create Courses**
+```sql
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(50)
+);
+```
+
+**Create Junction Table**
+```sql
+CREATE TABLE student_courses (
+    student_id INT,
+    course_id INT,
+
+    FOREIGN KEY (student_id)
+    REFERENCES students(student_id),
+
+    FOREIGN KEY (course_id)
+    REFERENCES courses(course_id)
+);
+```
+
+**Insert Students**
+```sql
+INSERT INTO students (student_id, name)
+VALUES 
+(101, 'Rahul'),
+(102, 'Priya'),
+(103, 'Arjun');
+```
+
+**Insert Courses**
+```sql
+INSERT INTO courses (course_id, course_name)
+VALUES
+(1, 'SQL'),
+(2, 'Python'),
+(3, 'Excel');
+```
+
+**Insert Relationships**
+```sql
+INSERT INTO student_courses (student_id, course_id)
+VALUES
+(101, 1),
+(101, 2),
+(102, 1),
+(102, 3),
+(103, 1),
+(103, 2);
+```
+
+---
+
+### **Referential Integrity**
+
+*Referential Integrity is a rule that ensures a foreign key value in one table referes to a valid existing key in another table.*
+
+---
+
+**Departments**
+
+| department_id | department_name |
+| ------------- | --------------- |
+|             1 | IT              |
+|             2 | HR              |
+|             3 | Sales           |
+
+**Employees**
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             2 |
+|         103 | Arjun |             1 |
+
+*Look at Rahul ```Rahul → department_id = 1``` and in departments ```department_id = 1 → IT``` So rahul's department exists.*
+
+---
+
+**What would be Invalid?**
+
+*Suppose we try*
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         104 | Sneha |        **99** |
+
+*But our departments are only*
+
+```txt
+1 → IT
+2 → HR
+3 → Sales
+```
+
+*There is no department 99. This is an invalid reference.*
+
+---
+
+**How do we Enforce it?**
+
+*We use a Foreign Key*
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+```
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+        REFERENCES departments(department_id)
+);
+```
+
+---
+
+**Foreign Key does not have to be unique**
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             2 |
+|         103 | Arjun |             1 |
+|         104 | Sneha |             1 |
+
+*Three employees have ```department_id = 1```. That's completely valid*
+
+---
+
+**Data Integrity vs Referential Integrity**
+
+**Data Integrity:** *Data should remain accurate, valid, and consistent.*
+
+**Referential Integrity:** *Relationships between related tables must remain valid.*
+
+---
+
+# **Database Design**
+
+## **Entity Relationship Modeling**
+
+### **Entity**
+
+*An entity is a real-world object or concept about which we want to store information in a database.*
 
 
 
 
+
+
+
+
+
+ 
 
 
 
