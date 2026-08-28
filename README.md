@@ -49,6 +49,7 @@ Hey!!
     - [**Entity**](#entity)
     - [**Attribute**](#attribute)
     - [**Relationship**](#relationship)
+    - [**Cardinality**](#cardinality)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -1575,7 +1576,39 @@ Arjun ─── works in ─── IT
 
 ---
 
-**Relationship has a Cardinality**
+**How does this appear in SQL?**
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+```
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+        REFERENCES departments(department_id)
+);
+```
+
+---
+
+**Relationship Types**
+
+1. *One-to-One*
+2. *One-to-Many*
+3. *Many-to-Many*
+
+---
+
+### **Cardinality**
+
+
 
 
 
