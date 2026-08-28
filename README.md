@@ -1551,6 +1551,32 @@ salary → Column
 
 ### **Relationship**
 
+*A relationship describes how two or more entities are connected or associated with each other.*
+
+---
+
+**Example:**
+
+```txt
+Employee
+   │
+   │ works in
+   ↓
+Department
+```
+
+```txt
+Rahul ─── works in ─── IT
+Priya ─── works in ─── HR
+Arjun ─── works in ─── IT
+```
+
+***works in** describes the relationship.*
+
+---
+
+**Relationship has a Cardinality**
+
 
 
 
