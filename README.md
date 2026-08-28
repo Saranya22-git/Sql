@@ -48,6 +48,7 @@ Hey!!
   - [**Entity Relationship Modeling**](#entity-relationship-modeling)
     - [**Entity**](#entity)
     - [**Attribute**](#attribute)
+    - [**Relationship**](#relationship)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -1478,7 +1479,78 @@ Employee
 
 ### **Attribute**
 
-**
+*An attribute is a property or characteristic that describes an entity.*
+
+```txt
+Employee
+   │
+   ├── employee_id
+   ├── name
+   ├── department_id
+   └── salary
+```
+
+```txt
+Employee → Entity
+
+employee_id → Attribute
+name        → Attribute
+department_id → Attribute
+salary      → Attribute
+```
+
+---
+
+**Attribute vs Entity**
+
+| Entity                             | Attribute                      |
+| ---------------------------------- | ------------------------------ |
+| Object/concept we store data about | Property describing the entity |
+| Employee                           | name                           |
+| Customer                           | email                          |
+| Product                            | price                          |
+| Department                         | department_name                |
+
+---
+
+**How does it look in SQL?**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT,
+    name VARCHAR(50),
+    department_id INT,
+    salary DECIMAL(10,2)
+);
+```
+
+- *The table represents the Employee entity*
+- *The column represents its attributes*
+
+---
+
+**Attribute vs Column**
+
+**In database modeling:**
+
+```txt
+Employee → Entity
+name → Attribute
+salary → Attribute
+```
+
+**In the relational table:**
+
+```txt
+employees → Table
+name → Column
+salary → Column
+```
+
+---
+
+### **Relationship**
+
 
 
 
