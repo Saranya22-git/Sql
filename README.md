@@ -772,7 +772,7 @@ Database
 
 ---
 
-**ETV vs ELT**
+**ETL vs ELT**
 
 | ETL                                                   | ELT                                                      |
 | ----------------------------------------------------- | -------------------------------------------------------- |
@@ -1608,6 +1608,63 @@ CREATE TABLE employees (
 
 ### **Cardinality**
 
+*Cardinality defines the number of instances of one entity that can be associated with instances of another entity in a relationship.*
+
+**Example:**
+```txt
+Department → Employees
+     1     →   MANY
+```
+
+---
+
+**The 3 Main Cardinalities**
+
+```txt
+1 : 1  → One-to-One
+1 : M  → One-to-Many
+M : N  → Many-to-Many
+```
+
+1. **One-to-One:** *One entity instance is associated with one instance of another entity.*
+
+    ```txt
+    Employee 101  ───── Profile 101
+    Employee 102  ───── Profile 102
+    Employee 103  ───── Profile 103
+    ```
+
+    *One employee can have one employee profile, and one profile belongs to one employee.*
+
+2. **One-to-Many:** *One entity instance can be associated with many instance of another entity.*
+
+    ```txt
+    Department → Employees
+
+    IT Department
+        │
+        ├── Rahul
+        ├── Arjun
+        └── Sneha
+    ```
+
+    *One department can have many employees, while each employee belongs to one department.*
+
+3. **Many-to-Many:** *Many instances of one entity can be associated with many instances of another entity.*
+
+    ```txt
+    Employee ↔ Project
+
+    Rahul → Project A
+    Rahul → Project B
+
+    Priya → Project A
+    Priya → Project C
+    ```
+
+    *An employee can work on many projects, and a project can have many employees.*
+
+---
 
 
 
