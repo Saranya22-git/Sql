@@ -50,6 +50,9 @@ Hey!!
     - [**Attribute**](#attribute)
     - [**Relationship**](#relationship)
     - [**Cardinality**](#cardinality)
+    - [**Participation**](#participation)
+  - [**Keys**](#keys)
+    - [**Primary Key**](#primary-key)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -1665,6 +1668,178 @@ M : N  → Many-to-Many
     *An employee can work on many projects, and a project can have many employees.*
 
 ---
+
+### **Participation**
+
+*Participation specifies whether every instance of an entity is required to participate in a relationship or whether participation is optional.*
+
+*There are two types*
+- *Total participation*
+- *Partial participation*
+
+---
+
+1. **Total Participation:** *Every instance of an entity must participate in the relationship.*
+
+    **Example:** *Suppose company policy says Every employee must belong to a department then Employee → Department. Every employee must have a department.*
+
+    | employee_id | name  | department_id |
+    | ----------- | ----- | ------------- |
+    |         101 | Rahul |             1 |
+    |         102 | Priya |             2 |
+    |         103 | Arjun |             1 |
+
+    - *Every employee has a ```department_id```*
+    - *So Employee has total participation in the "works in" relationship.* 
+
+2. **Partial Participation:** *Some instances may participate, while others may not.*
+
+    **Example:** *Suppose an employee may or may not be assigned to a project.*
+
+    | employee_id | name  | project_id |
+    | ----------- | ----- | ---------- |
+    |         101 | Rahul |         10 |
+    |         102 | Priya |       NULL |
+    |         103 | Arjun |         20 |
+
+    - *Priya isn't currently assigned to a project*
+    - *Participation is partial because not every employee participates.*
+
+---
+
+**Difference**
+
+| Total Participation                | Partial Participation         |
+| ---------------------------------- | ----------------------------- |
+| Participation is mandatory         | Participation is optional     |
+| Every entity instance participates | Some may not participate      |
+| No entity can be excluded          | Some entities can be excluded |
+
+---
+
+**SQL Connection**
+
+*Suppose we want every employee to have a department.*
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT NOT NULL,
+
+    FOREIGN KEY (department_id)
+        REFERENCES departments(department_id)
+);
+```
+
+**NOTICE:** 
+```sql
+department_id INT NOT NULL
+```
+
+*The database design is enforcing Every employee must participate in the department relationship.*
+
+**Optional Participation:** *If employees are allowed to have no department.*
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+        REFERENCES departments(department_id)
+);
+```
+
+---
+
+## **Keys**
+
+### **Primary Key**
+
+*A primary key is a column or set of columns that uniquely idnetifies each row in a table.*
+
+---
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+    salary DECIMAL(10,2)
+);
+```
+
+*Here ```employee_id → PRIMARY KEY``` each employee_id uniquely identifies an employee.*
+
+---
+
+**Syntax:** *There are two common ways to define a primary key.*
+
+1. **Column-level**
+
+    ```sql
+    CREATE TABLE employees (
+        employee_id INT PRIMARY KEY,
+        name VARCHAR(50),
+        salary DECIMAL(10,2)
+    );
+    ```
+
+2. **Table-level**
+
+    ```sql
+    CREATE TABLE employees (
+        employee_id INT,
+        name VARCHAR(50),
+        salary DECIMAL(10,2)
+
+        PRIMARY KEY(employee_id)
+    );
+    ```
+
+---
+
+**Duplicate Primary Key**
+
+*Suppose we already have ```101 → Rahul```. Now*
+
+```sql
+INSERT INTO employees 
+(employee_id, name, department_id, salary)
+VALUES 
+(101, 'Kiran', 2, 5000);
+```
+
+*This attempt to create ```101 → Rahul``` ```101 → Kiran``` not allowed because a primary key must uniquely identify each row.*
+
+---
+
+**NULL Primary Key**
+
+*A primary key cannot contain NULL. For example*
+
+```sql
+INSERT INTO employees
+(employee_id, name, department_id, salary)
+VALUES
+(NULL, 'Kiran', 2, 50000);
+```
+
+*Not allowed because ```NULL``` does not provide a valid unique identity for a row.*
+
+---
+
+**IMPORTANT POINT:**
+
+*A Primary Key is both UNIQUE and NOT NULL.*
+
+---
+
+**Primary Key Rules**
+
+1. 
 
 
 
