@@ -54,6 +54,7 @@ Hey!!
   - [**Keys**](#keys)
     - [**Primary Key**](#primary-key)
     - [**Foreign Key**](#foreign-key)
+    - [**Candidate Key**](#candidate-key)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -1938,6 +1939,63 @@ REFERENCES departments(department_id)
 *It means ```employees.department_id``` references ```departments.department_id```*
 
 ---
+
+**Parent and Child Table**
+
+**Parent Table:** *The table being referenced.*
+
+**Child Table:** *The table containing the foreign key.*
+
+---
+
+**Foreign Key can Repeat**
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             2 |
+|         103 | Arjun |             1 |
+|         104 | Sneha |             1 |
+
+*Here ```department_id = 1``` appears 3 times. Because ```1 Department → Many Employees```. So a foreign key does not have to be unique.*
+
+---
+
+**Primary Key vs Foreign Key**
+
+| Primary Key                               | Foreign Key                                      |
+| ----------------------------------------- | ------------------------------------------------ |
+| Uniquely identifies rows in its own table | References a key in another table                |
+| Cannot contain NULL                       | Can contain NULL unless restricted by `NOT NULL` |
+| Cannot contain duplicates                 | Can contain duplicates                           |
+| One primary key constraint per table      | A table can have multiple foreign keys           |
+| Maintains entity identity                 | Helps maintain relationships                     |
+
+---
+
+**Can a Table have Multiple Foreign Key?**
+
+*Yes. For example suppose an order has both a customer and a salesperson.*
+
+```sql
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    salesperson_id INT,
+
+    FOREIGN KEY (customer_id)
+        REFERENCES customers(customer_id),
+
+    FOREIGN KEY (salesperson_id)
+        REFERENCES employees(employee_id)
+);
+```
+
+*The ```orders``` table has 2 foreign keys ```customers``` and ```employees```.*
+
+---
+
+### **Candidate Key**
 
 
 
