@@ -53,6 +53,7 @@ Hey!!
     - [**Participation**](#participation)
   - [**Keys**](#keys)
     - [**Primary Key**](#primary-key)
+    - [**Foreign Key**](#foreign-key)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -1758,7 +1759,7 @@ CREATE TABLE employees (
 
 ### **Primary Key**
 
-*A primary key is a column or set of columns that uniquely idnetifies each row in a table.*
+*A primary key is a column or set of columns that uniquely identifies each row in a table.*
 
 ---
 
@@ -1839,7 +1840,107 @@ VALUES
 
 **Primary Key Rules**
 
-1. 
+1. **Must uniquely identify each row**
+2. **Cannot contain NULL**
+3. **A table has one PRIMARY KEY constraint:** *But that primary key can contain multiple columns. This is called a composite primary key.*
+
+---
+
+**Primary Key vs Unique**
+
+| Primary Key                              | UNIQUE                                       |
+| ---------------------------------------- | -------------------------------------------- |
+| Uniquely identifies rows                 | Enforces uniqueness                          |
+| Cannot contain NULL                      | NULL handling depends on DBMS                |
+| One primary key constraint per table     | A table can have multiple UNIQUE constraints |
+| Commonly used as the main row identifier | Used for other values that should be unique  |
+
+---
+
+### **Foreign Key**
+
+*A foreign key is a column or set of columns in one table that references a primary key or unique key in another table.*
+
+**Example:**
+
+*We have our parent table*
+
+*```departments```*
+
+| department_id | department_name |
+| ------------- | --------------- |
+|             1 | IT              |
+|             2 | HR              |
+|             3 | Sales           |
+
+*and child table*
+
+*```employees```*
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             2 |
+|         103 | Arjun |             1 |
+|         104 | Sneha |             1 |
+
+*Here*
+
+```txt
+departments
+department_id
+     ↑
+     │
+     │ referenced by
+     │
+employees
+department_id
+```
+
+*So*
+
+```txt
+departments.department_id → Primary Key
+employees.department_id   → Foreign Key
+```
+
+---
+
+**SQL Syntax**
+
+*Parent table*
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+```
+
+*Child table*
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+    REFERENCES departments(department_id)
+);
+```
+
+```sql
+FOREIGN KEY (department_id)
+REFERENCES departments(department_id)
+```
+
+*It means ```employees.department_id``` references ```departments.department_id```*
+
+---
+
+
+
 
 
 
