@@ -55,6 +55,7 @@ Hey!!
     - [**Primary Key**](#primary-key)
     - [**Foreign Key**](#foreign-key)
     - [**Candidate Key**](#candidate-key)
+    - [**Alternate Key**](#alternate-key)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -1996,6 +1997,91 @@ CREATE TABLE orders (
 ---
 
 ### **Candidate Key**
+
+*A candidate key is a column or combination of columns that can uniquely identify each row in a table and is eligible to be chosen as the primary key.*
+
+*A table can have multiple candidate keys but we choose one of them as the primary key.*
+
+---
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15) UNIQUE,
+    department_id INT,
+    salary DECIMAL(10,2)
+);
+```
+
+*Suppose our data is*
+
+| employee_id | name  | email                                         | phone      |
+| ----------- | ----- | --------------------------------------------- | ---------- |
+|         101 | Rahul | [rahul@company.com](mailto:rahul@company.com) | 9876543210 |
+|         102 | Priya | [priya@company.com](mailto:priya@company.com) | 9123456780 |
+|         103 | Arjun | [arjun@company.com](mailto:arjun@company.com) | 9988776655 |
+
+*Now consider*
+
+```txt
+employee_id
+email
+phone
+```
+
+*Each one can uniquely identify an employee. Therefore, each can potentially be a candidate key.*
+
+---
+
+**Candidate Key vs Primary Key**
+
+| Candidate Key                             | Primary Key                            |
+| ----------------------------------------- | -------------------------------------- |
+| A possible unique identifier              | The selected unique identifier         |
+| A table can have multiple candidate keys  | A table has one primary key constraint |
+| Candidate key must uniquely identify rows | Primary key uniquely identifies rows   |
+| Can be selected as primary key            | Already selected                       |
+| Other candidate keys may remain UNIQUE    | Primary key cannot contain NULL        |
+
+---
+
+**What makes something a Candidate Key?**
+
+1. **Uniqueness:** *It must uniquely identify every row.*
+2. **Minimality:** *A candidate key should contain only the necessary columns needed for uniqueness.*
+
+---
+
+**Composite Candidate Key**
+
+*A candidate key doesn't always have to be one column. It can be a combination of columns.*
+
+*Suppose you have*
+
+| student_id | course_id |
+| ---------- | --------- |
+|        101 |         1 |
+|        101 |         2 |
+|        102 |         1 |
+|        102 |         2 |
+
+*Neither column alone is unique*
+
+```txt
+student_id → 101 appears twice
+course_id  → 1 appears twice
+```
+
+*But together ```(student_id, course_id)``` uniquely identifies each enrollment.*
+
+---
+
+### **Alternate Key**
+
+**
+
 
 
 
