@@ -57,6 +57,7 @@ Hey!!
     - [**Candidate Key**](#candidate-key)
     - [**Alternate Key**](#alternate-key)
     - [**Composite Key**](#composite-key)
+    - [**Super Key**](#super-key)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -2154,7 +2155,127 @@ phone       → Candidate Key + Alternate Key
 
 ### **Composite Key**
 
-**
+*A Composite Key is a key made up of two or more columns together that uniquely identify a row.*
+
+*One column alone cannot uniquely identify the row, but the combination of multiple columns can.*
+
+---
+
+**Why do we need a Composite Key?**
+
+*Let's take an employee-project situation. An employee can work on multiple projects, and a project can have multiple employees.*
+
+| employee_id | project_id | role      |
+| ----------- | ---------- | --------- |
+|         101 |          1 | Developer |
+|         101 |          2 | Tester    |
+|         102 |          1 | Manager   |
+|         103 |          1 | Developer |
+
+- *Look at ```employee_id``` 101 appears twice*
+- *So ```employee_id``` alone cannot uniquely identify a row.*
+- *Now look at ```project_id```. It also repeats*
+- *So ```project_id``` alone cannot uniquely identify a row*
+- *But ```(employee_id, project_id)``` together can uniquely identify the assignment.*
+- *Therefore ```(employee_id, project_id)``` is a Composite Key.*
+
+---
+
+**SQL Syntax**
+
+```sql
+CREATE TABLE employee_projects (
+    employee_id INT,
+    project_id INT,
+    role VARCHAR(50),
+
+    PRIMARY KEY (employee_id, project_id)
+);
+```
+
+*The important part is*
+
+```sql
+PRIMARY KEY (employee_id, project_id)
+```
+
+*The combination of ```employee_id``` and ```project_id``` must be unique.*
+
+---
+
+**Insert Data**
+
+```sql
+INSERT INTO employee_projects
+(employee_id, project_id, role)
+VALUES
+(101, 1, 'Developer'),
+(101, 2, 'Tester'),
+(102, 1, 'Manager');
+```
+
+---
+
+**Composite Key vs Composite Primary Key**
+
+**Composite Key:** *A key consisting of multiple columns. It could be a Composite Primary key, Composite Candidate Key, Composite Foreign Key.*
+
+**Composite Primary Key:** *A primary key spcifically consisting of multiple columns.*
+
+---
+
+**Composite Foreign Key**
+
+*A foreign key can also consist of multiple columns.*
+
+```sql
+CREATE TABLE employee_projects (
+    employee_id INT,
+    project_id INT,
+    PRIMARY KEY (employee_id, project_id)
+);
+```
+
+*Another table could reference both columns*
+
+```sql
+CREATE TABLE project_assignment (
+    employee_id INT,
+    project_id INT,
+    assignment_date DATE,
+
+    FOREIGN KEY (employee_id, project_id)
+    REFERENCES employee_projects (employee_id, project_id)
+);
+```
+
+*Here ```(employee_id, project_id)``` is a Composite Foreign Key.*
+
+*The number and order of columns in the referencing key must correspond to the referenced key.*
+
+---
+
+**Composite Candidate Key**
+
+*A candidate key can also contain multiple columns. For example ```student_id + course_id``` may uniquely identify an enrollment.*
+
+*If it is unique, minimal, capable of identifying a row then it can be a Composite Candidate Key.*
+
+**Candidate Key:** *Describes whether a key is eligible to uniquely identify a row.*
+
+**Composite Key:** *Describes how many columns the key contains.*
+
+*Therefore a key can be both ```Composite + Candidate``` or ```Composite + Primary```.*
+
+---
+
+### **Super Key**
+
+
+
+
+
+
 
 
 
