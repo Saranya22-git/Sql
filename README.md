@@ -56,6 +56,7 @@ Hey!!
     - [**Foreign Key**](#foreign-key)
     - [**Candidate Key**](#candidate-key)
     - [**Alternate Key**](#alternate-key)
+    - [**Composite Key**](#composite-key)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -2080,8 +2081,80 @@ course_id  → 1 appears twice
 
 ### **Alternate Key**
 
-**
+*An Alternate Key is a candidate key that was not selected as the Primary Key.*
 
+```txt
+Candidate keys = all possible choices for Primary Key.
+Primary Key = the candidate key we selected.
+Alternate Keys = the remaining candidate keys.
+```
+
+**Example:** *Suppose ```employees``` has*
+
+| employee_id | name  | email                                     | phone      |
+| ----------- | ----- | ----------------------------------------- | ---------- |
+|         101 | Rahul | [rahul@gmail.com](mailto:rahul@gmail.com) | 9876543210 |
+|         102 | Priya | [priya@gmail.com](mailto:priya@gmail.com) | 9876543211 |
+|         103 | Arjun | [arjun@gmail.com](mailto:arjun@gmail.com) | 9876543212 |
+
+
+*Assume*
+- *```employee_id``` is unique*
+- *```email``` is unique*
+- *```phone``` is unique*
+
+*Therefore we have 3 candidate keys. We choose ```employee_id → Primary Key```. The remaining candidate keys become Alternate Keys.*
+
+---
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15) UNIQUE,
+    department_id INT,
+    salary DECIMAL(10,2),
+    FOREIGN KEY (department_id)
+        REFERENCES departments(department_id)
+);
+```
+
+*Here*
+
+```txt
+employee_id → Primary Key
+email       → Candidate Key + Alternate Key
+phone       → Candidate Key + Alternate Key
+```
+
+---
+
+**Primary Key vs Alternate Key**
+
+| Primary Key                          | Alternate Key                                      |
+| ------------------------------------ | -------------------------------------------------- |
+| Selected candidate key               | Candidate key not selected                         |
+| Main identifier                      | Other possible identifier                          |
+| One primary-key constraint per table | Can be multiple                                    |
+| Cannot contain NULL                  | NULL behavior depends on implementation/constraint |
+| Uniquely identifies rows             | Also uniquely identifies rows                      |
+
+
+---
+
+**IMPORTANT POINT**
+
+*An alternate key must originally qualify as a candidate key. That means it must be*
+- *Unique*
+- *Minimal*
+- *Able to uniquely identify a row*
+
+---
+
+### **Composite Key**
+
+**
 
 
 
