@@ -58,6 +58,7 @@ Hey!!
     - [**Alternate Key**](#alternate-key)
     - [**Composite Key**](#composite-key)
     - [**Super Key**](#super-key)
+    - [**Natural Key**](#natural-key)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -2271,7 +2272,132 @@ CREATE TABLE project_assignment (
 
 ### **Super Key**
 
+*A Super Key is an column or combination of columns that can uniquely identify a row in a table.*
 
+**Example:**
+
+| employee_id | name  | email                                     | phone      | department_id |
+| ----------- | ----- | ----------------------------------------- | ---------- | ------------- |
+|         101 | Rahul | [rahul@gmail.com](mailto:rahul@gmail.com) | 9876543210 |             1 |
+|         102 | Priya | [priya@gmail.com](mailto:priya@gmail.com) | 9876543211 |             2 |
+|         103 | Arjun | [arjun@gmail.com](mailto:arjun@gmail.com) | 9876543212 |             1 |
+
+
+*```employee_id, email, phone``` is unique.*
+
+---
+
+**Can a combination also be a Super Key?**
+
+- *Yes. For example ```(employee_id, name)``` can uniquely identify an employee.*
+- *Because ```employee_id``` alone already uniquely identifies the employee.*
+- *Adding a ```name``` doesn't destroy uniqueness.*
+- *So ```(employee_id, name)``` is also a Super Key.*
+- *So ```(employee_id, department_id)``` is a Super Key.*
+- *And ```(employee_id, email)``` is a Super Key.*
+- *Even ```(employee_id, name, email, phone, department_id, salary)``` would be a Super Key if it uniquely identifies every row.*
+
+---
+
+**Super Key vs Candidate Key**
+
+**Super Key:** *A combination that can uniquely identify a row. It may contain unnecessaru columns.*
+
+**Candidate Key:** *A minimal Super Key. It uniquely identifies a row without unnecessary columns.*
+
+---
+
+**The Key Hierarchy**
+
+```txt
+                    SUPER KEY
+                        │
+              ┌─────────┴─────────┐
+              │                   │
+      Minimal Super Keys    Non-minimal Super Keys
+              │
+        CANDIDATE KEYS
+              │
+       ┌──────┴──────┐
+       │             │
+   PRIMARY KEY   ALTERNATE KEYS
+```
+
+**Example:**
+
+```txt
+Super Keys:
+    employee_id
+    email
+    phone
+    (employee_id, name)
+    (email, phone)
+    ...
+
+Candidate Keys:
+    employee_id
+    email
+    phone
+
+Primary Key:
+    employee_id
+
+Alternate Keys:
+    email
+    phone
+```
+
+---
+
+**Does a Super Key have to be a single column?**
+
+*No. It can be one column or multiple columns or provided the combination uniquely identifies each row.*
+
+---
+
+```txt
+SUPER KEY
+    ↓
+Anything that uniquely identifies a row
+
+CANDIDATE KEY
+    ↓
+Minimal Super Key
+
+PRIMARY KEY
+    ↓
+Candidate Key selected as the main key
+
+ALTERNATE KEY
+    ↓
+Candidate Key not selected as Primary Key
+```
+
+```txt
+Super Keys:
+employee_id
+email
+phone
+(employee_id, name)
+(employee_id, email)
+...
+
+Candidate Keys:
+employee_id
+email
+phone
+
+Primary Key:
+employee_id
+
+Alternate Keys:
+email
+phone
+```
+
+---
+
+### **Natural Key**
 
 
 
