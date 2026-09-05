@@ -59,6 +59,8 @@ Hey!!
     - [**Composite Key**](#composite-key)
     - [**Super Key**](#super-key)
     - [**Natural Key**](#natural-key)
+    - [**Surrogate Key**](#surrogate-key)
+    - [**Business Key**](#business-key)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -2399,7 +2401,321 @@ phone
 
 ### **Natural Key**
 
+*A Natural Key is a key that uses real-world/business information that already exists in the data to uniquely identify a record.*
 
+**Example:** *Consider our employees table*
+
+| employee_id | name  | email                                     | phone      |
+| ----------- | ----- | ----------------------------------------- | ---------- |
+|         101 | Rahul | [rahul@gmail.com](mailto:rahul@gmail.com) | 9876543210 |
+|         102 | Priya | [priya@gmail.com](mailto:priya@gmail.com) | 9876543211 |
+|         103 | Arjun | [arjun@gmail.com](mailto:arjun@gmail.com) | 9876543212 |
+
+*Suppose the company has a real-world employee email that is guaranteed to be unique.*
+
+```txt
+rahul@gmail.com
+priya@gmail.com
+arjun@gmail.com
+```
+
+*The email already exists as meaningful employee information. If the company chooses ```email``` to uniquely identify employees then ```email → Natural Key``` because ```email``` has real-world meaning.*
+
+---
+
+**Natural Key vs Artificial ID**
+
+**Natural Key:** *```email = priya@company.com``` this value has meaning in the real world.*
+
+**Artificial/Generated ID:** *```employee_id = 102``` 102 is simply a database-generated identifier. The number itself doesn't tell us anything about the employee.*
+
+*So*
+
+```txt
+email       → Natural Key
+employee_id → Surrogate Key
+```
+
+---
+
+**Natural Key Characteristics**
+
+*A natural key generally*
+- *Comes from real-world/business data*
+- *Has meaningful information*
+- *Already exists independently of the database*
+- *Should uniquely identify a record if chosen as a key*
+
+---
+
+**Real-World Examples**
+
+- **Student System:** *A university might have ```student_roll_number```. If the roll number is officially assigned and uniquely identifies a student, it can be a natural key.*
+- **Book System:** *A book can have ```ISBN```. ISBN has a real-world meaning and identifies a book edition. So ```ISBN → Natural Key```.*
+- **Vehicle System:** *A vehicle registration number ```AP XX AB 1234``` has real-world meaning. It can be used as a natural key if the system's rules guarantee unqiueness.*
+- **Banking:** *An account number ```123456789``` can be natural/business identifier because it represents a real-world bank account.*
+
+---
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15) UNIQUE,
+    department_id INT,
+    salary DECIMAL(10,2)
+);
+```
+
+*Here we have*
+
+```txt
+employee_id → generated/internal identifier
+email       → meaningful real-world value
+phone       → meaningful real-world value
+```
+
+*If ```email``` is guaranteed to be unique and the organization chooses it as the identifying key, it can serve as a Natural Key.*
+
+---
+
+**Composite Natural Key**
+
+- *A Natural key can also contain multiple columns. Suppose an organization identifies an employee's assignment using ```employee_id + project_code```*
+- *If those values represent meaningful business information and together uniquely identify the assignment, they can form a composite natural key.*
+
+---
+
+### **Surrogate Key**
+
+*A Surrogate Key is an artificial/generated identifier created by the database or application to uniquely identify a row. It has no meaningful business information.*
+
+*For example*
+
+```txt
+employee_id = 101
+employee_id = 102
+employee_id = 103
+```
+
+---
+
+**Why do we use Surrogate Keys?**
+
+- *Imagine an employee has ```Email: priya@gmail.com Phone: 9876543211```. These are real-world values and can potentially change.*
+- *But we can create ```employee_id = 102``` and use that as the permanent internal identifier.*
+- *So even if ```priya@gmail.com``` changes to ```priya123@gmail.com``` the employee can still remain ```employee_id = 102```.*
+
+---
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15) UNIQUE,
+    department_id INT,
+    salary DECIMAL(10,2),
+    FOREIGN KEY (department_id)
+        REFERENCES departments(department_id)
+);
+```
+
+*If ```employee_id``` is generated solely for database identification, then ```employee_id → Surrogate Key``` while ```email, phone → Natural/Business identifier```.*
+
+---
+
+**How is a Surrogate Key generated?**
+
+**Auto-increment**
+
+```sql
+employee_id INT AUTO_INCREMENT PRIMARY KEY
+```
+
+*The database generated values such as*
+
+```txt
+101
+102
+103
+104
+```
+
+---
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    salary DECIMAL(10,2)
+);
+```
+
+```sql
+INSERT INTO employees (name, email, salary)
+VALUES ('Rahul', 'rahul@gmail.com', 70000);
+```
+
+*You don't provide ```employee_id``` the database generates it.*
+
+---
+
+**Surrogate Key vs Natural Key**
+
+| Surrogate Key                       | Natural Key                           |
+| ----------------------------------- | ------------------------------------- |
+| Artificial/generated                | Comes from real-world data            |
+| Usually has no business meaning     | Has business meaning                  |
+| Created for database identification | Already exists in the business domain |
+| Usually stable                      | May change                            |
+| Often numeric                       | Can be text or numeric                |
+| Example: `employee_id = 101`        | Example: `email`                      |
+| Example: `customer_id = 501`        | Example: `ISBN`                       |
+
+---
+
+### **Business Key**
+
+*A Business Key is an attribute or combination of attributes that has meaning to the business and is used to identify a real-world entity.*
+
+*For example a company might identify an employee using ```Employee Number: EMP00125```. The business understands this value and uses it to refer to that employee. So ```EMP00125``` can be a Business Key.*
+
+---
+
+**Example:**
+
+| employee_id | employee_code | name  | email                                         |
+| ----------- | ------------- | ----- | --------------------------------------------- |
+|         101 | EMP001        | Rahul | [rahul@company.com](mailto:rahul@company.com) |
+|         102 | EMP002        | Priya | [priya@company.com](mailto:priya@company.com) |
+|         103 | EMP003        | Arjun | [arjun@company.com](mailto:arjun@company.com) |
+
+
+*Suppose ```employee_id``` is automatically generated by the database but ```employee_code``` is assigned by the company's HR system and is meaningful to the business.*
+
+```txt
+employee_code → Business Key
+employee_id   → Surrogate Key
+```
+
+---
+
+**Why is it called a Business Key?**
+
+*Because the value comes from business rules or business processes.*
+
+- *For example, a company may use to identify employees.*
+
+```txt
+EMP001
+EMP002
+EMP003
+```
+
+- *A bank may use ```Account Number```*
+- *A shop may use ```SKU```*
+- *An organization may use ```Customer number```*
+
+*These identifiers matter to the business.*
+
+---
+
+**Business Key vs Surrogate Key**
+
+| Business Key                           | Surrogate Key                      |
+| -------------------------------------- | ---------------------------------- |
+| Has business meaning                   | Usually no business meaning        |
+| Used/recognized by business            | Used mainly internally by database |
+| Based on business rules                | Artificially generated             |
+| Can be text or numeric                 | Often numeric or generated ID      |
+| May change depending on business rules | Usually designed to remain stable  |
+| Example: `EMP001`                      | Example: `101`                     |
+
+---
+
+**Business Key vs Natural Key**
+
+**Natural Key:** *A key derived from real-world data that has inherent meaning.*
+
+**Business Key:** *A key that the business uses to identify an entity according to its business rules.*
+
+---
+
+```sql
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_code VARCHAR(20) UNIQUE NOT NULL,
+    name VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    salary DECIMAL(10,2)
+);
+```
+
+*Here*
+
+```txt
+employee_id
+    ↓
+Surrogate Key
+    ↓
+Primary Key
+```
+
+```txt
+employee_code
+    ↓
+Business Key
+    ↓
+UNIQUE
+```
+
+---
+
+**Business Key does not have to be the Primary Key**
+
+*A business key can be the primary key, but it doesn't have to be.*
+
+*Business Key as PK*
+
+```sql
+CREATE TABLE employees (
+    employee_code VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(50)
+);
+```
+
+*Surrogate Key as PK*
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    employee_code VARCHAR(20) UNIQUE,
+    name VARCHAR(50)
+);
+```
+
+---
+
+**Composite Business Key**
+
+*A business key can contain multiple columns.*
+
+*Suppose a company identifies a store's product using ```store_code + product_code```*
+
+| store_code | product_code |
+| ---------- | ------------ |
+| HYD01      | P100         |
+| HYD01      | P200         |
+| VJA01      | P100         |
+
+*Here ```(store_code, product_code)``` can be a Composite Business Key if that combination uniquely identifies the business entity.*
+
+---
 
 
 
