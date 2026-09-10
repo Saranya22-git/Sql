@@ -2826,6 +2826,35 @@ salary        → can be NULL unless restricted
 
 ### **UNIQUE**
 
+*The ```UNIQUE``` constraint ensures that duplicate values are not allowed in a column or combination of columns.*
+
+---
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15) UNIQUE,
+    department_id INT,
+    salary DECIMAL(10,2)
+);
+```
+
+```txt
+employee_id → PRIMARY KEY
+email       → UNIQUE
+phone       → UNIQUE
+```
+
+*So two employees cannot have the same email and phone number.*
+
+---
+
+
+
 
 
 
