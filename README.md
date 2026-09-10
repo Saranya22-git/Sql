@@ -64,6 +64,7 @@ Hey!!
   - [**Constraints**](#constraints)
     - [**NOT NULL**](#not-null)
     - [**UNIQUE**](#unique)
+    - [**PRIMARY KEY**](#primary-key-1)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -2852,6 +2853,108 @@ phone       → UNIQUE
 *So two employees cannot have the same email and phone number.*
 
 ---
+
+**UNIQUE on Multiple Columns**
+
+- *A ```UNIQUE``` constraint can also be applied to multiple columns together.*
+- *This is called a Composite UNIQUE constraint.*
+
+**Example:** *Suppose a employee can work on a project only once*
+
+```sql
+CREATE TABLE employee_projects (
+    employee_id INT,
+    project_id INT,
+    role VARCHAR(50),
+
+    UNIQUE (employee_id, project_id)
+);
+```
+
+*Now*
+
+```txt
+(101, 1)
+(101, 2)
+(102, 1)
+```
+
+*are valid*
+
+*But ```(101,1)``` cannot appear again.*
+
+- *```employee_id``` itself can repeat*
+- *```project_id``` itself can repeat*
+- *Only the combination must be unique*
+
+---
+
+**Named UNIQUE constraint**
+
+*Instead of letting the database automatically name the constraint, we can give it a name.*
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100),
+
+    CONSTRAINT uq_employee_email
+        UNIQUE (email)
+);
+```
+
+*Here ```uq_employee_email``` is the constraint name.*
+
+---
+
+**Adding UNIQUE to an Existing table**
+
+*Suppose the table already exists*
+
+```sql
+ALTER TABLE employees
+ADD CONSTRAINT uq_employee_email
+UNIQUE (email);
+```
+
+---
+
+**Removing a UNIQUE Constraint**
+
+```sql
+ALTER TABLE employees
+DROP CONSTRAINT uq_employee_email;
+```
+
+*Exact syntax can differ between database system*
+
+*MySQL commonly uses*
+
+```sql
+ALTER TABLE employees
+DROP INDEX uq_employee_email;
+```
+
+---
+
+**UNIQUE vs PRIMARY KEY**
+
+| PRIMARY KEY                          | UNIQUE                                                                      |
+| ------------------------------------ | --------------------------------------------------------------------------- |
+| Uniquely identifies each row         | Prevents duplicate values                                                   |
+| Cannot contain NULL                  | NULL handling is DB-specific                                                |
+| One primary-key constraint per table | Multiple UNIQUE constraints possible                                        |
+| Main identifier of the table         | Can enforce uniqueness on other columns                                     |
+| Can be referenced by foreign keys    | Can also be referenced if the DB supports referencing a suitable unique key |
+
+---
+
+### **PRIMARY KEY**
+
+
+
+
 
 
 
