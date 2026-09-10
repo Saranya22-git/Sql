@@ -65,6 +65,8 @@ Hey!!
     - [**NOT NULL**](#not-null)
     - [**UNIQUE**](#unique)
     - [**PRIMARY KEY**](#primary-key-1)
+    - [**FOREIGN KEY**](#foreign-key-1)
+    - [**CHECK**](#check)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -2952,11 +2954,208 @@ DROP INDEX uq_employee_email;
 
 ### **PRIMARY KEY**
 
+*A ```PRIMARY KEY``` is a constraint that uniquely identifies each row in a table.*
 
+*A primary key*
+- *Must be unique*
+- *Cannot contain NULL*
+- *Can contain one column or multiple columns*
+- *A table can have only one primary key constraint*
 
+---
 
+**Example:**
 
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15) UNIQUE,
+    department_id INT,
+    salary DECIMAL(10,2)
+);
+```
 
+*Here ```employee_id → PRIMARY KEY``` So every employee must have a different ```employee_id```*
+
+---
+
+**Syntax:**
+
+**Column-level**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+```
+
+**Table-level**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT,
+    name VARCHAR(50),
+
+    PRIMARY KEY (employee_id)
+);
+```
+
+*Both define ```employee_id``` as the primary key.*
+
+---
+
+**Composite Primary Key**
+
+*A primary key can contain multiple columns.*
+
+```sql
+CREATE TABLE employee_projects (
+    employee_id INT,
+    project_id INT,
+    role VARCHAR(50),
+
+    PRIMARY KEY (employee_id, project_id)
+);
+```
+
+---
+
+**Can a Primary Key be changed?**
+
+- *Yes technically. For example*
+
+        ```sql
+        UPDATE employees
+        SET employee_id = 105
+        WHERE employee_id = 101;
+        ```
+
+- *But changing a primary key can be problematic if other tables reference it through foreign keys.*
+- *Therefore, primary keys are generally designed to be stable.*
+- *This is one reason surrogate keys are commonly used.*
+
+---
+
+**Adding a Primary Key to an Existing Table**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT,
+    name VARCHAR(50)
+);
+```
+
+```sql
+ALTER TABLE employees
+ADD PRIMARY KEY (employee_id);
+```
+
+- *This will fail if existing employee_id values contain duplicates or NULLs.*
+- *So before adding the constraint, existing data must satisfy primary-key requirements.*
+
+---
+
+**Removing a Primary Key**
+
+```sql
+ALTER TABLE employees
+DROP PRIMARY KEY;
+```
+
+*The exact syntax can vary by SQL database. In MySQL, ```DROP PRIMARY KEY``` is commonly used.*
+
+---
+
+**Primary Key + AUTO_INCREMENT**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE
+);
+```
+
+*When you insert*
+
+```sql
+INSERT INTO employees (name, email)
+VALUES ('Rahul', 'rahul@gmail.com');
+```
+
+*The database can generate ```employee_id = 1``` Next employee ```employee_id = 2``` and so on*
+
+```txt
+employee_id
+     ↓
+AUTO_INCREMENT
+     +
+PRIMARY KEY
+     +
+Surrogate Key
+```
+
+---
+
+### **FOREIGN KEY**
+
+*A ```FOREIGN KEY``` is a constraint that ensures values in one table refer to valid values in another table.*
+
+---
+
+**Syntax:**
+
+**Column-level/Table-level:**
+
+```sql
+FOREIGN KEY (column_name)
+REFERENCES parent_table(parent_column)
+```
+
+```sql
+FOREIGN KEY (department_id)
+REFERENCES departments (department_id)
+```
+
+---
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50) NOT NULL
+);
+```
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+        REFERENCES departments(department_id)
+);
+```
+
+*Here*
+
+```txt
+departments.department_id
+        ↓
+     PRIMARY KEY
+
+employees.department_id
+        ↓
+     FOREIGN KEY
+```
+
+---
+
+### **CHECK**
 
 
 
