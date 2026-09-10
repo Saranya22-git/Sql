@@ -61,6 +61,9 @@ Hey!!
     - [**Natural Key**](#natural-key)
     - [**Surrogate Key**](#surrogate-key)
     - [**Business Key**](#business-key)
+  - [**Constraints**](#constraints)
+    - [**NOT NULL**](#not-null)
+    - [**UNIQUE**](#unique)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -2716,6 +2719,115 @@ CREATE TABLE employees (
 *Here ```(store_code, product_code)``` can be a Composite Business Key if that combination uniquely identifies the business entity.*
 
 ---
+
+## **Constraints**
+
+*A constraint is a rule that restricts or validates the data stored in a database table.*
+
+| Constraint    | Main purpose                             |
+| ------------- | ---------------------------------------- |
+| `NOT NULL`    | Prevents NULL                            |
+| `UNIQUE`      | Prevents duplicate values                |
+| `PRIMARY KEY` | Unique row identifier; not NULL          |
+| `FOREIGN KEY` | Maintains valid references               |
+| `CHECK`       | Enforces a condition                     |
+| `DEFAULT`     | Supplies a value when one isn't provided |
+
+---
+
+### **NOT NULL**
+
+*```NOT NULL``` is a constraint that prevents a column from storing NULL values.*
+
+*For example, every employee should have a name*
+
+```sql
+name VARCHAR(50) NOT NULL
+```
+
+---
+
+**Syntax:**
+
+*While creating a table*
+
+```sql
+column_name data_type NOT NULL
+```
+
+**Example:**
+
+```sql
+name VARCHAR(50) NOT NULL
+```
+
+---
+
+**NOT NULL and Empty String are different**
+
+**NULL:** *No value/unknown/missing value*
+
+**Empty String:** ```''``` *Astring value exists, but it contains zero characters*
+
+---
+
+**NOT NULL and Zero are different**
+
+- *Similarly ```salary=0``` is NOT NULL. Zero is an actual numeric value. So ```salary DECIMAL (10,2) NOT NULL``` allows ```salary = 0``` unless another constraint prevents it.*
+- *If you want salary to be greater than zero, you'd use a ```CHECK``` constraint.*
+
+```sql
+salary DECIMAL (10,2) NOT NULL CHECK (salary>0)
+```
+
+---
+
+**NOT NULL vs DEFAULT**
+
+**NOT NULL:** *A value must exist.*
+
+**DEFAULT:** *If a value isn't provided, use this value automatically.*
+
+```sql
+department_id INT NOT NULL DEFAULT 1
+```
+
+---
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15) UNIQUE,
+    department_id INT NOT NULL,
+    salary DECIMAL(10,2),
+
+    FOREIGN KEY (department_id)
+        REFERENCES departments(department_id)
+);
+```
+
+```txt
+employee_id   → PRIMARY KEY → cannot be NULL
+name          → NOT NULL
+email         → UNIQUE, but can potentially be NULL
+phone         → UNIQUE, but can potentially be NULL
+department_id → NOT NULL + FOREIGN KEY
+salary        → can be NULL unless restricted
+```
+
+---
+
+### **UNIQUE**
+
+
+
 
 
 
