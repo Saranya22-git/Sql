@@ -3157,6 +3157,75 @@ employees.department_id
 
 ### **CHECK**
 
+*A ```CHECK``` constraint ensures that values inserted or updated in a column satisfy a specified condition.*
+
+*For example, an employee's salary should not be negative*
+
+```sql
+salary DECIMAL(10, 2) CHECK (salary >=0)
+```
+
+*The database checks the condition whenever data is inserted or updated.*
+
+---
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    department_id INT,
+    salary DECIMAL(10,2) CHECK (salary >= 0)
+);
+```
+
+*Here ```salary >=0``` is the rule.*
+
+---
+
+**Syntax:**
+
+**Column-level**
+
+```sql
+column_name datatype CHECK (condition)
+```
+
+**Example:**
+
+```sql
+salary DECIMAL(10,2) CHECK (salary>=0)
+```
+
+**Table-level**
+
+```sql
+CHECK (condition)
+```
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    salary DECIMAL(10,2),
+
+    CHECK (salary >= 0)
+);
+```
+
+---
+
+**CHECK with ```IN```**
+
+
+
+
+
+
 
 
 
