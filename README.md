@@ -3418,6 +3418,119 @@ status VARCHAR(20) NOT NULL DEFAULT 'Active'
 
 ---
 
+**DEFAULT with Numbers**
+
+```sql
+salary DECIMAL (10,2) DEFAULT 0
+```
+
+*If we don't provide salary*
+
+```sql
+INSERT INTO employees (employee_id, name)
+VALUES (102, 'Priya');
+```
+
+*The database uses ```salary = 0```*
+
+---
+
+**DEFAULT with Dates**
+
+*You can use date/time expressions depending on the SQL database*
+
+```sql
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+```
+
+*When a row is inserted, the database automatically records the current timestamp*
+
+**Example:**
+
+```txt
+employee_id = 101
+name        = Rahul
+created_at  = current timestamp
+```
+
+---
+
+**DEFAULT only applies when the value is Omitted**
+
+*Suppose*
+
+```sql
+status VARCHAR(20) DEFAULT 'Active'
+```
+
+**Case-1:** *Omit the column*
+
+```sql
+INSERT INTO employees (employee_id, name)
+VALUES (101, 'Rahul');
+```
+
+*Default can be applied ```status = Active```*
+
+**Case-2:** *Explicitly provide a value*
+
+```sql
+INSERT INTO employees (employee_id, name, status)
+VALUES (102, 'Priya', 'Inactive');
+```
+
+*Database uses ```status = Inactive``` The default is not used*
+
+---
+
+**DEFAULT and NULL**
+
+*Consider*
+
+```sql
+status VARCHAR(20) DEFAULT 'Active'
+```
+
+*If you explicitly insert*
+
+```sql
+INSERT INTO employees (employee_id, name, status)
+VALUES (103, 'Arjun', NULL);
+```
+
+*You are explicitly providing ```NULL``` The default is generally not used simply because the provided value is NULL. If the column permits NULL it can remain NULL*
+
+---
+
+**Changing a DEFAULT**
+
+*The exact syntax depends on the SQL database*
+
+**For PostgreSQL:**
+
+```sql
+ALTER TABLE employees
+ALTER COLUMN status SET DEFAULT 'Active';
+```
+
+**For MySQL:**
+
+```sql
+ALTER TABLE employees
+ALTER COLUMN status SET DEFAULT 'Active';
+```
+
+*or commonly*
+
+```sql
+ALTER TABLE employees
+MODIFY status VARCHAR(20) DEFAULT 'Active';
+```
+
+*DEFAULT can be added, changed, or removed using ALTER TABLE, but the syntax is database-specific*
+
+---
+
 | Constraint    | What does it enforce?            |
 | ------------- | -------------------------------- |
 | `NOT NULL`    | Value cannot be NULL             |
