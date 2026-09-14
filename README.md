@@ -3221,8 +3221,129 @@ CREATE TABLE employees (
 
 **CHECK with ```IN```**
 
+*Suppose employee status can only be*
 
+```txt
+Active
+Inactive
+On Leave
+```
 
+```sql
+status VARCHAR(50)
+CHECK (status IN ('Active', 'Inactive', 'On Leave'))
+```
+
+*The database itself enforces the allowed values.*
+
+---
+
+**CHECK with Multiple Conditions**
+
+*You can combine conditions*
+
+```sql
+CHECK (salary > 0 AND salary <= 1000000)
+```
+
+*This means salary must be > 0 AND <= 1000000*
+
+---
+
+**CHECK with Multiple Columns**
+
+*A ```CHECK``` constraint can also involve more than one column*
+
+**Example:** *Suppose an employee's minimum salary should depend on their experience*
+
+```sql
+CHECK ( experience_years = 0 OR salary >= 20000)
+```
+
+---
+
+**CHECK vs NOT NULL**
+
+**NOT NULL:** *Checks whether a value is missing*
+
+```sql
+name VARCHAR(20) NOT NULL
+```
+
+*```name``` cannot be NULL*
+
+**CHECK:** *Checks whether a value satisfies a condition*
+
+```sql
+salary DECIMAL (10, 2) CHECK (salary>0)
+```
+
+*Salary must be greater than zero*
+
+---
+
+**CHECK vs UNIQUE**
+
+**UNIQUE:** *Prevents duplicates*
+
+```sql
+email VARCHAR(100) unique
+```
+
+**CHECK:** *Enforces a condition*
+
+```sql
+salary DECIMAL (10, 2) CHECK (salary>0)
+```
+
+---
+
+**Named CHECK Constraint**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    salary DECIMAL(10,2),
+
+    CONSTRAINT chk_employee_salary
+    CHECK (salary>0)
+);
+```
+
+*Here ```chk_employee_salary``` is the constraint name. This makes database administration easier because you can identify the exact constraint.*
+
+---
+
+**Adding CHECK to Existing Table**
+
+*Suppose the table already exists*
+
+```sql
+ALTER TABLE employees
+ADD CONSTRAINT chk_employee_salary
+CHECK (salary > 0);
+```
+
+*Now the database will enforce ```salary > 0``` for applicable inserts/updates*
+
+---
+
+**CHECK during UPDATE**
+
+*CHECK constraints aren't only for ```INSERT```. They also apply when a value is updated.*
+
+*Suppose ```employee_id = 101 salaey = 60000``` then*
+
+```sql
+UPDATE employees
+SET salary = -1000
+WHERE employee_id = 101;
+```
+
+*Rejected because ```salary > 0``` is violated*
+
+---
 
 
 
