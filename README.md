@@ -67,6 +67,7 @@ Hey!!
     - [**PRIMARY KEY**](#primary-key-1)
     - [**FOREIGN KEY**](#foreign-key-1)
     - [**CHECK**](#check)
+    - [**DEFAULT**](#default)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -3344,6 +3345,44 @@ WHERE employee_id = 101;
 *Rejected because ```salary > 0``` is violated*
 
 ---
+
+### **DEFAULT**
+
+*The ```DEFAULT``` constraint specifies a value that the database automatically uses when an ```INSERT``` statement does not provide a value for that column.*
+
+**Example:** *Suppose every new employee should initially have the status ```Active```*
+
+```sql
+status VARCHAR(20) DEFAULT 'Active'
+```
+
+*Now if we insert*
+
+```sql
+INSERT INTO employees (employee_id, name)
+VALUES (101, 'Rahul')
+```
+
+*We didn't provide ```status``` The database automatically uses ```status = 'Active'```. So the row becomes*
+
+| employee_id | name  | status |
+| ----------- | ----- | ------ |
+|         101 | Rahul | Active |
+
+---
+
+
+| Constraint    | What does it enforce?            |
+| ------------- | -------------------------------- |
+| `NOT NULL`    | Value cannot be NULL             |
+| `UNIQUE`      | Duplicate values not allowed     |
+| `PRIMARY KEY` | Main unique, non-NULL identifier |
+| `FOREIGN KEY` | Valid reference to another table |
+| `CHECK`       | Value must satisfy a condition   |
+| `DEFAULT`     | Supplies a value when omitted    |
+
+
+
 
 
 
