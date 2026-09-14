@@ -3408,6 +3408,14 @@ status VARCHAR(20) DEFAULT 'Active'
 
 *This means If the column is omitted during insertion use `Active` It does not automatically mean NULL is forbidden*
 
+*If you want both*
+
+```sql
+status VARCHAR(20) NOT NULL DEFAULT 'Active'
+```
+
+*Now ```status``` cannot be NULL, If omitted ```Active``` is used.*
+
 ---
 
 | Constraint    | What does it enforce?            |
