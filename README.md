@@ -3371,6 +3371,32 @@ VALUES (101, 'Rahul')
 
 ---
 
+**Syntax:**
+
+```sql
+column_name data_type DEFAULT default_value
+```
+
+**Example:**
+
+```sql
+status VARCHAR(20) DEFAULT 'Active'
+```
+
+---
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    department_id INT,
+    salary DECIMAL (10, 2) DEFAULT 0,
+    status VARCHAR (20) DEFAULT 'Active'
+);
+```
+
+---
 
 | Constraint    | What does it enforce?            |
 | ------------- | -------------------------------- |
