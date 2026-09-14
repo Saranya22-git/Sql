@@ -3398,6 +3398,18 @@ CREATE TABLE employees (
 
 ---
 
+**DEFAULT does not mean NOT NULL**
+
+*Consider*
+
+```sql
+status VARCHAR(20) DEFAULT 'Active'
+```
+
+*This means If the column is omitted during insertion use `Active` It does not automatically mean NULL is forbidden*
+
+---
+
 | Constraint    | What does it enforce?            |
 | ------------- | -------------------------------- |
 | `NOT NULL`    | Value cannot be NULL             |
@@ -3406,6 +3418,10 @@ CREATE TABLE employees (
 | `FOREIGN KEY` | Valid reference to another table |
 | `CHECK`       | Value must satisfy a condition   |
 | `DEFAULT`     | Supplies a value when omitted    |
+
+---
+
+
 
 
 
