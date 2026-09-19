@@ -74,6 +74,7 @@ Hey!!
     - [**ON DELETE SET NULL**](#on-delete-set-null)
     - [**ON DELETE RESTRICT**](#on-delete-restrict)
     - [**ON DELETE NO ACTION**](#on-delete-no-action)
+    - [**ON UPDATE CASCADE**](#on-update-cascade)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -3891,8 +3892,94 @@ Deletion blocked ❌
 
 ### **ON DELETE NO ACTION**
 
+*```ON DELETE NO ACTION``` means do not automatically change or delete the child rows when the parent row is deleted.*
 
+**Example:**
 
+**Parent Table**
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+```
+
+**Child Table**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+    REFERENCES departments (department_id)
+    ON DELETE NO ACTION
+);
+```
+
+---
+
+**Example:**
+
+*```departments```*
+
+| department_id | department_name |
+| ------------- | --------------- |
+|             1 | IT              |
+|             2 | HR              |
+
+*```employees```*
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             1 |
+|         103 | Arjun |             2 |
+
+*Try to Delete IT*
+
+```sql
+DELETE FROM departments
+WHERE department_id = 1;
+```
+
+*But employees 101 and 102 still reference department 1*
+
+```txt
+DELETE department 1
+        ↓
+Child rows reference department 1
+        ↓
+❌ Delete rejected
+```
+
+*The department remains and employee remains*
+
+---
+
+**```RESTRICT``` vs ```NO ACTION```**
+
+*Both can prevent deletion of a parent when dependent child rows exist*
+
+```txt
+RESTRICT
+    ↓
+Check immediately
+    ↓
+Block delete if children exist
+
+NO ACTION
+    ↓
+Don't perform a cascading action
+    ↓
+Foreign-key violation prevents invalid result
+```
+
+---
+
+### **ON UPDATE CASCADE**
 
 
 
