@@ -75,6 +75,7 @@ Hey!!
     - [**ON DELETE RESTRICT**](#on-delete-restrict)
     - [**ON DELETE NO ACTION**](#on-delete-no-action)
     - [**ON UPDATE CASCADE**](#on-update-cascade)
+    - [**ON UPDATE SET NULL**](#on-update-set-null)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -3981,7 +3982,83 @@ Foreign-key violation prevents invalid result
 
 ### **ON UPDATE CASCADE**
 
+*```ON UPDATE CASCADE``` automatically updates the corresponding foreign key values in the child table when the referenced key value in the parent table is changed.*
 
+**Example:**
+
+**Parent Table**
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+```
+
+**Child Table**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+    REFERENCES departments(department_id)
+    ON UPDATE CASCADE
+);
+```
+
+*Here*
+
+```txt
+departments.department_id
+          ↓
+employees.department_id
+```
+
+---
+
+**Example:**
+
+*```departments```*
+
+| department_id | department_name |
+| ------------- | --------------- |
+|             1 | IT              |
+|             2 | HR              |
+
+*```employees```*
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             1 |
+|         103 | Arjun |             2 |
+
+*Now change the Parent ID*
+
+*Suppose we change ```department_id = 1``` to ```department_id = 10```*
+
+```sql
+UPDATE departments
+SET department_id = 10
+WHERE department_id = 1;
+```
+
+*The database automatically changes the child foreign keys because we have ```ON UPDATE CASCADE```*
+
+```txt
+employees
+
+101 | Rahul | 10
+102 | Priya | 10
+103 | Arjun | 2
+```
+
+---
+
+### **ON UPDATE SET NULL**
 
 
 
