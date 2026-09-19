@@ -68,6 +68,10 @@ Hey!!
     - [**FOREIGN KEY**](#foreign-key-1)
     - [**CHECK**](#check)
     - [**DEFAULT**](#default)
+    - [**Constraint Comparison**](#constraint-comparison)
+  - [**Foreign Key Actions**](#foreign-key-actions)
+    - [**ON DELETE CASCADE**](#on-delete-cascade)
+    - [**ON DELETE SET NULL**](#on-delete-set-null)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -3542,8 +3546,165 @@ MODIFY status VARCHAR(20) DEFAULT 'Active';
 
 ---
 
+### **Constraint Comparison**
 
+**PRIMARY KEY:** *A PRIMARY KEY uniquely identifies each row in a table.*
 
+*It*
+- *Must contain unique values*
+- *Cannot contain NULL*
+- *A table can have only one PRIMARY KEY constraint*
+- *That primary key can contain multiple columns (composite primary key)*
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100)
+);
+```
+
+*Here ```employee_id``` uniquely identifies every employee*
+
+```txt
+employee_id | name
+------------|-------
+101         | Rahul
+102         | Priya
+103         | Arjun
+```
+
+*You cannot have ```101 | Sneha``` because ```101``` already exists*
+
+*You also cannot have ```NULL | Sneha``` because a primary key cannot be NULL*
+
+---
+
+**UNIQUE:** *A UNIQUE constraint ensures that values in a column or combination of columns are not duplicated. Unlike a primary key, a table can have multiple UNIQUE constraints.*
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(50) UNIQUE,
+    phone VARCHAR(50) UNIQUE
+);
+```
+
+*Here*
+- *```employee_id``` → PRIMARY KEY*
+- *```email``` → UNIQUE*
+- *```phone``` → UNIQUE*
+
+*So an employee cannot have the same email or phone number as another employee*
+
+---
+
+**MAIN DIFFERENCE**
+
+| Feature              | PRIMARY KEY         | UNIQUE                         |
+| -------------------- | ------------------- | ------------------------------ |
+| Purpose              | Identifies each row | Prevents duplicate values      |
+| Duplicate values     | ❌ Not allowed       | ❌ Not allowed                  |
+| NULL                 | ❌ Not allowed       | DB-dependent; commonly allowed |
+| Number per table     | One PK constraint   | Multiple UNIQUE constraints    |
+| Composite allowed    | ✅ Yes               | ✅ Yes                          |
+| Can identify the row | ✅ Yes               | Can, if suitable               |
+| Common use           | Employee ID         | Email, phone                   |
+
+---
+
+## **Foreign Key Actions**
+
+### **ON DELETE CASCADE**
+
+*```ON DELETE CASCADE``` automatically deletes the related rows in the child table when the referenced row in the parent table is deleted.*
+
+**Example:**
+
+**Parent table - ```departments```**
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+```
+
+**Child table - ```employees```**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+    REFERENCES departments (department_id)
+    ON DELETE CASCADE
+);
+```
+
+*Here*
+
+```txt
+departments
+     ↓
+employees
+```
+
+- *```departments.department_id``` is the Parent key*
+- *```employees.department_id``` is the Child key*
+
+---
+
+**Example:**
+
+*```departments```*
+
+| department_id | department_name |
+| ------------- | --------------- |
+|             1 | IT              |
+|             2 | HR              |
+|             3 | Sales           |
+
+*```employees```*
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             2 |
+|         103 | Arjun |             1 |
+|         104 | Sneha |             1 |
+
+*```Rahul, Arjun, Sneha → IT``` so three employees belong to department 1*
+
+*Now Delete department 1*
+
+```sql
+DELETE FROM departments
+WHERE department_id = 1;
+```
+
+*Because we used ```ON DELETE CASCADE``` the database automatically deletes all employees whose ```department_id = 1```*
+
+*So these rows are automatically deleted*
+
+```txt
+101 | Rahul | 1
+103 | Arjun | 1
+104 | Sneha | 1
+```
+
+*The remaining employee is ```102 | Priya | 2```*
+
+---
+
+### **ON DELETE SET NULL**
 
 
 
