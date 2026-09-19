@@ -72,6 +72,8 @@ Hey!!
   - [**Foreign Key Actions**](#foreign-key-actions)
     - [**ON DELETE CASCADE**](#on-delete-cascade)
     - [**ON DELETE SET NULL**](#on-delete-set-null)
+    - [**ON DELETE RESTRICT**](#on-delete-restrict)
+    - [**ON DELETE NO ACTION**](#on-delete-no-action)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -3706,6 +3708,188 @@ WHERE department_id = 1;
 
 ### **ON DELETE SET NULL**
 
+*```ON DELETE SET NULL``` automatically changes the foreign key value in the child table to ```NULL``` when the referenced parent row is deleted.*
+
+**Example:**
+
+**Parent**
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+```
+
+**Child**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(20),
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+    REFERENCES departments (department_id)
+    ON DELETE SET NULL
+);
+```
+
+*Here*
+
+```txt
+departments
+     ↓
+employees
+```
+
+*```employees.department_id``` is the foreign key*
+
+---
+
+**Example:**
+
+*```departments```*
+
+| department_id | department_name |
+| ------------- | --------------- |
+|             1 | IT              |
+|             2 | HR              |
+|             3 | Sales           |
+
+*```employees```*
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             2 |
+|         103 | Arjun |             1 |
+|         104 | Sneha |             1 |
+
+*Delete the IT department*
+
+```sql
+DELETE FROM departments
+WHERE department_id = 1;
+```
+
+*The employees are NOT deleted because we specified ```ON DELETE SET NULL```*
+
+*Becomes*
+
+```txt
+101 | Rahul | NULL
+103 | Arjun | NULL
+104 | Sneha | NULL
+```
+
+*The employees still exist only their ```department_id``` reference is removed.*
+
+---
+
+**IMPORTANT REQUIREMENT**
+
+*The foreign key column must be able to store ```NULL```*
+
+*For example*
+
+```sql
+department_id INT
+```
+
+*is fine*
+
+*But*
+
+```sql
+department_id INT NOT NULL
+```
+
+*creates a problem because the database cannot set it to ```NULL```*
+
+---
+
+**CASCADE vs SET NULL**
+
+| Action     | Parent deleted | Child row        |
+| ---------- | -------------- | ---------------- |
+| `CASCADE`  | Deleted        | ❌ Removed       |
+| `SET NULL` | Deleted        | ✅ Remains       |
+| `SET NULL` | FK reference   | Becomes `NULL`   |
+
+---
+
+### **ON DELETE RESTRICT**
+
+*```ON DELETE RESTRICT``` prevents the parent row from being deleted if related child rows exist.*
+
+**Example:**
+
+**Parent table**
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+```
+
+**Child table**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+    REFERENCES departments (department_id)
+    ON DELETE RESTRICT
+);
+```
+
+---
+
+**Example:**
+
+*```departments```*
+
+| department_id | department_name |
+| ------------- | --------------- |
+|             1 | IT              |
+|             2 | HR              |
+|             3 | Sales           |
+
+*```employees```*
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             1 |
+|         103 | Arjun |             2 |
+
+*Try to Delete IT*
+
+```sql
+DELETE FROM departments
+WHERE department_id = 1;
+```
+
+*But employees ```101``` and ```102``` still reference department 1*
+
+```txt
+DELETE department 1
+        ↓
+Employees reference it
+        ↓
+Deletion blocked ❌
+```
+
+*The department remains. The employee remains*
+
+---
+
+### **ON DELETE NO ACTION**
 
 
 
