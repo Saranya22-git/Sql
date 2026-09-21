@@ -4379,6 +4379,119 @@ NO ACTION → Don't perform automatic action
 
 ### **AUTO_INCREMENET**
 
+*```AUTO_INCREMENT``` automatically generates a new numeric value when a new row is inserted. It is commonly used for an ID column such as ```employee_id```*
+
+*```AUTO_INCREMENT``` database automatically generates the next ID*
+
+*Instead of manually writing*
+
+```txt
+101
+102
+103
+104
+```
+
+*the database can generate these values automatically*
+
+---
+
+**Why do we use it?**
+
+*Suppose our employee table is*
+
+```sql
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(50),
+    department_id INT,
+    salary DECIMAL (10, 2)
+);
+```
+
+*Now when inserting an employee we don't need to provide ```employee_id```*
+
+```sql
+INSERT INTO employees (name, email, department_id, salary)
+VALUES ('Sara', 'sara@gmail.com', 1, 80000);
+```
+
+*The database generates the ID automatically*
+
+*For example*
+
+```txt
+employee_id | name
+------------|-------
+1           | Rahul
+```
+
+*Next*
+
+```sql
+INSERT INTO employees (name, email, department_id, salary)
+VALUES ('Priya', 'priya@gmail.com', 1, 70000);
+```
+
+*The database can generate*
+
+```txt
+employee_id | name
+------------|-------
+1           | Rahul
+2           | Priya
+```
+
+---
+
+**Syntax:**
+
+*For MySQL*
+
+```sql
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100)
+);
+```
+
+*The important is*
+
+```sql
+INT AUTO_INCREMENT PRIMARY KEY
+```
+
+---
+
+**Does AUTO_INCREMENT always start at 1?**
+
+*Not neccesarily the starting value can be configured*
+
+*For examplie in MySQL*
+
+```sql
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50)
+) AUTO_INCREMENT = 1000;
+```
+
+*Then generated IDs can begin from*
+
+```txt
+1001
+1002
+1003
+...
+```
+
+---
+
+
+
+
 
 
 
