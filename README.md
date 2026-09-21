@@ -82,7 +82,10 @@ Hey!!
     - [**AUTO\_INCREMENET**](#auto_incremenet)
     - [**GENERATED Columns**](#generated-columns)
     - [**UNSIGNED**](#unsigned)
-    - [\*\*\*\*](#)
+    - [**ZEROFILL**](#zerofill)
+- [**SQL DATA TYPES**](#sql-data-types)
+  - [**Numeric Types**](#numeric-types)
+    - [**TINYINT**](#tinyint)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -4793,7 +4796,291 @@ BIGINT UNSIGNED
 
 ---
 
-### ****
+### **ZEROFILL**
+
+*In MySQL, ```ZEROFILL``` displays a numeric value with leading zeros so that it occupies the defined display width.*
+
+*For example ```5``` can be displayed as ```000005``` if the column's display width is ```6```*
+
+---
+
+**Example:**
+
+```sql
+CREATE TABLE employee (
+    employee_id INT(6) ZEROFILL
+);
+```
+
+*If the stored value is ```5``` it can be displayed as ```000005``` Another value ```125``` can be displayed as ```000125```*
+
+---
+
+**Does ZEROFILL store the Zeros?**
+
+*No, not as part of the numeric value*
+
+*Suppose*
+
+```sql
+INSERT INTO products
+VALUES (25);
+```
+
+*The numeric value is ```25``` The formatting can display ```000025``` So you should think*
+
+```txt
+Stored numeric value
+        ↓
+       25
+
+Display format
+        ↓
+     000025
+```
+
+---
+
+# **SQL DATA TYPES**
+
+*A data type tells the database what kind of value a column is allowed to store*
+
+*For example, in our ```employees``` table*
+
+```sql
+CREATE TABLE employees (
+    employee_id INT,
+    name VARCHAR(50),
+    salary DECIMAL(10, 2),
+    joining_date DATE
+);
+```
+
+*Each column has a different data types*
+
+| Column         | Data Type       | What it stores |
+| -------------- | --------------- | -------------- |
+| `employee_id`  | `INT`           | Whole number   |
+| `name`         | `VARCHAR(50)`   | Text           |
+| `salary`       | `DECIMAL(10,2)` | Decimal number |
+| `joining_date` | `DATE`          | Date           |
+
+
+- **Numeric Types:** *Used for numbers*
+
+    ```txt
+    TINYINT
+    SMALLINT
+    MEDIUMINT
+    INT
+    BIGINT
+    DECIMAL
+    FLOAT
+    DOUBLE
+    ```
+
+    **Examples:**
+
+    ```txt
+    25
+    100
+    50000
+    60000.50
+    3.14
+    ```
+
+- **Character Types:** *Used for text/characters*
+
+    ```txt
+    CHAR
+    VARCHAR
+    TEXT
+    TINYTEXT
+    MEDIUMTEXT
+    LONGTEXT
+    ```
+
+    **Examples:**
+
+    ```txt
+    'Rahul'
+    'Hyderabad'
+    'Employee ID'
+    'This is a long description...'
+    ```
+
+- **Date & Time Types:** *Used for dates and times*
+
+    ```txt
+    DATE
+    TIME
+    DATETIME
+    TIMESTAMP
+    YEAR
+    ```
+
+    **Examples:**
+
+    ```txt
+    2026-09-21
+    18:30:00
+    2026-09-21 18:30:00
+    2026
+    ```
+
+- **Binary Types:** *Used for binary data*
+
+    ```txt
+    BINARY
+    VARBINARY
+    BLOB
+    ```
+
+- **Other Types**
+
+    ```txt
+    BOOLEAN
+    ENUM
+    SET
+    JSON
+    ```
+
+*These are used for particular kinds of data*
+
+---
+
+```txt
+                 SQL DATA TYPES
+                       │
+        ┌──────────────┼──────────────┐
+        │              │              │
+     Numeric       Character      Date & Time
+        │              │              │
+     INT          VARCHAR           DATE
+     BIGINT       CHAR              TIME
+     DECIMAL      TEXT              DATETIME
+     FLOAT                          TIMESTAMP
+     ...                            ...
+        │
+        └──────────────┬──────────────┘
+                       │
+                 Binary / Other
+                       │
+              BINARY / BLOB
+              BOOLEAN / JSON
+              ENUM / SET
+```
+
+---
+
+**Data Type vs Constraint**
+
+**Data Type:** *What kind of value can this column store?*
+
+**Constraint:** *What rules must that value follow?*
+
+---
+
+## **Numeric Types**
+
+### **TINYINT**
+
+*```TINYINT``` is a SQL integer data type used to store small whole numbers. It does not store decimal values.*
+
+**Examples:**
+
+```txt
+0
+1
+10
+100
+-5
+```
+
+*But not*
+
+```txt
+10.5 ❌
+3.14 ❌
+```
+
+---
+
+**Syntax:**
+
+```sql
+column_name TINYINT
+```
+
+---
+
+**TINYINT Range**
+
+*In MySQL, a signed ```TINYINT``` uses 1 byte and has this range ```-128 to 127``` For ```UNSIGNED``` ```0 to 255```*
+
+*So*
+
+| Type               |       Range |
+| ------------------ | ----------- |
+| `TINYINT`          | -128 to 127 |
+| `TINYINT UNSIGNED` |    0 to 255 |
+
+---
+
+**What can ```TINYINT``` store?**
+
+*Because it is an integer type.*
+
+**Valid**
+
+```txt
+0
+10
+25
+100
+127
+```
+
+*For signed ```TINYINT```, also*
+
+```txt
+-1
+-50
+-128
+```
+
+**Invalid because of range**
+
+*For signed ```TINYINT```*
+
+```txt
+128 ❌
+200 ❌
+```
+
+*For ```TINYINT UNSIGNED```*
+
+```txt
+256 ❌
+```
+
+---
+
+**TINYINT vs INT**
+
+| Feature          | TINYINT       | INT                             |
+| ---------------- | ------------- | ------------------------------- |
+| Type             | Integer       | Integer                         |
+| Storage in MySQL | 1 byte        | 4 bytes                         |
+| Signed range     | -128 to 127   | -2,147,483,648 to 2,147,483,647 |
+| Unsigned range   | 0 to 255      | 0 to 4,294,967,295              |
+| Best for         | Small numbers | Larger integers                 |
+
+---
+
+
+
+
 
 
 
