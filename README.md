@@ -77,6 +77,9 @@ Hey!!
     - [**ON UPDATE CASCADE**](#on-update-cascade)
     - [**ON UPDATE SET NULL**](#on-update-set-null)
     - [**ON UPDATE RESTRICT**](#on-update-restrict)
+    - [**ON UPDATE NO ACTION**](#on-update-no-action)
+  - [**Column Properties**](#column-properties)
+    - [**AUTO\_INCREMENET**](#auto_incremenet)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -4282,6 +4285,80 @@ Try: 1 → 10
 
 ---
 
+### **ON UPDATE NO ACTION**
+
+*```ON UPDATE NO ACTION``` does not automatically update or modify the child foreign key when the referenced parent key is changed.*
+
+*If changing the parent key would violate the foreign key relationship, the update is rejected.*
+
+---
+
+**Example**
+
+**Parent Table**
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+```
+
+**Child Table**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+
+    FOREIGN KEY (department_id),
+    REFERENCES departments (department_id)
+    ON UPDATE NO ACTION
+);
+```
+
+---
+
+*```departments```*
+
+| department_id | department_name |
+| ------------- | --------------- |
+|             1 | IT              |
+|             2 | HR              |
+
+*```employees```*
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             1 |
+|         103 | Arjun |             2 |
+
+*Try to change the Parent Key*
+
+*Suppose we execute*
+
+```sql
+UPDATE departments
+SET department_id = 10
+WHERE department_id = 1;
+```
+
+*But these employees still reference ```Rahul  → 1 Priya  → 1``` with ```ON UPDATE NO ACTION``` the database does not automatically change ```1 → 10``` in the employees table.*
+
+*The update is rejected because it would break the foreign-key relationship*
+
+```txt
+Parent: 1 → 10
+          ↓
+Child still references 1
+          ↓
+❌ Foreign-key violation
+```
+
+---
+
 | Action      | Parent key changes        | Child FK              |
 | ----------- | ------------------------- | --------------------- |
 | `CASCADE`   | ✅ Allowed                 | Automatically changes |
@@ -4298,6 +4375,9 @@ NO ACTION → Don't perform automatic action
 
 ---
 
+## **Column Properties**
+
+### **AUTO_INCREMENET**
 
 
 
