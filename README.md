@@ -76,6 +76,7 @@ Hey!!
     - [**ON DELETE NO ACTION**](#on-delete-no-action)
     - [**ON UPDATE CASCADE**](#on-update-cascade)
     - [**ON UPDATE SET NULL**](#on-update-set-null)
+    - [**ON UPDATE RESTRICT**](#on-update-restrict)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -4060,8 +4061,242 @@ employees
 
 ### **ON UPDATE SET NULL**
 
+*```ON UPDATE SET NULL``` automatically changes the foreign key value in the child table to ```NULL``` when the referenced key in the parent table is updated.*
 
+```txt
+Parent key changes
+       ↓
+Child FK → NULL
+```
 
+**Example:**
+
+**Parent Table**
+
+```txt
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+)
+```
+
+**Child Table**
+
+```txt
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR (50),
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+    REFERENCES departments(department_id)
+    ON UPDATE SET NULL
+);
+```
+
+---
+
+**Example:**
+
+*```departments```*
+
+| department_id | department_name |
+| ------------- | --------------- |
+|             1 | IT              |
+|             2 | HR              |
+
+*```employees```*
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             1 |
+|         103 | Arjun |             2 |
+
+*Update the Parent Key*
+
+*Suppose we change department ID ```1 → 10```*
+
+```sql
+UPDATE departments
+SET department_id = 10
+WHERE department_id = 1;
+```
+
+*Because we have ```ON UPDATE SET NULL``` the child foreign keys referencing ```1``` become ```NULL```*
+
+**Before**
+
+```txt
+101 | Rahul | 1
+102 | Priya | 1
+103 | Arjun | 2
+```
+
+**After**
+
+```txt
+101 | Rahul | NULL
+102 | Priya | NULL
+103 | Arjun | 2
+```
+
+*Rahul and Priya are NOT deleted. Their ```department_id``` simply becomes ```NULL```*
+
+---
+
+**IMPORTANT REQUIREMENT**
+
+*The child foreign key must allow ```NULL```.*
+
+*This is valid*
+
+```sql
+department_id INT
+```
+
+*But this is problematic*
+
+```sql
+department_id INT NOT NULL
+```
+
+---
+
+**```ON UPDATE CASCADE``` vs ```ON UPDATE SET NULL```**
+
+**```ON UPDATE CASCADE```**
+
+- *Parent:* *```1 → 10```*
+- *Child:* *```1 → 10```*
+- *The relationship is maintained*
+
+**```ON UPDATE SET NULL```**
+
+- *Parent:* *```1 → 10```*
+- *Child:* *```1 → NULL```*
+- *The child remains, but its relationship with that parent is removed*
+
+---
+
+**```ON UPDATE SET NULL``` vs ```ON DELETE SET NULL```**
+
+**```ON DELETE SET NULL```:** *Parent row is deleted*
+
+```txt
+Delete parent
+     ↓
+Child FK → NULL
+```
+
+**```ON UPDATE SET NULL```:** *Parent key is changed*
+
+```txt
+Update parent key
+     ↓
+Child FK → NULL
+```
+
+---
+
+### **ON UPDATE RESTRICT**
+
+*```ON UPDATE RESTRICT``` prevents the parent key from being updated if child rows are currently referencing that key.*
+
+---
+
+**Example:**
+
+**Parent Table**
+
+```sql
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+```
+
+**Child Table**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+
+    FOREIGN KEY (department_id)
+    REFERENCES departments(department_id)
+    ON UPDATE RESTRICT
+);
+```
+
+*Here*
+
+```txt
+departments.department_id
+          ↓
+employees.department_id
+```
+
+---
+
+*```departments```*
+
+| department_id | department_name |
+| ------------- | --------------- |
+|             1 | IT              |
+|             2 | HR              |
+
+*```employees```*
+
+| employee_id | name  | department_id |
+| ----------- | ----- | ------------- |
+|         101 | Rahul |             1 |
+|         102 | Priya |             1 |
+|         103 | Arjun |             2 |
+
+*Try to change Department ID*
+
+*Suppose we want ```1 → 10```*
+
+```sql
+UPDATE departments
+SET department_id = 10
+WHERE department_id = 1;
+```
+
+*But employees ```101``` and ```102``` are still referencing ```1```*
+
+*Because of ```ON UPDATE RESTRICT``` the database blocks the update.*
+
+```txt
+Department 1
+     ↑
+     │
+Rahul, Priya
+
+Try: 1 → 10
+        ↓
+❌ UPDATE BLOCKED
+```
+
+---
+
+| Action      | Parent key changes        | Child FK              |
+| ----------- | ------------------------- | --------------------- |
+| `CASCADE`   | ✅ Allowed                 | Automatically changes |
+| `SET NULL`  | ✅ Allowed                 | Becomes `NULL`        |
+| `RESTRICT`  | ❌ Blocked if referenced   | Remains unchanged     |
+| `NO ACTION` | ❌ Invalid update rejected | Remains unchanged     |
+
+```txt
+CASCADE  → Change children too
+SET NULL → Remove child reference
+RESTRICT → Stop the update
+NO ACTION → Don't perform automatic action
+```
+
+---
 
 
 
