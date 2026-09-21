@@ -80,6 +80,8 @@ Hey!!
     - [**ON UPDATE NO ACTION**](#on-update-no-action)
   - [**Column Properties**](#column-properties)
     - [**AUTO\_INCREMENET**](#auto_incremenet)
+    - [**GENERATED Columns**](#generated-columns)
+    - [**UNSIGNED**](#unsigned)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -4489,7 +4491,155 @@ CREATE TABLE employees (
 
 ---
 
+### **GENERATED Columns**
 
+*A GENERATED column is a column whose value is automatically calculated from an expression based on other columns.*
+
+*For example, suppose we have ```salary, bonus``` We can create ```total_salary = salary + bonus```. The database calculates ```total_salary```*
+
+---
+
+**Example**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    salary DECIMAL (10, 2),
+    bonus DECIMAL (10, 2),
+
+    total_compensation DECIMAL (10, 2)
+    GENERATED ALWAYS AS (salary + bonus) STORED
+);
+```
+
+*Here*
+
+```txt
+salary = 60000
+bonus  = 5000
+
+total_compensation
+       ↓
+60000 + 5000
+       ↓
+65000
+```
+
+*The database calculates it automatically*
+
+---
+
+**Why do we use Generated columns?**
+
+*Imagine an employee table*
+
+| employee_id | name  | salary | bonus |
+| ----------- | ----- | ------ | ----- |
+|         101 | Rahul |  60000 |  5000 |
+|         102 | Priya |  55000 |  4000 |
+
+*We could calculate ```total_compensation``` manually every time. But a generated column can calculate it automatically*
+
+| employee_id | name  | salary | bonus | total_compensation |
+| ----------- | ----- | ------ | ----- | ------------------ |
+|         101 | Rahul |  60000 |  5000 |              65000 |
+|         102 | Priya |  55000 |  4000 |              59000 |
+
+---
+
+**Syntax:**
+
+*A common MySQL syntax is*
+
+```sql
+column_name datatype
+GENERATED ALWAYS AS (expression)
+STORED;
+```
+
+---
+
+**Can we manually Insert the Gerated value?**
+
+*Normally, no*
+
+*For example you shouldn't do*
+
+```sql
+INSERT INTO employees (name, salary, bonus, total_compensation)
+VALUES ('Rahul', 80000, 80000, 160000);
+```
+
+*The generated column is supposed to derive its value from its expression.*
+
+---
+
+**What happens when the source value changes?**
+
+*Suppose*
+
+```txt
+salary = 60000
+bonus = 5000
+
+total_compensation = 65000
+```
+
+*Now update*
+
+```sql
+UPDATE employees
+SET salary = 70000
+WHERE employee_id = 101;
+```
+
+*The generated expression is calculated*
+
+```txt
+70000 + 5000
+       ↓
+75000
+```
+
+*So ```total_compensation = 75000``` You don't need a separate UPDATE for the generated column*
+
+---
+
+**STORED vs VIRTUAL**
+
+**VIRTUAL:** *The value is calculated when it is read*
+
+```txt
+salary + bonus
+      ↓
+calculated when queried
+```
+
+**STORED:** *The generated value is physically stored and recalculated when the source columns change*
+
+```txt
+salary + bonus
+      ↓
+calculated
+      ↓
+stored
+```
+
+**Examples**
+
+```sql
+total_compensation DECIMAL (10, 2)
+GENERATED ALWAYS AS (salary + bonus) STORED
+```
+
+*The exact syntax and capabilities can vary between SQL databases, so always check the dialect when writing production SQL*
+
+---
+
+### **UNSIGNED**
+
+**
 
 
 
