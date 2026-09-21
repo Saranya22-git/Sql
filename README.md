@@ -82,6 +82,7 @@ Hey!!
     - [**AUTO\_INCREMENET**](#auto_incremenet)
     - [**GENERATED Columns**](#generated-columns)
     - [**UNSIGNED**](#unsigned)
+    - [\*\*\*\*](#)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -4639,10 +4640,160 @@ GENERATED ALWAYS AS (salary + bonus) STORED
 
 ### **UNSIGNED**
 
-**
+*```UNSIGNED``` is a numeric column property that allows the column to store only zero and positive values.*
 
+*It removes the negative range from the numeric data type and uses that space for larger positive values.*
 
+**Example:**
 
+*Normally*
+
+```sql
+age INT
+```
+
+*can store positive and negative integers within the range supported by the database*
+
+*But*
+
+```sql
+age INT UNSIGNED
+```
+
+*means ```0, 1, 2, 3, 4, ...``` Negative values are not allowed.*
+
+---
+
+**Syntax:**
+
+*For MySQL*
+
+```sql
+column_name INT UNSIGNED
+```
+
+**Example:**
+
+```sql
+age INT UNSIGNED
+```
+
+*or*
+
+```sql
+employee_id INT UNSIGNED
+```
+
+---
+
+**Why use ```UNSIGNED```?**
+
+*Consider ```employee_id = -101``` An employee ID normally doesn't need to be negative. So ```employee_id INT UNSIGNED``` prevents negative values*
+
+*Similarly values such as*
+- *Quantity*
+- *Age*
+- *Employee count*
+- *Product stock*
+- *Number of items*
+
+*are usually naturally non-negative*
+
+---
+
+**```INT``` vs ```INT UNSIGNED```**
+
+*For a typical 32-bit MySQL ```INT``` ```INT  → negative + zero + positive```*
+
+*Whereas ```INT UNSIGNED → zero + positive``` So ```UNSIGNED``` gives up the negative range and provides a larger positive range.*
+
+*For MySQL, the commonly cited ranges are*
+
+| Type           | Range                           |
+| -------------- | ------------------------------- |
+| `INT`          | -2,147,483,648 to 2,147,483,647 |
+| `INT UNSIGNED` | 0 to 4,294,967,295              |
+
+*So*
+
+```txt
+INT maximum positive ≈ 2.1 billion
+
+INT UNSIGNED maximum positive ≈ 4.29 billion
+```
+
+---
+
+**Examples**
+
+**Product Quantity**
+
+*Suppose an e-commerce system stores product quantity ```quantity INT UNSIGNED```*
+
+*Valid*
+
+```txt
+0
+10
+100
+5000
+```
+
+*Invalid*
+
+```txt
+-1 ❌
+-50 ❌
+```
+
+*Because quantity cannot logically be negative*
+
+**Employee Age**
+
+```sql
+age INT UNSIGNED
+```
+
+*Valid*
+
+```txt
+21
+30
+45
+60
+```
+
+*Negative age ```-5 ❌``` doesn't make sense*
+
+---
+
+**```UNSIGNED``` ≠ ```CHECK```**
+
+*You can also enforce non-negative values using a ```CHECK``` constraint*
+
+```sql
+salary DECIMAL (10, 2)
+CHECK (salary >=0)
+```
+
+*But ```UNSIGNED``` is a numeric type attribute/property in databases such as MySQL.*
+
+---
+
+**Can ```UNSIGNED``` be used with DECIMAL?**
+
+*The exact availability and behavior of ```UNSIGNED``` can depend on the SQL database and data type.*
+
+*For MySQL, ```UNSIGNED``` can be specified for several numeric types, but you should always consider the target SQL dialect rather than assuming every database supports it identically.*
+
+```sql
+INT UNSIGNED
+BIGINT UNSIGNED
+```
+
+---
+
+### ****
 
 
 
