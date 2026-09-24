@@ -91,6 +91,7 @@ Hey!!
     - [**INT**](#int)
     - [**BIGINT**](#bigint)
     - [**DECIMAL**](#decimal)
+    - [**FLOAT**](#float)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -5490,6 +5491,26 @@ price DECIMAL (8, 2)
 *Whereas scientific or engineering calculations may use floating-point types depending on the precision requirements*
 
 ---
+
+### **FLOAT**
+
+*```FLOAT``` is a SQL floating-point numeric data type used to store numbers that can contain decimal values.*
+
+**Examples:**
+
+```txt
+3.14
+25.75
+98.6
+0.0015
+```
+
+*Unlike ```INT``` it can store fractional values*
+
+---
+
+
+
 
 
 
