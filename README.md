@@ -86,6 +86,9 @@ Hey!!
 - [**SQL DATA TYPES**](#sql-data-types)
   - [**Numeric Types**](#numeric-types)
     - [**TINYINT**](#tinyint)
+    - [**SMALLINT**](#smallint)
+    - [**MEDIUMINT**](#mediumint)
+    - [**INT**](#int)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -5078,9 +5081,122 @@ column_name TINYINT
 
 ---
 
+### **SMALLINT**
 
+*```SMALLINT``` is a SQL integer data type used to store whole numbers that are larger than the range of ```TINYINT``` but smaller than the range of ```INT```*
 
+- *It stores integers only ```-100, 0, 250, 5000, 30000```*
+- *It does not store decimal fractions ```25.5, 99.99```*
 
+---
+
+**```SMALLINT``` Range**
+
+*The exact range depends on whether the type is signed or unsigned. For MySQL, which is the dialect we've been using for these examples*
+
+| Type                |             Range |
+| ------------------- | ----------------- |
+| `SMALLINT`          | -32,768 to 32,767 |
+| `SMALLINT UNSIGNED` |       0 to 65,535 |
+
+*```SMALLINT``` uses 2 bytes of storage. So compared with ```TINYINT```*
+
+| Type       | Storage |      Signed range |
+| ---------- | ------- | ----------------- |
+| `TINYINT`  |  1 byte |       -128 to 127 |
+| `SMALLINT` | 2 bytes | -32,768 to 32,767 |
+
+---
+
+**```SMALLINT``` vs ```TINYINT```**
+
+| Feature          | `TINYINT`     | `SMALLINT`        |
+| ---------------- | ------------- | ----------------- |
+| Type             | Integer       | Integer           |
+| Storage in MySQL | 1 byte        | 2 bytes           |
+| Signed range     | -128 to 127   | -32,768 to 32,767 |
+| Unsigned range   | 0 to 255      | 0 to 65,535       |
+| Decimal values   | ❌             | ❌                 |
+| Main difference  | Smaller range | Larger range      |
+
+---
+
+**```SMALLINT``` vs ```INT```**
+
+| Type       | Storage |                    Signed range |
+| ---------- | ------- | ------------------------------- |
+| `TINYINT`  |  1 byte |                     -128 to 127 |
+| `SMALLINT` | 2 bytes |               -32,768 to 32,767 |
+| `INT`      | 4 bytes | -2,147,483,648 to 2,147,483,647 |
+
+---
+
+**```SMALLINT``` with ```UNSIGNED```**
+
+*Just like ```TINYINT```, ```SMALLINT``` can be declared as ```UNSIGNED``` in MySQL*
+
+```sql
+age SMALLINT UNSIGNED
+```
+
+*This means negative values aren't allowed*
+
+*For MySQL*
+
+```txt
+SMALLINT - 32,768 → 32,767
+
+SMALLINT UNSIGNED - 0 → 65,535
+```
+
+---
+
+### **MEDIUMINT**
+
+*```MEDIUMINT``` is an SQL integer data type used to store whole numbers with a range larger than ```SMALLINT``` but smaller than ```INT```*
+
+---
+
+**```MEDIUMINT``` Range**
+
+| Type        | Storage |                    Signed range |
+| ----------- | ------- | ------------------------------- |
+| `TINYINT`   |  1 byte |                     -128 to 127 |
+| `SMALLINT`  | 2 bytes |               -32,768 to 32,767 |
+| `MEDIUMINT` | 3 bytes |         -8,388,608 to 8,388,607 |
+| `INT`       | 4 bytes | -2,147,483,648 to 2,147,483,647 |
+
+*For ```MEDIUMINT UNSIGNED``` ```0 → 16,777,215```*
+
+---
+
+**```MEDIUMINT UNSIGNED```**
+
+*Just like the previous integer types, MySQL allows*
+
+```sql
+views MEDIUMINT UNSIGNED
+```
+
+*Now negative values aren't allowed*
+
+**Range:** *0 → 16,777,215*
+
+---
+
+**```MEDIUMINT``` vs ```SMALLINT```**
+
+| Feature          | `SMALLINT` | `MEDIUMINT` |
+| ---------------- | ---------- | ----------- |
+| Storage in MySQL |    2 bytes |     3 bytes |
+| Signed minimum   |    -32,768 |  -8,388,608 |
+| Signed maximum   |     32,767 |   8,388,607 |
+| Unsigned maximum |     65,535 |  16,777,215 |
+| Decimal values   |        ❌ |           ❌ |
+
+---
+
+### **INT**
 
 
 
