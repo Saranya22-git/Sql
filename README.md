@@ -92,6 +92,7 @@ Hey!!
     - [**BIGINT**](#bigint)
     - [**DECIMAL**](#decimal)
     - [**FLOAT**](#float)
+    - [**DOUBLE**](#double)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -5506,6 +5507,108 @@ price DECIMAL (8, 2)
 ```
 
 *Unlike ```INT``` it can store fractional values*
+
+---
+
+**Why is it called ```FLOAT```?**
+
+*The decimal point can effectively "float" depending on the magnitude of the number.*
+
+*For example*
+
+```txt
+3.14
+31.4
+314.0
+0.314
+```
+
+*The important idea is that ```FLOAT``` is a floating-point representation*
+
+---
+
+**```FLOAT``` vs ```DECIMAL```**
+
+| Feature                     | `DECIMAL`            | `FLOAT`                       |
+| --------------------------- | -------------------- | ----------------------------- |
+| Type                        | Fixed-point          | Floating-point                |
+| Precision                   | Exact                | Approximate                   |
+| Decimal values              | ✅                    | ✅                             |
+| Good for money              | ✅                    | Usually not preferred         |
+| Scientific/measurement data | Sometimes            | Often useful                  |
+| Storage                     | Depends on precision | Typically smaller than DOUBLE |
+
+---
+
+**Why is FLOAT Approximate?**
+
+- *Computers store floating-point numbers using a binary representation*
+- *Some decimal numbers cannot be represented exactly in binary*
+- *So a value such as ```0.1``` may be represented internally by a very close approximation rather than exactly ```0.1```*
+- *This can sometimes produce results such as ```0.1 + 0.2 ≈ 0.30000000000000004```*
+- *Floating-point types can introduce small rounding/precision differences*
+
+---
+
+**Example:**
+
+*Suppose we're storing a temperature*
+
+```sql
+temperature FLOAT
+```
+
+*Values could be*
+
+```txt
+36.5
+37.2
+98.6
+```
+
+*Temperature measurements don't normally require the same exact decimal representation as financial amounts. So ```FLOAT``` can be suitable depending on the application's precision requirements*
+
+---
+
+### **DOUBLE**
+
+*```DOUBLE``` is a floating-point numeric data type used to store decimal/fractional numbers with greater precision and range than ```FLOAT```*
+
+**Examples:**
+
+```txt
+3.1415926535
+12345.678901
+0.0000012345
+```
+
+---
+
+**```DOUBLE``` vs ```FLOAT```**
+
+*Both are floating-point types*
+
+```txt
+FLOAT
+   ↓
+approximate decimal/floating-point values
+
+DOUBLE
+   ↓
+approximate decimal/floating-point values
+with greater precision/range
+```
+
+---
+
+| Feature           | `FLOAT`                                                 | `DOUBLE`                                                        |
+| ----------------- | ------------------------------------------------------- | --------------------------------------------------------------- |
+| Type              | Floating-point                                          | Floating-point                                                  |
+| Precision         | Lower                                                   | Higher                                                          |
+| Range             | Smaller                                                 | Larger                                                          |
+| Exact?            | ❌ Approximate                                           | ❌ Approximate                                                   |
+| Fractional values | ✅                                                       | ✅                                                               |
+| Common use        | Measurements, values where moderate precision is enough | Scientific/engineering calculations requiring greater precision |
 
 ---
 
