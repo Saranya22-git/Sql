@@ -5612,6 +5612,58 @@ with greater precision/range
 
 ---
 
+**Example:** *Suppose we're storing a scientific measurement*
+
+```sql
+measurement DOUBLE
+```
+
+---
+
+**```DOUBLE``` vs ```DECIMAL```**
+
+|                         | `DECIMAL`         | `DOUBLE`        |
+| ----------------------- | ----------------- | --------------- |
+| Representation          | Fixed-point       | Floating-point  |
+| Precision               | Exact decimal     | Approximate     |
+| Fractional values       | ✅                 | ✅               |
+| Financial calculations  | Usually preferred | Usually avoided |
+| Scientific calculations | Sometimes         | Often useful    |
+
+---
+
+**Complete Numeric Type**
+
+```txt
+                 NUMERIC TYPES
+                      │
+       ┌──────────────┴──────────────┐
+       │                             │
+    INTEGER                     DECIMAL/FLOATING
+       │                             │
+   TINYINT                        DECIMAL
+   SMALLINT                       FLOAT
+   MEDIUMINT                      DOUBLE
+   INT
+   BIGINT
+```
+
+```txt
+TINYINT    → 1 byte integer
+SMALLINT   → 2 byte integer
+MEDIUMINT  → 3 byte integer
+INT        → 4 byte integer
+BIGINT     → 8 byte integer
+
+DECIMAL    → exact decimal
+FLOAT      → approximate floating-point
+DOUBLE     → approximate floating-point, generally more precision
+```
+
+---
+
+
+
 
 
 
