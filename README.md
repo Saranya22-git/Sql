@@ -89,6 +89,8 @@ Hey!!
     - [**SMALLINT**](#smallint)
     - [**MEDIUMINT**](#mediumint)
     - [**INT**](#int)
+    - [**BIGINT**](#bigint)
+    - [**DECIMAL**](#decimal)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -5069,6 +5071,18 @@ column_name TINYINT
 
 ---
 
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age TINYINT UNSIGNED
+);
+```
+
+---
+
 **TINYINT vs INT**
 
 | Feature          | TINYINT       | INT                             |
@@ -5078,6 +5092,20 @@ column_name TINYINT
 | Signed range     | -128 to 127   | -2,147,483,648 to 2,147,483,647 |
 | Unsigned range   | 0 to 255      | 0 to 4,294,967,295              |
 | Best for         | Small numbers | Larger integers                 |
+
+---
+
+**TINYINT and Boolean Values**
+
+*MySQL supports ```BOOLEAN``` and ```BOOL``` as aliases associated with ```TINYINT(1)``` behavior*
+
+*So you may encounter*
+
+```sql
+is_active TINYINT(1)
+```
+
+with values such as ```0 → false 1 → true```
 
 ---
 
@@ -5105,6 +5133,25 @@ column_name TINYINT
 | ---------- | ------- | ----------------- |
 | `TINYINT`  |  1 byte |       -128 to 127 |
 | `SMALLINT` | 2 bytes | -32,768 to 32,767 |
+
+---
+
+**Example**
+
+```sql
+employee_count SMALLINT
+```
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age TINYINT UNSIGNED,
+    years_of_experience SMALLINT UNSIGNED,
+    salary DECIMAL(10,2),
+    department_id INT
+);
+```
 
 ---
 
@@ -5184,6 +5231,18 @@ views MEDIUMINT UNSIGNED
 
 ---
 
+**Example:**
+
+```sql
+CREATE TABLE videos (
+    video_id INT PRIMARY KEY,
+    title VARCHAR(100),
+    views MEDIUMINT UNSIGNED
+);
+```
+
+---
+
 **```MEDIUMINT``` vs ```SMALLINT```**
 
 | Feature          | `SMALLINT` | `MEDIUMINT` |
@@ -5198,6 +5257,142 @@ views MEDIUMINT UNSIGNED
 
 ### **INT**
 
+*```INT``` is an SQL integer data type used to store whole numbers*
+
+---
+
+**```INT``` Range**
+
+*In MySQL ```INT`` uses ```4 bytes```*
+
+**Signed ```INT``:**
+
+```txt
+-2,147,483,648
+        ↓
+         2,147,483,647
+```
+
+**```INT UNSIGNED```**
+
+```txt
+0
+↓
+4,294,967,295
+```
+
+---
+
+| Type        |     Storage |                       Signed range |        Unsigned range |
+| ----------- | ----------- | ---------------------------------- | --------------------- |
+| `TINYINT`   |      1 byte |                         -128 → 127 |               0 → 255 |
+| `SMALLINT`  |     2 bytes |                   -32,768 → 32,767 |            0 → 65,535 |
+| `MEDIUMINT` |     3 bytes |             -8,388,608 → 8,388,607 |        0 → 16,777,215 |
+| **`INT`**   | **4 bytes** | **-2,147,483,648 → 2,147,483,647** | **0 → 4,294,967,295** |
+
+---
+
+**```INT``` in our ```employees``` table**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15) UNIQUE,
+    department_id INT,
+    salary DECIMAL(10,2)
+);
+```
+
+---
+
+**```INT(10)``` does NOT mean an integer that can store 10 digits**
+
+*For example*
+
+```sql
+INT(10)
+```
+
+*The ```10``` historically referred to display width not the numeric storage range.*
+
+---
+
+### **BIGINT**
+
+*```BIGINT``` is an SQL integer data type used to store very large whole numbers.*
+
+*The last value cannot fit in a signed ```INT``` but it can fit in ```BIGINT```*
+
+---
+
+**```BIGINT``` Range**
+
+*In MySQL ```BIGINT``` uses 8 bytes*
+
+**Signed ```BIGINT```**
+
+```txt
+-9,223,372,036,854,775,808
+                 ↓
+ 9,223,372,036,854,775,807
+```
+
+**```BIGINT UNSIGNED```**
+
+```txt
+0
+↓
+18,446,744,073,709,551,615
+```
+
+*So our integer progression is now*
+
+```txt
+TINYINT    → 1 byte
+SMALLINT   → 2 bytes
+MEDIUMINT  → 3 bytes
+INT        → 4 bytes
+BIGINT     → 8 bytes
+```
+
+---
+
+**Example:**
+
+```sql
+CREATE TABLE transactions (
+    transaction_id BIGINT PRIMARY KEY,
+    amount DECIMAL (12,2)
+);
+```
+
+*A transaction ID could be*
+
+```txt
+10000000001
+10000000002
+10000000003
+```
+
+*```BIGINT``` can handle these values*
+
+---
+
+**```BIGINT``` vs ```INT```**
+
+| Feature          |         `INT` |                   `BIGINT` |
+| ---------------- | ------------- | -------------------------- |
+| Storage in MySQL |       4 bytes |                    8 bytes |
+| Signed maximum   | 2,147,483,647 |  9,223,372,036,854,775,807 |
+| Unsigned maximum | 4,294,967,295 | 18,446,744,073,709,551,615 |
+| Decimal values   |             ❌ |                          ❌ |
+| Whole numbers    |             ✅ |                          ✅ |
+
+---
+
+### **DECIMAL**
 
 
 
