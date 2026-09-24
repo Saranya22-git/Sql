@@ -93,6 +93,7 @@ Hey!!
     - [**DECIMAL**](#decimal)
     - [**FLOAT**](#float)
     - [**DOUBLE**](#double)
+  - [**Character Types**](#character-types)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -5661,6 +5662,8 @@ DOUBLE     → approximate floating-point, generally more precision
 ```
 
 ---
+
+## **Character Types**
 
 
 
