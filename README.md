@@ -5394,9 +5394,102 @@ CREATE TABLE transactions (
 
 ### **DECIMAL**
 
+*```DECIMAL``` is a SQL exact numeric data type used to store numbers with decimal places accurately.*
 
+*For example*
 
+```txt
+60000.50
+125.75
+99.99
+```
 
+---
+
+**Basic Syntax**
+
+```sql
+DECIMAL(p, s)
+```
+
+*Where*
+- *```p``` = precision → total number of digits*
+- *```s``` = scale → number of digits after the decimal point*
+
+```sql
+salary DECIMAL (10,2)
+```
+
+*means*
+
+```txt
+Precision = 10
+Scale     = 2
+```
+
+*So there can be*
+
+```txt
+10 total digits
+2 digits after decimal
+```
+
+*Therefore, up to 8 digits before the decimal point*
+
+```txt
+60000.50      ✅
+99999999.99   ✅
+```
+
+---
+
+**Example:**
+
+```sql
+salary DECIMAL (10, 2)
+```
+
+---
+
+**```DECIMAL``` vs ```INT```**
+
+|                | `INT`         | `DECIMAL`            |
+| -------------- | ------------- | -------------------- |
+| Stores         | Whole numbers | Decimal numbers      |
+| Decimal places | ❌             | ✅                    |
+| Example        | `60000`       | `60000.50`           |
+| Common use     | IDs, counts   | Salary, price, money |
+
+---
+
+**Precision vs Scale**
+
+*Suppose*
+
+```sql
+price DECIMAL (8, 2)
+```
+
+- **Precision:** *Total number of digits = 8*
+- **Scale:** *Digits after decimal = 2*
+
+```999999.99```
+
+```txt
+6 digits before decimal + 2 digits after decimal = 8 total digits
+```
+
+---
+
+**```DECIMAL``` vs ```FLOAT```/```DOUBLE```**
+
+**```DECIMAL```:** *Exact / fixed-point*
+
+**```FLOAT``` and ```DOUBLE```:** *Approximate / floating-point*
+
+*Whereas scientific or engineering calculations may use floating-point types depending on the precision requirements*
+
+---
 
 
 
