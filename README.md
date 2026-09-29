@@ -112,6 +112,7 @@ Hey!!
     - [**```BLOB```**](#blob)
   - [**```BOOLEAN```**](#boolean)
   - [**```ENUM```**](#enum)
+  - [**```SET```**](#set)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -6790,6 +6791,109 @@ VALUES (101, TRUE);
 ---
 
 ## **```ENUM```**
+
+*```ENUM``` is a data type that allows a column to store one value from a predefined list of allowed values.*
+
+*For example, suppose an employee can have only these employement types*
+
+```txt
+FULL_TIME
+PART_TIME
+CONTRACT
+```
+
+*We can define*
+
+```sql
+employement_type ENUM ('FULL_TIME', 'PART_TIME', 'CONTRACT')
+```
+
+*The column should contain one of those predefined values*
+
+---
+
+**Syntax:**
+
+```sql
+column_name ENUM ('value1', 'value2', 'value3')
+```
+
+**Example:**
+
+```sql
+employment_type ENUM('FULL_TIME', 'PART_TIME', 'CONTRACT')
+```
+
+---
+
+**Example:**
+
+```sql
+ALTER TABLE employees
+ADD COLUMN employment_type
+ENUM('FULL_TIME', 'PART_TIME', 'CONTRACT');
+```
+
+*Now valid values include*
+
+```txt
+FULL_TIME
+PART_TIME
+CONTRACT
+```
+
+```sql
+INSERT INTO employees
+(employee_id, name, employment_type)
+VALUES
+(105, 'Kiran', 'FULL_TIME');
+```
+
+---
+
+**What if we enter another value?**
+
+```sql
+INSERT INTO employees
+(employee_id, name, employment_type)
+VALUES
+(106, 'Ravi', 'INTERN');
+```
+
+*```INTERN``` was not included in the ENUM definition. Therefore, it is not an allowed ENUM value under that definition*
+
+---
+
+**```ENUM``` vs ```VARCHAR```**
+
+**VARCHAR:** *```employement_type VARCHAR(20)``` Can store many different strings*
+
+```txt
+FULL_TIME
+PART_TIME
+CONTRACT
+INTERN
+TEMPORARY
+anything...
+```
+
+**ENUM:** *Restricts the column to the predefined values*
+
+```sql
+employment_type
+ENUM('FULL_TIME', 'PART_TIME', 'CONTRACT')
+```
+
+| VARCHAR | ENUM |
+|---|---|
+| General string storage | Predefined list of values |
+| More flexible | More restricted |
+| Values aren't limited to a predefined list | Values must come from the defined list |
+
+---
+
+## **```SET```**
+
 
 
 
