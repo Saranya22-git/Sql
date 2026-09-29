@@ -98,6 +98,18 @@ Hey!!
     - [**```VARCHAR```**](#varchar)
     - [**```TEXT```**](#text)
     - [**```TINYTEXT```**](#tinytext)
+    - [**```MEDIUMTEXT```**](#mediumtext)
+    - [**```LONGTEXT```**](#longtext)
+  - [**Date and Time Types**](#date-and-time-types)
+    - [**```DATE```**](#date)
+    - [**TIME**](#time)
+    - [**```DATETIME```**](#datetime)
+    - [**```TIMESTAMP```**](#timestamp)
+    - [**```YEAR```**](#year)
+  - [**Binary Types**](#binary-types)
+    - [**```BINARY```**](#binary)
+    - [**```VARBINARY```**](#varbinary)
+    - [**```BLOB```**](#blob)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -5980,10 +5992,682 @@ Larger text
 
 ### **```TINYTEXT```**
 
+*```TINYTEXT``` is a MySQL character/string data type used to store small amounts of text.*
+
+**Example:**
+
+```sql
+id="p8x2lm"
+short_note TINYTEXT
+```
+
+*It can be used for relatively small text content.*
+
+---
+
+**```TINYTEXT``` Capacity**
+
+*In MySQL, ```TINYTEXT``` can store upto ```255 bytes``` of text*
+
+*For plain ASCII text, one character commonly uses one byte, but with Unicode/multibyte character sets, the number of characters can be smaller*
+
+---
+
+**Syntax:**
+
+```sql
+column_name TINYTEXT
+```
+
+**Example:**
+
+```sql
+short_description TINYTEXT
+```
+
+---
+
+**```TINYTEXT``` vs ```TEXT```**
+
+| Feature | `TINYTEXT` | `TEXT` |
+|---|----|----|
+| Type | Text | Text |
+| Maximum capacity in MySQL | 255 bytes | 65,535 bytes |
+| Suitable for | Very small text | Larger text |
+| Length specified like `VARCHAR(n)`? | No | No |
+
+---
+
+### **```MEDIUMTEXT```**
+
+*```MEDIUMTEXT``` is a MySQL character/string data type used to store larger amounts of text than ```TEXT```*
+
+*For ```MEDIUMTEXT``` the maximum capacity is ```16,777,215 bytes```*
+
+---
+
+**Syntax:**
+
+```sql
+column_name MEDIUMTEXT
+```
+
+**Example:**
+
+```sql
+article_content MEDIUMTEXT
+```
+
+---
+
+### **```LONGTEXT```**
+
+*```LONGTEXT``` is a MySQL character/string data type used to store very large amounts of text.*
+
+---
+
+**Capacity**
+
+| Type | Maximum capacity |
+|---|----|
+| `TINYTEXT` | 255 bytes |
+| `TEXT` | 65,535 bytes |
+| `MEDIUMTEXT` | 16,777,215 bytes |
+| **`LONGTEXT`** | **4,294,967,295 bytes** |
+
+```txt
+TINYTEXT
+   ↓
+TEXT
+   ↓
+MEDIUMTEXT
+   ↓
+LONGTEXT
+```
+
+---
+
+**Syntax:**
+
+```sql
+column_name LONGTEXT
+```
+
+**Example:**
+
+```sql
+document_content LONGTEXT
+```
+
+---
+
+```txt
+CHAR
+↓
+Fixed-length string
+
+VARCHAR
+↓
+Variable-length string with declared maximum
+
+TINYTEXT
+↓
+Small text
+
+TEXT
+↓
+Larger text
+
+MEDIUMTEXT
+↓
+Very large text
+
+LONGTEXT
+↓
+Extremely large text
+```
+
+---
+
+## **Date and Time Types**
+
+### **```DATE```**
+
+*```DATE``` is a SQL data type used to store a calendar date.*
+
+*It stores*
+- *Year*
+- *Month*
+- *Day*
 
 
+*It does not store a time of day*
 
+```txt
+2026-09-29
+```
 
+---
+
+**Syntax:**
+
+```sql
+column_name DATE
+```
+
+**Example:**
+
+```sql
+joining_date DATE
+```
+
+---
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100),
+    phone VARCHAR(15),
+    department_id INT,
+    salary DECIMAL(10,2),
+    joining_date DATE
+);
+```
+
+*Now we can insert*
+
+```sql
+INSERT INTO employees
+VALUES (
+    101,
+    'Rahul',
+    'rahul@example.com',
+    '9876543210',
+    1,
+    60000.50,
+    '2026-09-29'
+);
+```
+
+---
+
+**What format does DATE use?**
+
+*In MySQL, the standard displayed format is ```YYYY-MM-DD```*
+
+**Example:**
+
+```txt
+2026-09-29
+```
+
+---
+
+**Real-World Examples**
+
+*```DATE``` is useful when you only care about the calendar date*
+
+**Examples:**
+
+```txt
+Date of birth
+Joining date
+Resignation date
+Exam date
+Holiday date
+Order date
+```
+
+---
+
+### **TIME**
+
+*```TIME``` is a SQL data type used to store a time value such as hours, minutes and seconds.*
+
+**Example:**
+
+```txt
+10:30:45
+```
+
+*This represents*
+
+```txt
+10 → Hours
+30 → Minutes
+45 → Seconds
+```
+
+---
+
+**Syntax:**
+
+```sql
+column_name TIME
+```
+
+**Example:**
+
+```sql
+login_time TIME
+```
+
+---
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    joining_date DATE,
+    work_start_time TIME
+);
+```
+
+*Now insert*
+
+```sql
+INSERT INTO employees
+VALUES (
+    101,
+    'Rahul',
+    '2026-09-29',
+    '09:30:00'
+);
+```
+
+---
+
+**Real-World Examples**
+
+*You could use ```TIME``` when the date isn't important*
+
+**Examples:**
+
+```txt
+Opening time
+Closing time
+Work start time
+Work end time
+Daily alarm time
+```
+
+*For example*
+
+```sql
+office_open_time TIME
+office_close_time TIME
+```
+
+*Values*
+
+```txt
+09:00:00
+18:00:00
+```
+
+---
+
+### **```DATETIME```**
+
+*```DATETIME``` is a SQL data type used to store both a calendar date and a time of day.*
+
+*DATETIME = DATE + TIME*
+
+**Example:**
+
+```txt
+2026-09-29 10:30:45
+```
+
+---
+
+**Syntax:**
+
+```sql
+column_name DATETIME
+```
+
+**Example:**
+
+```sql
+created_at DATETIME
+```
+
+---
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    joining_date DATE,
+    joining_time TIME,
+    created_at DATETIME
+);
+```
+
+---
+
+**```DATE``` vs ```TIME``` vs ```DATETIME```**
+
+| Data type | Stores | Example |
+|---|---|---|
+| `DATE` | Date only | `2026-09-29` |
+| `TIME` | Time only | `09:30:00` |
+| `DATETIME` | Date + time | `2026-09-29 09:30:00` |
+
+```txt
+DATE
+  ↓
+Which day?
+
+TIME
+  ↓
+What time?
+
+DATETIME
+  ↓
+Which day + what time?
+```
+
+---
+
+**Real-World Example**
+
+*```DATETIME``` is useful when both the date and exact time matter*
+
+**Examples:**
+
+```txt
+Order created
+Payment made
+Employee record created
+Appointment scheduled
+Message sent
+Transaction occurred
+```
+
+---
+
+**Does DATETIME automatically store the Current Time?**
+
+```sql
+created_at DATETIME
+```
+
+*The column's data type tells the database what kind of value it can hold*
+
+*If you want automatic values, you can use database features such as defaults depending on the SQL dialect*
+
+*For example in MySQL*
+
+```sql
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+```
+
+*Now the database can automatically use the current timestamp when the value is omitted*
+
+```txt
+DATETIME
+↓
+Data type
+
+CURRENT_TIMESTAMP
+↓
+Current date/time value/function
+```
+
+---
+
+**Fractional Seconds**
+
+*MySQL also supports fractional seconds for temporal types*
+
+*For example*
+
+```sql
+created_at DATETIME(5)
+```
+
+*can represent milliseconds*
+
+---
+
+### **```TIMESTAMP```**
+
+*```TIMESTAMP``` is a SQL date-and-time data type used to store a date and time value, commonly for recording when an event occured or a row was created/updated.*
+
+**Example:**
+
+```txt
+2026-09-29 10:30:45
+```
+
+*Like ```DATETIME``` it contains*
+
+```txt
+Date
++
+Time
+```
+
+---
+
+**Syntax:**
+
+```sql
+column_name TIMESTAMP
+```
+
+**Example:**
+
+```sql
+created_at TIMESTAMP
+```
+
+---
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100),
+    salary DECIMAL(10,2),
+    created_at TIMESTAMP
+);
+```
+
+---
+
+**```DATETIME``` vs ```TIMESTAMP```**
+
+*Both can store ```2026-09-29 10:30:45``` but they have different behavior*
+
+| Feature | `DATETIME` | `TIMESTAMP` |
+|---|---|---|
+| Stores date + time | ✅ | ✅ |
+| Used for date/time values | ✅ | ✅ |
+| Time-zone conversion behavior | Generally no automatic time-zone conversion | Can involve time-zone conversion |
+| Common use | General date/time values | Record/event timestamps |
+
+*DATETIME is generally used to represent a date and time as a value, while TIMESTAMP is commonly used for event/record timestamps and has time-zone-related behavior.*
+
+---
+
+**```DATE``` vs ```TIME``` vs ```DATETIME``` vs ```TIMESTAMP```**
+
+| Type | What it stores | Example |
+|---|---|---|
+| `DATE` | Date only | `2026-09-29` |
+| `TIME` | Time only | `10:30:45` |
+| `DATETIME` | Date + time | `2026-09-29 10:30:45` |
+| `TIMESTAMP` | Date + time, commonly for event/record timestamps | `2026-09-29 10:30:45` |
+
+---
+
+### **```YEAR```**
+
+*```YEAR``` is a SQL data type used to store a year value.*
+
+**Example:**
+
+```txt
+2026
+2025
+2000
+```
+
+*It does not represent a complete date like ```2026-09-29```*
+
+---
+
+**Syntax:**
+
+```sql
+column_name YEAR
+```
+
+**Example:**
+
+```sql
+graduation_year YES
+```
+
+---
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    graduation_year YEAR
+);
+```
+
+```sql
+INSERT INTO employees
+VALUES (101, 'Rahul', 2026);
+```
+
+---
+
+## **Binary Types**
+
+### **```BINARY```**
+
+*```BINARY``` is a SQL data type used to store binary data of a fixed length*
+
+*Unline ```CHAR``` which stores characters/text, ```BINARY``` stores raw bytes*
+
+---
+
+**Syntax:**
+
+```sql
+column_name BINARY(n)
+```
+
+**Example:**
+
+```sql
+file_code BINARY(n)
+```
+
+```txt
+BINARY
+   ↓
+binary data type
+
+4
+   ↓
+fixed length of 4 bytes
+```
+
+---
+
+**```BINARY``` vs ```CHAR```**
+
+| `CHAR` | `BINARY` |
+|---|---|
+| Character/string data | Binary data |
+| Fixed length | Fixed length |
+| Stores characters | Stores bytes |
+| Example: `'ABCD'` | Binary byte sequence |
+
+---
+
+**Where is ```BINARY``` used?**
+
+*```BINARY``` is useful when you specifically need fixed-length binary values.*
+
+*Examples can include*
+- *Fixed-size binary identifiers*
+- *Hash values*
+- *Binary codes*
+- *Other application-specific binary data*
+
+*For example ```hash_value BINARY(16)``` could be used when the application knows that the binary value has a fixed size.*
+
+---
+
+### **```VARBINARY```**
+
+*```VARBINARY``` is a variable-length binary data type used to store binary data (bytes)*
+
+*Unlike ```BINARY``` which has a fixed length, ```VARBINARY``` stores only the required number of bytes*
+
+---
+
+**Syntax:**
+
+```sql
+column_name VARBINARY(n)
+```
+
+*Here*
+- *```n``` = maximum number of bytes allowed*
+- *Actual storage can be less than ```n```*
+
+**Example:**
+
+```sql
+document_hash VARBINARY(64)
+```
+
+*This allows up to ```64 bytes``` but if the value needs only 20 bytes, it doesn't behave like a 64-byte field.*
+
+---
+
+**```BINARY``` vs ```VARBINARY```**
+
+| Feature | `BINARY` | `VARBINARY` |
+|---|---|---|
+| Data | Binary | Binary |
+| Length | Fixed | Variable |
+| Syntax | `BINARY(n)` | `VARBINARY(n)` |
+| Example | Fixed-size binary value | Variable-size binary value |
+
+---
+
+**Example:**
+
+```sql
+ALTER TABLE employees
+ADD COLUMN security_token VARBINARY(64);
+```
+
+---
+
+### **```BLOB```**
 
 
 
