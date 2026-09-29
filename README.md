@@ -114,6 +114,10 @@ Hey!!
   - [**```ENUM```**](#enum)
   - [**```SET```**](#set)
   - [**```JSON```**](#json)
+- [**SQL Commands**](#sql-commands)
+  - [**DDL - Data Definition Language**](#ddl---data-definition-language)
+    - [**CREATE**](#create)
+    - [**ALTER**](#alter)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -6984,6 +6988,387 @@ SQL
 ---
 
 ## **```JSON```**
+
+*```JSON``` stands for ```JavaScript Object Notation```. It is a format used to store structured data using key-value pairs, arrays, and nested objects.*
+
+*In MySQL, the ```JSON``` data type allows you to store JSON documents in a column.*
+
+---
+
+**Syntax:**
+
+```sql
+column_name JSON
+```
+
+**Example:**
+
+```sql
+employee_details JSON
+```
+
+---
+
+**Example:**
+
+*Suppose every employee has some additional information but the fields may differe between employees*
+
+```sql
+ALTER TABLE employees
+ADD COLUMN employee_details JSON;
+```
+
+*Now we can store*
+
+```json
+{
+  "city": "Hyderabad",
+  "experience": 2,
+  "skills": ["Python", "SQL", "Excel"]
+}
+```
+
+```txt
+city       → Hyderabad
+experience → 2
+skills     → multiple values
+```
+
+---
+
+**JSON can contain different structures**
+
+**Object**
+
+```json
+{
+    "city": "Hyderabad",
+    "experience": 2
+}
+```
+
+**Array**
+
+```json
+["Python", "SQL", "Excel"]
+```
+
+**Nested structure**
+
+```json
+{
+    "employee": {
+        "city": "Hyderabad",
+        "skills": ["Python", "SQL"]
+    }
+}
+```
+
+---
+
+# **SQL Commands**
+
+*SQL commands are instructions written in SQL that we give to a database to perform an operation.*
+
+*For example if we want to get all employees*
+
+```sql
+SELECT * FROM employees;
+```
+
+*We are telling the database "Give me all the employee records"*
+
+---
+
+**Main SQL Command Categories**
+
+| Category | Full Form | Main Purpose |
+|---|---|---|
+| **DDL** | Data Definition Language | Define/modify structure |
+| **DML** | Data Manipulation Language | Add/change/delete data |
+| **DQL** | Data Query Language | Retrieve data |
+| **DCL** | Data Control Language | Control permissions |
+| **TCL** | Transaction Control Language | Manage transactions |
+
+---
+
+1. **DDL - (Data Definition Language):** *Used to work with the **structure** of database objects*
+
+    *Common commands*
+
+    ```txt
+    CREATE 
+    ALTER
+    DROP
+    TRUNCATE
+    RENAME
+    ```
+
+2. **DML - (Data Manipulation Language):** *Used to **modify** the data stored inside tables*
+
+    *Common commands*
+
+    ```txt
+    INSERT
+    UPDATE
+    DELETE
+    ```
+
+3. **DQL - (Data Query Language):** *Used to **retrieve** data from the data*
+
+    *Main command*
+
+    ```txt
+    SELECT
+    ```
+
+4. **DCL - (Data Control Language):** *Used to **control access and permissions***
+
+    *Common commands*
+
+    ```txt
+    GRANT
+    REVOKE
+    ```
+
+5. **TCL - (Transaction Control Language):** *Used to **manage transactions***
+
+    *Common commands include*
+
+    ```txt
+    COMMIT
+    ROLLBACK
+    SAVEPOINT
+    ```
+
+---
+
+```txt
+DDL → Build/change the table
+       ↓
+DML → Change the data
+       ↓
+DQL → Read the data
+       ↓
+DCL → Control who can access it
+       ↓
+TCL → Control transactions
+```
+
+*or*
+
+```txt
+DDL = Structure
+DML = Modify data
+DQL = Retrieve data
+DCL = Permissions
+TCL = Transactions
+```
+
+---
+
+## **DDL - Data Definition Language**
+
+- *DDL stands for Data Definition Language.* 
+- *DDL commands are used to define and modify the structure of database objects such as tables.*
+
+---
+
+**Main DDL Commands**
+
+```txt
+CREATE
+ALTER
+DROP 
+TRUNCATE
+REMOVE
+```
+
+---
+
+### **CREATE**
+
+*```CREATE``` is a DDL command used to create a new database object such as Database, Table, View Index.*
+
+---
+
+**Syntax:**
+
+```sql
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    ---
+);
+```
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100) UNIQUE,
+    department_id INT,
+    salary DECIMAL(10, 2)
+);
+```
+
+*This creates the structure of the ```employees``` table with 5 columns.*
+
+```txt
+employees
+│
+├── employee_id
+├── name
+├── email
+├── department_id
+└── salary
+```
+
+---
+
+**CREATE + Constraints**
+
+*You can define constraints while creating the table*
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    salary DECIMAL(10, 2) CHECK (salary > 0)
+);
+```
+
+*Here*
+
+```txt
+PRIMARY KEY → employee_id must uniquely identify the employee
+NOT NULL     → name cannot be NULL
+UNIQUE       → email cannot be duplicated
+CHECK        → salary must be greater than 0
+```
+
+---
+
+**CREATE TABLE with Foreign Key**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department_id INT,
+
+    FOREIGN KEY(department_id)
+    REFERENCES departments(department_id)
+);
+```
+
+*This creates a relationship between*
+
+```txt
+departments
+     ↑
+     │
+department_id
+     │
+employees
+```
+
+*So ```employees.department_id``` references ```departments.department_id```*
+
+---
+
+**CREATE DATABASE**
+
+*```CREATE``` can also create a database*
+
+```sql
+CREATE DATABASE database_name;
+```
+
+*Then you can select it*
+
+```sql
+USE database_name;
+```
+
+*After that you can create table inside it*
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+```
+
+---
+
+### **ALTER**
+
+*```ALTER``` is a DDL command used to modify the structure of an existing database object especially a table.*
+
+---
+
+**What can ALTER do?**
+
+*With ```ALTER TABLE``` we can commonly*
+- *Add a column*
+- *Modify a column*
+- *Drop a column*
+- *Rename a column*
+- *Add or remove constraints*
+
+---
+
+**Add a column**
+
+*Suppose our existing table is ```employees``` and we want to add ```phone```*
+
+**Syntax:**
+
+```sql
+ALTER TABLE table_name
+ADD COLUMN column_name datatype;
+```
+
+**Example:**
+
+```sql
+ALTER TABLE employees
+ADD COLUMN phone VARCHAR(15);
+```
+
+*Now the table has*
+
+```txt
+employee_id
+name
+email
+department_id
+salary
+phone        ← new column
+```
+
+**Add Multiple Columns**
+
+*You may also need to add more than one column*
+
+```sql
+ALTER TABLE employees
+ADD COLUMN phone VARCHAR(15),
+ADD COLUMN joining_date DATE;
+```
+
+*Now both columns are added*
+
+---
+
+
+
+
+
 
 
 
