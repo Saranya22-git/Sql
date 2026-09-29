@@ -96,6 +96,8 @@ Hey!!
   - [**Character Types**](#character-types)
     - [**```CHAR```**](#char)
     - [**```VARCHAR```**](#varchar)
+    - [**```TEXT```**](#text)
+    - [**```TINYTEXT```**](#tinytext)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -5791,9 +5793,198 @@ F
 
 ### **```VARCHAR```**
 
+*```VARCHAR``` is a variable-length character/string data type used to store text.*
+
+*For example*
+
+```sql
+name VARCHAR(50)
+```
+
+*This means the column can store text up to the decalred maximum length*
+
+**Examples:**
+
+```txt
+'Rahul'
+'Priya'
+'Alexander'
+'Hyderabad'
+```
+
+*These values don't all have the same length so ```VARCHAR``` is suitable*
+
+---
+
+**Syntax:**
+
+```sql
+column_name VARCHAR(n)
+```
+
+**Example:**
+
+```sql
+name VARCHAR(50)
+```
+
+*Here*
+
+```txt
+VARCHAR
+   ↓
+variable-length text
+
+50
+   ↓
+declared maximum length
+```
+
+*So ```VARCHAR(50)``` allows a string up to the specified length*
+
+---
+
+**```CHAR``` vs ```VARCHAR```**
+
+| Feature | `CHAR` | `VARCHAR` |
+|---|---|---|
+| Length | Fixed | Variable |
+| Best for | Fixed-length values | Variable-length values |
+| Example | Country code | Employee name |
+| Syntax | `CHAR(n)` | `VARCHAR(n)` |
+
+**Examples:**
+
+```sql
+country_code CHAR(2)
+name VARCHAR(50)
+```
+
+---
+
+**Why Phone Numbers can be ```VARCHAR```?**
+
+*Because a phone number is generally an identifier not a number that you perform arithmetic on*
+
+*For example ```0987654321``` If stored numerically the leading ```0``` can be lost*
+
+*Also phone numbers may contain*
+
+```txt
++
+-
+spaces
+```
+
+*depending on format*
+
+*So Phone numbers are usually stored as character data becuase they are identifiers not quantities used for arithmetic*
+
+---
+
+### **```TEXT```**
+
+*```TEXT``` is a SQL character/string data type used to store larger amounts of text than you would normally keep in a short ```VARCHAR``` column.*
+
+**Examples:**
+
+```txt
+Employee description
+Product description
+Customer feedback
+Comments
+Article content
+```
+
+*For example*
+
+```sql
+description TEXT
+```
+
+---
+
+**Syntax:**
+
+```sql
+column_name TEXT
+```
+
+**Example:**
+
+```sql
+description TEXT
+```
+
+---
+
+**```VARCHAR``` vs ```TEXT```**
+
+| Feature | `VARCHAR` | `TEXT` |
+|---|---|---|
+| Type | Variable-length string | Text/string |
+| Typical use | Short/medium strings | Larger text content |
+| Length specified in declaration | Yes, e.g. `VARCHAR(100)` | No |
+| Example | Name, email, city | Comments, descriptions, articles |
+
+---
+
+**Does ```TEXT``` mean Unlimited Text?**
+
+*No. ```TEXT``` has a maximum capacity defined by the database system*
+
+*In MySQL, the orfinary ```TEXT``` can store upto approximately ```65 KB of data``` (subject to character encoding and related details)*
+
+*MySQL also provides*
+
+```txt
+TINYTEXT
+TEXT
+MEDIUMTEXT
+LONGTEXT
+```
+
+*with progressively larger capacities*
+
+---
+
+**```TEXT``` vs ```TINYTEXT```**
+
+```txt
+TINYTEXT
+↓
+smaller text capacity
+
+TEXT
+↓
+larger text capacity
+```
+
+---
+
+```txt
+CHAR
+↓
+Fixed length
+
+VARCHAR
+↓
+Variable length
+
+TEXT
+↓
+Larger text
+```
+
+---
+
+### **```TINYTEXT```**
 
 
- 
+
+
+
+
 
 
 
