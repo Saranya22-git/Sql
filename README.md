@@ -113,6 +113,7 @@ Hey!!
   - [**```BOOLEAN```**](#boolean)
   - [**```ENUM```**](#enum)
   - [**```SET```**](#set)
+  - [**```JSON```**](#json)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -6893,6 +6894,97 @@ ENUM('FULL_TIME', 'PART_TIME', 'CONTRACT')
 ---
 
 ## **```SET```**
+
+*```SET``` is a MySQL data type that allows a column to store zero or more values from a predefined list.*
+
+---
+
+**Syntax:**
+
+```sql
+column_name SET('value1', 'value2', 'value3')
+```
+
+**Example:**
+
+```sql
+skills SET('Python', 'SQL', 'Excel', 'Power BI')
+```
+
+*A row could contain*
+
+```txt
+Python
+```
+
+*or*
+
+```txt
+Python, SQL
+```
+
+*or*
+
+```txt
+Python, SQL, Excel
+```
+
+*So multiple values are allowed*
+
+---
+
+**ENUM vs SET**
+
+| ENUM | SET |
+|---|---|
+| Allows **one** value | Allows **multiple** values |
+| One choice from predefined list | Zero or more choices from predefined list |
+| `ENUM('A','B','C')` | `SET('A','B','C')` |
+| Example: employment type | Example: employee skills |
+
+---
+
+**Example:**
+
+*Suppose we want to store the technologies an employee works with*
+
+```sql
+ALTER TABLE employees
+ADD COLUMN skills 
+SET ('Python', 'SQL', 'Excel', 'Power BI')
+```
+
+*Now an employee could have*
+
+```txt
+Rahul → Python,SQL
+Priya → SQL,Excel,Power BI
+```
+
+*Each value must come from the predefined list*
+
+---
+
+**Inserting SET values**
+
+```sql
+INSERT INTO employees
+(employee_id, name, skills)
+VALUES
+(105, 'Kiran', 'Python,SQL');
+```
+
+*Here Kiran has two selected skills*
+
+```txt
+Python
+SQL
+```
+
+---
+
+## **```JSON```**
+
 
 
 
