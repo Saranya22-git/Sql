@@ -110,6 +110,8 @@ Hey!!
     - [**```BINARY```**](#binary)
     - [**```VARBINARY```**](#varbinary)
     - [**```BLOB```**](#blob)
+  - [**```BOOLEAN```**](#boolean)
+  - [**```ENUM```**](#enum)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -6669,10 +6671,125 @@ ADD COLUMN security_token VARBINARY(64);
 
 ### **```BLOB```**
 
+*```BLOB``` stands for Binary Large Object. It is used to store large amounts of binary data.*
 
+*Stores large binary data such as images, files, audio, or other binary content.*
 
+---
 
+**Syntax:**
 
+```sql
+column_name BLOB
+```
+
+**Example:**
+
+```sql
+profile_image BLOB
+```
+
+---
+
+**Example:**
+
+*Suppose our employee table needs to store an employee's profile image*
+
+```sql
+ALTER TABLE employees
+ADD COLUMN profile_image BLOB;
+```
+
+```txt
+employee_id → 101
+name        → Rahul
+profile_image → binary image data
+```
+
+*The image is stored as binary data not as normal text.*
+
+---
+
+**BINARY vs VARBINARY vs BLOB**
+
+| Type | Main purpose |
+|---|---|
+| `BINARY` | Fixed-length binary data |
+| `VARBINARY` | Variable-length binary data |
+| `BLOB` | Large binary data |
+
+---
+
+## **```BOOLEAN```**
+
+*A ```BOOLEAN``` data type is used to represent a value with two logical states*
+- *TRUE*
+- *FALSE*
+
+*```BOOLEAN``` is used when a column represents a yes/no or true/false condition*
+
+---
+
+**Syntax:**
+
+```sql
+column_name BOOLEAN
+```
+
+**Example:**
+
+```sql
+is_active BOOLEAN
+```
+
+---
+
+**Example:**
+
+*Suppose we want to know whether an employee is currently active*
+
+```sql
+ALTER TABLE employees
+ADD COLUMN is_active BOOLEAN;
+```
+
+| employee_id | name | is_active |
+|----|---|---|
+| 101 | Rahul | TRUE |
+| 102 | Priya | TRUE |
+| 103 | Arjun | FALSE |
+
+```txt
+TRUE  → employee is active
+FALSE → employee is not active
+```
+
+---
+
+**Important Point**
+
+*In MySQL, ```BOOLEAN``` is essentially treated as a synonym for ```TINYINT(1)```*
+
+```txt
+TRUE  → 1
+FALSE → 0
+```
+
+```sql
+CREATE TABLE employee_status (
+    employee_id INT,
+    is_active BOOLEAN
+);
+```
+
+```sql
+INSERT INTO employee_status
+VALUES (101, TRUE);
+```
+
+---
+
+## **```ENUM```**
 
 
 
