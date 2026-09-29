@@ -85,15 +85,17 @@ Hey!!
     - [**ZEROFILL**](#zerofill)
 - [**SQL DATA TYPES**](#sql-data-types)
   - [**Numeric Types**](#numeric-types)
-    - [**TINYINT**](#tinyint)
-    - [**SMALLINT**](#smallint)
-    - [**MEDIUMINT**](#mediumint)
-    - [**INT**](#int)
-    - [**BIGINT**](#bigint)
-    - [**DECIMAL**](#decimal)
-    - [**FLOAT**](#float)
-    - [**DOUBLE**](#double)
+    - [**```TINYINT```**](#tinyint)
+    - [**```SMALLINT```**](#smallint)
+    - [**```MEDIUMINT```**](#mediumint)
+    - [**```INT```**](#int)
+    - [**```BIGINT```**](#bigint)
+    - [**```DECIMAL```**](#decimal)
+    - [**```FLOAT```**](#float)
+    - [**```DOUBLE```**](#double)
   - [**Character Types**](#character-types)
+    - [**```CHAR```**](#char)
+    - [**```VARCHAR```**](#varchar)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -4991,7 +4993,7 @@ CREATE TABLE employees (
 
 ## **Numeric Types**
 
-### **TINYINT**
+### **```TINYINT```**
 
 *```TINYINT``` is a SQL integer data type used to store small whole numbers. It does not store decimal values.*
 
@@ -5112,7 +5114,7 @@ with values such as ```0 → false 1 → true```
 
 ---
 
-### **SMALLINT**
+### **```SMALLINT```**
 
 *```SMALLINT``` is a SQL integer data type used to store whole numbers that are larger than the range of ```TINYINT``` but smaller than the range of ```INT```*
 
@@ -5201,7 +5203,7 @@ SMALLINT UNSIGNED - 0 → 65,535
 
 ---
 
-### **MEDIUMINT**
+### **```MEDIUMINT```**
 
 *```MEDIUMINT``` is an SQL integer data type used to store whole numbers with a range larger than ```SMALLINT``` but smaller than ```INT```*
 
@@ -5258,7 +5260,7 @@ CREATE TABLE videos (
 
 ---
 
-### **INT**
+### **```INT```**
 
 *```INT``` is an SQL integer data type used to store whole numbers*
 
@@ -5322,7 +5324,7 @@ INT(10)
 
 ---
 
-### **BIGINT**
+### **```BIGINT```**
 
 *```BIGINT``` is an SQL integer data type used to store very large whole numbers.*
 
@@ -5395,7 +5397,7 @@ CREATE TABLE transactions (
 
 ---
 
-### **DECIMAL**
+### **```DECIMAL```**
 
 *```DECIMAL``` is a SQL exact numeric data type used to store numbers with decimal places accurately.*
 
@@ -5494,7 +5496,7 @@ price DECIMAL (8, 2)
 
 ---
 
-### **FLOAT**
+### **```FLOAT```**
 
 *```FLOAT``` is a SQL floating-point numeric data type used to store numbers that can contain decimal values.*
 
@@ -5571,7 +5573,7 @@ temperature FLOAT
 
 ---
 
-### **DOUBLE**
+### **```DOUBLE```**
 
 *```DOUBLE``` is a floating-point numeric data type used to store decimal/fractional numbers with greater precision and range than ```FLOAT```*
 
@@ -5665,10 +5667,129 @@ DOUBLE     → approximate floating-point, generally more precision
 
 ## **Character Types**
 
+### **```CHAR```**
 
+*```CHAR``` is a SQL character/string data type used to store text with a fixed length.*
 
+*For example*
 
+```sql
+employee_code CHAR(5)
+```
 
+*This column is designed to hold strings of length 5*
+
+**Examples:**
+
+```txt
+'ABCDE'
+'12345'
+'IND01'
+```
+
+---
+
+**What does "Fixed Length" mean?**
+
+*Suppose we create ```employee_code CHAR(5)``` The declared length is 5 characters*
+
+```txt
+CHAR(5)
+  ↓
+fixed size
+  ↓
+5 characters
+```
+
+---
+
+**```CHAR``` Syntax**
+
+```sql
+column_name CHAR(n)
+```
+
+**Example:**
+
+```sql
+employee_code CHAR(5)
+```
+
+*Here*
+
+```txt
+CHAR
+ ↓
+data type
+
+5
+ ↓
+declared length
+```
+
+---
+
+**Example:**
+
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    employee_code CHAR(5),
+    name VARCHAR(50),
+    email VARCHAR(100),
+    department_id INT,
+    salary DECIMAL(10,2)
+);
+```
+
+*Values could be*
+
+```txt
+'EMP01'
+'EMP02'
+'EMP03'
+```
+
+*Each code has exactly 5 characters*
+
+---
+
+**When is ```CHAR``` useful?**
+
+*```CHAR``` is useful when the values are consistently the same length*
+
+**Examples:**
+
+```txt
+Country code
+IN
+US
+UK
+```
+
+*You could use ```country_code CHAR(2)*
+
+*Another example*
+
+```txt
+Gender/flag code
+M
+F
+```
+
+*could potentially use ```gender_code CHAR(1)```*
+
+---
+
+**Does ```CHAR(10)``` mean exactly 10 characters must be entered?**
+
+*Not necessarily*
+
+*```name CHAR(10)``` does not mean the user must type exactly 10 characters. It defines a fixed-length character column with a declared length of 10*
+
+---
+
+### **```VARCHAR```**
 
 
 
