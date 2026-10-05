@@ -118,6 +118,13 @@ Hey!!
   - [**DDL - Data Definition Language**](#ddl---data-definition-language)
     - [**CREATE**](#create)
     - [**ALTER**](#alter)
+    - [**DROP**](#drop)
+    - [**TRUNCATE**](#truncate)
+    - [**RENAME**](#rename)
+  - [**DML - Data Manipulation Language**](#dml---data-manipulation-language)
+    - [**INSERT**](#insert)
+    - [**UPDATE**](#update)
+    - [**DELETE**](#delete)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -7365,8 +7372,466 @@ ADD COLUMN joining_date DATE;
 
 ---
 
+**Modify a column**
 
+*Suppose*
 
+```sql
+name VARCHAR(50)
+```
+
+*and we want to increase its allowed length*
+
+```sql
+ALTER TABLE employees
+MODIFY COLUMN name VARCHAR(100);
+```
+
+*Now ```VARCHAR(50) → VARCHAR(100)```*
+
+---
+
+**Rename a Column**
+
+*Suppose we want to rename ```name → employee_name```*
+
+```sql
+ALTER TABLE employees
+RENAME COLUMN name TO employee_name;
+```
+
+---
+
+**Drop a column**
+
+*Suppose we no longer need ```phone```*
+
+**Syntax:**
+
+```sql
+ALTER TABLE table_name
+DROP COLUMN column_name;
+```
+
+**Example:**
+
+```sql
+ALTER TABLE employees
+DROP COLUMN phone;
+```
+
+*The ```phone``` column is removed from the table structure. Dropping a column can also remove the data stored in that column.*
+
+---
+
+### **DROP**
+
+*```DROP``` is a DDL command used to remove a database object completely.*
+
+*For example if you no longer need the ```employees``` table*
+
+```sql
+DROP TABLE employees;
+```
+
+*The table itself is removed*
+
+---
+
+**Syntax:**
+
+```sql
+DROP TABLE table_name;
+```
+
+**Example:**
+
+```sql
+DROP TABLE employees;
+```
+
+*After executing this*
+
+```txt
+employees table
+      ↓
+   DELETED
+```
+
+*The table structure and the data stored in it are removed*
+
+---
+
+**DROP DATABASE**
+
+*```DROP``` can also remove an entire database*
+
+```sql
+DROP DATABASE company_db;
+```
+
+*This removes the database and its objects*
+
+---
+
+**DROP vs DELETE**
+
+**DROP:** *Removes the entire table*
+
+```sql
+DROP TABLE employees;
+```
+
+```txt
+Table structure → ❌
+Table data      → ❌
+```
+
+**DELETE:** *Removes rows/data but keeps the table structure*
+
+```txt
+Table structure → ✅
+Selected data   → ❌
+```
+
+---
+
+### **TRUNCATE**
+
+*```TRUNCATE``` is a DDL command used to remove all rows from a table while keeping the table structure.*
+
+---
+
+**Syntax:**
+
+```sql
+TRUNCATE TABLE table_name;
+```
+
+**Example:**
+
+```sql
+TRUNCATE TABLE employees;
+```
+
+*After executing this*
+
+```txt
+employees table
+      │
+      ├── Structure → ✅ remains
+      └── Rows      → ❌ removed
+```
+
+*The table still exists, but it becomes empty*
+
+---
+
+**TRUNCATE vs DROP**
+
+| DROP | TRUNCATE |
+|---|---|
+| Removes table completely | Removes all rows |
+| Structure is removed | Structure remains |
+| Table no longer exists | Table still exists |
+| Used when object is no longer needed | Used when you want an empty table |
+
+---
+
+**TRUNCATE vs DELETE**
+
+**DELETE:** *Removes rows using a DML command*
+
+```sql
+DELETE FROM employees;
+```
+
+*You can also selectively remove rows*
+
+```sql
+DELETE FROM employees
+WHERE department_id = 2;
+```
+
+*Only employees from department 2 are removed*
+
+**TRUNCATE:** *Removes all rows from the table. You cannot use a ```WHERE``` condition with ```TRUNCATE```*
+
+```sql
+TRUNCATE TABLE employees;
+```
+
+---
+
+**Comparison**
+
+| Feature | DELETE | TRUNCATE | DROP |
+|---|---|---|---|
+| Category | DML | DDL | DDL |
+| Removes rows | Yes | Yes | Yes |
+| Can use `WHERE` | Yes | No | No |
+| Table structure remains | Yes | Yes | No |
+| Table remains | Yes | Yes | No |
+| Purpose | Remove selected/all rows | Empty entire table | Remove table |
+
+---
+
+### **RENAME**
+
+*```RENAME``` is a DDL command used to change the name of an existing database object most commonly a table.*
+
+---
+
+**Rename a table**
+
+**Syntax:**
+
+```sql
+RENAME TABLE old_table_name TO new_table_name;
+```
+
+**Example:** *Suppose we have ```employees``` and want to rename it to ```staff```*
+
+```sql
+RENAME TABLE employees TO staff;
+```
+
+*The table's data and structure remain only its name changes*
+
+---
+
+**RENAME vs ALTER**
+
+**RENAME:** *Changes the table name*
+
+```sql
+RENAME TABLE employees TO staff;
+```
+
+**ALTER:** *Changes the table structure*
+
+```sql
+ALTER TABLE employees
+ADD COLUMN phone VARCHAR(15);
+```
+
+---
+
+## **DML - Data Manipulation Language**
+
+- *DML stands for Data Manipulation Language*
+- *DML commands are used to add, modify, and remove data stored inside tables*
+- *DML commands used to manipulate the data inside a table*
+
+*The difference*
+
+```txt
+DDL → Structure
+DML → Data
+```
+
+*For example*
+
+```sql
+CREATE TABLE employees (...);
+```
+
+*changes/creates the structure*
+
+*But*
+
+```sql
+INSERT INTO employees (..);
+```
+
+*adds data*
+
+---
+
+**Main DML commands**
+
+```txt
+INSERT
+UPDATE
+DELETE
+```
+
+| Command | Purpose |
+|---|---|
+| `INSERT` | Add new rows |
+| `UPDATE` | Modify existing rows |
+| `DELETE` | Remove rows |
+
+---
+
+### **INSERT**
+
+*```INSERT``` is used to add new records/rows into a table*
+
+---
+
+**Syntax**
+
+```sql
+INSERT INTO table_name
+VALUES (value1, value2, value3, ....);
+```
+
+```sql
+INSERT INTO employees
+VALUES (101, 'Rahul', 'rahul@gmail.com', '9876543210', 1, 600000);
+```
+
+*This adds one employee record*
+
+---
+
+*Instead of relying on the exact column order it's safer to explicitly mention the columns*
+
+```sql
+INSERT INTO employees
+(employee_id, name, email, phone, department_id, salary)
+VALUES
+(101, 'Rahul', 'rahul@gmail.com', '9876543210', 1, 60000);
+```
+
+---
+
+**Insert Multiple rows**
+
+*You can insert multiple employees with one ```INSERT``` statement*
+
+```sql
+INSERT INTO employees
+(employee_id, name, email, phone, department_id, salary)
+VALUES
+(101, 'Rahul', 'rahul@gmail.com', '9876543210', 1, 60000),
+(102, 'Priya', 'priya@gmail.com', '9876543211', 2, 55000),
+(103, 'Arjun', 'arjun@gmail.com', '9876543212', 1, 50000);
+```
+
+---
+
+**INSERT with DEFAULT**
+
+*Suppose a column has a ```DEFAULT``` value*
+
+```sql
+status VARCHAR(20) DEFAULT 'ACTIVE'
+```
+
+*Then you can omit that column*
+
+```sql
+INSERT INTO employees (employee_id, name)
+VALUES (104, 'Sneha');
+```
+
+*If the ```status``` column has a default the database can automatically use ```ACTIVE```. This connects directly the DEFAULT constraint*
+
+---
+
+### **UPDATE**
+
+*```UPDATE``` is a DML command used to modify existing data in one or more rows of a table*
+
+*It change existing data does not change the table structure*
+
+---
+
+**Syntax:**
+
+```sql
+UPDATE table_name
+SET column_name = new_value
+WHERE condition;
+```
+
+*The important parts are*
+- *```UPDATE``` → tells SQL which table to modify*
+- *```SET``` → specifies the new value*
+- *```WHERE``` → specifies which rows should be changed*
+
+---
+
+**Example:** *Suppose Rahul's salary is currently ```60000``` We want to change it to ```65000```*
+
+```sql
+UPDATE employees
+SET salary = 65000
+WHERE employee_id = 101;
+```
+
+---
+
+**Why WHERE is extremely important?**
+
+*Suppose you write*
+
+```sql
+UPDATE employees
+SET salary = 65000;
+```
+
+*There is no ```WHERE``` condition. That means the database can update every row in the table*
+
+```txt
+Rahul  → 65000
+Priya  → 65000
+Arjun  → 65000
+Sneha  → 65000
+```
+
+*UPDATE without WHERE can modify all rows*
+
+---
+
+**Update multiple columns**
+
+*You can modify multiple columns in one statement*
+
+```sql
+UPDATE employees
+SET 
+  salary = 70000,
+  department_id = 2
+WHERE employee_id = 101;
+```
+
+---
+
+**Update multiple rows**
+
+*Suppose all employees in department ```1``` should receive a salary increase*
+
+```sql
+UPDATE employees
+SET salary = salary + 5000
+WHERE department_id = 1;
+```
+
+---
+
+**CHANGES vs ALTER**
+
+**UPDATE:** *Changes data*
+
+```sql
+UPDATE employees 
+SET salary = 65000
+WHERE employee_id = 101;
+```
+
+**ALTER:** *Changes structure*
+
+```sql
+ALTER TABLE employees
+ADD COLUMN phone VARCHAR(15);
+```
+
+---
+
+### **DELETE**
 
 
 
