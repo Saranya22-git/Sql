@@ -7833,7 +7833,52 @@ ADD COLUMN phone VARCHAR(15);
 
 ### **DELETE**
 
+*```DELETE``` is a DML command used to remove existing rows from a table*
 
+---
+
+**Syntax:**
+
+```sql
+DELETE FROM table_name
+WHERE condition;
+```
+
+*The ```WHERE``` condition determines which rows are deleted*
+
+---
+
+**Delete one row**
+
+*Suppose we want to remove employee ```101```*
+
+```sql
+DELETE FROM employees
+WHERE employee_id = 1;
+```
+
+---
+
+**Delete with WHERE**
+
+```sql
+DELETE FROM employees
+WHERE department_id = 2;
+```
+
+*This removes all employees belonging to department 2*
+
+---
+
+**DELETE without WHERE**
+
+```sql
+DELETE FROM employees;
+```
+
+*There is no ```WHERE``` condition so all rows are deleted*
+
+---
 
 
 
