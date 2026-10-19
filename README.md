@@ -139,6 +139,12 @@ Hey!!
   - [**Arithmetic Operators**](#arithmetic-operators)
     - [**Addition**](#addition)
     - [**Subtraction**](#subtraction)
+    - [**Multiplication**](#multiplication)
+    - [**Division**](#division)
+    - [**MOD()**](#mod)
+  - [**Comparison Operators**](#comparison-operators)
+    - [**Equal to**](#equal-to)
+    - [\*\*\*\*](#)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -8438,6 +8444,8 @@ SELECT 10 + 5 AS result;
 
 *The addition operator ```+``` adds two or more numeric values*
 
+---
+
 **Syntax:**
 
 ```sql
@@ -8493,6 +8501,301 @@ value1 - value2
 ```sql
 SELECT 100 - 30 AS result;
 ```
+
+**Output:**
+
+| **result** |
+| ---------- |
+|     70     |
+
+---
+
+**Example:** *Using our ```employees``` table*
+
+*Suppose Rahul earns ₹60,000 per month and we want to calculate his salary after a hypothetical ₹5,000 deduction*
+
+```sql
+SELECT name, salary, salary - 5000 AS salary_after_deduction
+FROM employees
+WHERE employee_id = 101;
+```
+
+**Output:**
+
+| name  | salary | salary\_after\_deduction |
+| ----- | ------ | ------------------------ |
+| Rahul | 60000  | 55000                    |
+
+---
+
+### **Multiplication**
+
+*The multiplication operator ```*``` is used to multiply numeric values*
+
+---
+
+**Syntax:**
+
+```sql
+value1 * value2
+```
+
+**Example:**
+
+```sql
+SELECT 20 * 5 AS result;
+```
+
+**Output:**
+
+| **result** |
+| ---------- |
+|     100    |
+
+---
+
+**Example:** *Using our ```employees``` table*
+
+*Suppose the ```salary``` column stores monthly salaries. We want to calculate each employee's estimated annual salary*
+
+```sql
+SELECT name, salary, salary * 12 AS annual_salary
+FROM employees;
+```
+
+**Output:**
+
+| name  | salary | annual\_salary |
+| ----- | ------ | -------------- |
+| Rahul | 60000  | 720000         |
+| Priya | 55000  | 660000         |
+| Arjun | 50000  | 600000         |
+| Sneha | 65000  | 780000         |
+
+---
+
+### **Division**
+
+*The division operator ```/``` is used to divide one numeric value by another.*
+
+---
+
+**Syntax:**
+
+```sql
+value1 / value2
+```
+
+**Example:**
+
+```sql
+SELECT 100 / 4 AS result;
+```
+
+**Output:**
+
+| **result** |
+| ---------- |
+|     100    |
+
+---
+
+**Example:** *Using our ```employees``` table*
+
+*Suppose ```salary``` stores monthly salaries. We want to calculate the average monthly amount represented by an annual salary*
+
+```sql
+SELECT name, salary, salary / 12 AS monthly_amount
+FROM employees;
+```
+
+---
+
+**What happens when we divide by zero?**
+
+```sql
+SELECT 10 / 0 AS result;
+```
+
+*Division by zero is mathematically undefines. Database behavior varies in MySQL, division by zero generally returns ```NULL``` with a warning in a ```SELECT``` statement*
+
+*When working with a column that might contain zero, you can use ```NULLIF():```*
+
+```sql
+SELECT total_amount / NULLIF (quantity, 0) AS price_per_item
+FROM order_items;
+```
+
+*```NULLIF(quantity, 0)``` returns ```NULL``` when ```quantity``` is zero, avoiding a division-by-zero calculation.*
+
+---
+
+### **MOD()**
+
+*The ```MOD()``` function returns the remainder left after dividing one number by another.*
+
+---
+
+**Syntax:**
+
+```sql
+MOD(number1, number2)
+```
+
+- *```number1``` - the number being divided*
+- *```number2``` - the number by which it is divided*
+- *Result - the remainder*
+
+---
+
+**Examples:**
+
+```sql
+SELECT MOD(10, 3);
+```
+
+**Output:**
+
+```txt
+1
+```
+
+| SQL Expression | Output | Explanation            |
+| -------------- | ------ | ---------------------- |
+| `MOD(10, 2)`   | **0**  | 10 divides evenly by 2 |
+| `MOD(11, 2)`   | **1**  | 1 remains              |
+| `MOD(15, 4)`   | **3**  | 3 remains              |
+| `MOD(20, 5)`   | **0**  | 20 divides evenly by 5 |
+
+---
+
+**Example:** *Suppose you want to identify employees whose IDs are even*
+
+```sql
+SELECT employee_id, name 
+FROM employees
+WHERE MOD(employee_id, 2) = 0;
+```
+
+- *```MOD(employee_id, 2)``` calculates the remainder after dividing each employee ID by 2*
+- *If the remainder is ```0``` the ID is even*
+- *If the remainder is ```1``` the ID is odd*
+
+---
+
+## **Comparison Operators**
+
+*Comparison Operators are symbols used to compare two values. They help us determine whether one value is equal to, greater than, less than or different from another value.*
+
+*In SQL they are commonly used in the ```WHERE``` clause to filter rows based on a condition.*
+
+**Example:** *Suppose you want to find employees whose salary is greater than ₹50,000 You compare each employee's salary with ```50000```*
+
+```sql
+SELECT * 
+FROM employees
+WHERE salary > 50000;
+```
+
+---
+
+**Types of Comparison Operators**
+
+| Operator | Meaning                  | Example           |
+| -------- | ------------------------ | ----------------- |
+| `=`      | Equal to                 | `salary = 50000`  |
+| `!=`     | Not equal to             | `salary != 50000` |
+| `<>`     | Not equal to             | `salary <> 50000` |
+| `>`      | Greater than             | `salary > 50000`  |
+| `<`      | Less than                | `salary < 50000`  |
+| `>=`     | Greater than or equal to | `salary >= 50000` |
+| `<=`     | Less than or equal to    | `salary <= 50000` |
+
+---
+
+### **Equal to**
+
+*The Equal to ```=``` operator compares two values and checks whether they are equal.*
+
+*In SQL, it is commonly used in the ```WHERE``` clause to retrieve rows that match a specific value.*
+
+---
+
+**Syntax:**
+
+```sql
+SELECT column_names
+FROM table_name
+WHERE column_name = value;
+```
+
+- *```WHERE``` specifies the condition*
+- *```=``` checks whether the column value watches the given value*
+- *Only rows satisfying the condition are returned*
+
+**Example:** *Find employees earning exactly ₹50,000*
+
+```sql
+SELECT name, salary 
+FROM employees
+WHERE salary = 50000;
+```
+
+**Output:**
+
+| name  | salary |
+| ----- | ------ |
+| Arjun | 50000  |
+
+---
+
+**Find an employee by ID**
+
+```sql
+SELECT * 
+FROM employees
+WHERE employee_id = 101;
+```
+
+*This retrieves the employee whose ID is ```101```*
+
+---
+
+**Compare text values**
+
+```sql
+SELECT *
+FROM employees
+WHERE name = 'Priya';
+```
+
+*Text values are usually written inside single quotes. Case sensitivity depends on the database and its collation settings.*
+
+---
+
+**```=``` vs ```==```**
+
+*In SQL, use ```=``` for equality comparisons*
+
+```sql
+SELECT *
+FROM employees
+WHERE salary = 50000;
+```
+
+*Do not use ```==``` as the standard SQL equality operator it is not supported by many SQL databases.*
+
+---
+
+### ****
+
+
+
+
+
+
+
+
 
 
 
