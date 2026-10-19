@@ -133,6 +133,12 @@ Hey!!
     - [**ROLLBACK**](#rollback)
     - [**SAVEPOINT**](#savepoint)
   - [**DCL - Data Control Language**](#dcl---data-control-language)
+    - [**GRANT**](#grant)
+    - [**REVOKE**](#revoke)
+- [**SQL Operators**](#sql-operators)
+  - [**Arithmetic Operators**](#arithmetic-operators)
+    - [**Addition**](#addition)
+    - [**Subtraction**](#subtraction)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -8272,6 +8278,205 @@ COMMIT;
 
 ## **DCL - Data Control Language**
 
+*DCL stands for Data Control Language. It is used to manage user permissions and control access to database objects.*
+
+*Imagine a company database containing employee salaries. Not every employee should be allowed to modify salary records. A database administrator can use DCL to control permissions.*
+
+---
+
+**Main DCL Commands**
+
+| Command    | Purpose             |
+| ---------- | ------------------- |
+| **GRANT**  | Gives permissions   |
+| **REVOKE** | Removes permissions |
+
+*GRANT - give access, REVOKE - take access away*
+
+---
+
+### **GRANT**
+
+*```GRANT``` is used to give a database user permission to perform particular operations.*
+
+---
+
+**Syntax:**
+
+```sql
+GRANT privilege_name
+ON database_name.table_name
+TO 'user_name';
+```
+
+**Example:** *Suppose a database user named ```analyst``` needs permission to read the ```employees``` table*
+
+```sql
+GRANT SELECT
+ON
+company_db.employees
+TO 'analyst'@'localhost';
+```
+
+*This grants the user permission to retrieve data from that table, subject to the database's permission rules.*
+
+```sql
+GRANT INSERT
+ON company_db.employees
+TO 'analyst'@'localhost';
+```
+
+*This grants permission to insert records into the table*
+
+| Privilege  | Meaning     |
+| ---------- | ----------- |
+| **SELECT** | Read data   |
+| **INSERT** | Add rows    |
+| **UPDATE** | Modify rows |
+| **DELETE** | Delete rows |
+
+*These are privileges that can be granted to users*
+
+---
+
+### **REVOKE**
+
+*```REVOKE``` is used to remove a previously granted permission*
+
+---
+
+**Syntax:**
+
+```sql
+REVOKE privilege_name
+ON database_name.table_name
+FROM 'user_name';
+```
+
+**Example:** *Suppose ```analyst``` no longer needs permission to insert rows*
+
+```sql
+REVOKE INSERT
+ON company_db.employees
+FROM 'analyst'@'localhost';
+```
+
+*The ```INSERT``` privilege is revoked but other permissions the user has may remain*
+
+---
+
+**GRANT vs REVOKE**
+
+| **GRANT**           | **REVOKE**                        |
+| ------------------- | --------------------------------- |
+| Gives a permission  | Removes a permission              |
+| Allows an operation | Removes the granted authorization |
+| Uses **TO**         | Uses **FROM**                     |
+
+---
+
+# **SQL Operators**
+
+*SQL operators are symbols or keywords used to perform operations on data, compare values, combine conditions and filter records in a database query.*
+
+---
+
+**Main categories of SQL Operators**
+
+| Operator Category    | Purpose                                                     |
+| -------------------- | ----------------------------------------------------------- |
+| Arithmetic Operators | Perform calculations                                        |
+| Comparison Operators | Compare two values                                          |
+| Logical Operators    | Combine or reverse conditions                               |
+| Special Operators    | Handle conditions such as ranges, lists, patterns, and NULL |
+| Wildcards            | Match patterns in text                                      |
+
+---
+
+## **Arithmetic Operators**
+
+*Arithmetic Operators are symbols or functions used to perform mathematical calculations on numeric values in SQL queries.*
+
+---
+
+**Types of Arithmetic Operators**
+
+| Operator  | Meaning        | Example      | Result |
+| --------- | -------------- | ------------ | ------ |
+| **+**     | Addition       | `10 + 5`     | **15** |
+| **-**     | Subtraction    | `10 - 5`     | **5**  |
+| **\***    | Multiplication | `10 * 5`     | **50** |
+| **/**     | Division       | `10 / 5`     | **2**  |
+| **MOD()** | Remainder      | `MOD(10, 3)` | **1**  |
+
+---
+
+**How do arithmetic operators work in SQL?**
+
+*You can use them in a ```SELECT``` statement to calculate results*
+
+**Example:**
+
+```sql
+SELECT 10 + 5 AS result;
+```
+
+**Output:**
+
+| **result** |
+| ---------- |
+|     15     |
+
+*Here*
+- *```SELECT``` asks SQL to return a result*
+- *```10 + 5``` is the calculation*
+- *```AS result``` gives the output column the name ```result```*
+
+---
+
+### **Addition**
+
+*The addition operator ```+``` adds two or more numeric values*
+
+**Syntax:**
+
+```sql
+value1 + value2
+```
+
+**Example:** *Basic Calculation*
+
+```sql
+SELECT 20 + 30 AS total;
+```
+
+**Output:**
+
+| **total** |
+| --------- |
+|     50    |
+
+---
+
+**Example:** *Using our ```employees``` table*
+
+*Suppose Rahul earns ₹60,000 per month and we want to calculate his salary after a hypothetical ₹5,000 increase*
+
+```sql
+SELECT name, salary, salary + 5000 AS new_salary
+FROM employees
+WHERE employee_id = 101;
+```
+
+**Output:**
+
+| name  | salary | new\_salary |
+| ----- | ------ | ----------- |
+| Rahul | 60000  | 65000       |
+
+---
+
+### **Subtraction**
 
 
 
