@@ -125,6 +125,10 @@ Hey!!
     - [**INSERT**](#insert)
     - [**UPDATE**](#update)
     - [**DELETE**](#delete)
+    - [**MERGE (UPSERT)**](#merge-upsert)
+  - [**DQL - Data Query Language**](#dql---data-query-language)
+    - [**SELECT**](#select)
+  - [**TCL - Transaction Control Language**](#tcl---transaction-control-language)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -7879,6 +7883,172 @@ DELETE FROM employees;
 *There is no ```WHERE``` condition so all rows are deleted*
 
 ---
+
+### **MERGE (UPSERT)**
+
+**What is UPSERT?**
+
+*UPSERT combines the ideas of INSERT and UPDATE*
+- *If a record doesn't exist, insert it*
+- *If a matching record already exists, update it*
+
+*UPSERT - insert a new record or update an existing record depending on whether it already exists*
+
+---
+
+**Example:** *Imagine our ```employees``` table contains*
+
+| employee_id  | name  | salary |
+| ------------ | ----- | ------ |
+|          101 | Rahul |  60000 |
+|          102 | Priya |  55000 |
+
+*Now we receive new employee data*
+- *Employee ```101``` Rahul salary ```65000```*
+- *Employee ```103``` Arjun salary ```50000```*
+
+| Incoming employee | Action                 |
+| ----------------- | ---------------------- |
+| Rahul — ID 101    | Update salary to 65000 |
+| Arjun — ID 103    | Insert a new row       |
+
+
+---
+
+**What is MERGE?**
+
+*```MERGE``` is a SQL statement supported by certain database systems that can match source records against a target table and perform actions such as inserting or updating records.*
+
+```sql
+MERGE INTO employees AS target
+USING new_employees AS source
+ON target.employee_id = source.employee_id
+WHEN MATCHED THEN
+    UPDATE SET salary = source.salary
+WHEN NOT MATCHED THEN
+    INSERT (employee_id, name, salary)
+    VALUES (source.employee_id, source.name, source.salary);
+```
+
+- *```target``` is the existing employees table*
+- *```source``` contains the incoming employee records*
+- *```ON``` defines how records are matched*
+- *```WHEN MATCHED``` updates an existing record*
+- *```WHEN NOT MATCHED``` inserts a new record*
+
+---
+
+## **DQL - Data Query Language**
+
+*DQL stands for Data Query Language. It is used to retrieve or fetch data from database tables.*
+
+*Imagine our ```employees``` table contains*
+
+| employee_id  | name  | department_id  | salary |
+| ------------ | ----- | -------------- | ------ |
+| 101          | Rahul | 1              |  60000 |
+| 102          | Priya | 2              |  55000 |
+| 103          | Arjun | 1              |  50000 |
+| 104          | Sneha | 1              |  65000 |
+
+*If you want to see the employee records without changing them you use a query*
+
+```sql
+SELECT * FROM employees;
+```
+
+*This displays the employee data*
+
+---
+
+### **SELECT**
+
+*```SELECT``` is used to retrieve specific columns or data from one or more tables*
+
+---
+
+**Syntax:**
+
+```sql
+SELECT column_name 
+FROM table_name;
+```
+
+*To retrieve multiple columns*
+
+```sql
+SELECT column1, column2
+FROM table_name;
+```
+
+*To retrieve all columns*
+
+```sql
+SELECT * 
+FROM table_name;
+```
+
+*Here ```*``` means all columns*
+
+---
+
+**Examples**
+
+**Retrieve one column**
+
+*Suppose you want to see only employees names*
+
+```sql
+SELECT name 
+FROM employees;
+```
+
+*Only the ```name``` column is returned*
+
+| name  |
+| ----- |
+| Rahul |
+| Priya |
+| Arjun |
+| Sneha |
+
+---
+
+**Retrieve multiple columns**
+
+*Suppose you want employee names and salaries*
+
+```sql
+SELECT name, salary
+FROM employees;
+```
+
+| name  | salary |
+| ----- | ------ |
+| Rahul |  60000 |
+| Priya |  55000 |
+| Arjun |  50000 |
+| Sneha |  65000 |
+
+---
+
+**Retrieve all columns**
+
+```sql
+SELECT *
+FROM employees;
+```
+
+*This retrieves every column in the ```employees``` table*
+
+---
+
+## **TCL - Transaction Control Language**
+
+
+
+
+
 
 
 
