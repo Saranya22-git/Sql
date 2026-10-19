@@ -129,6 +129,9 @@ Hey!!
   - [**DQL - Data Query Language**](#dql---data-query-language)
     - [**SELECT**](#select)
   - [**TCL - Transaction Control Language**](#tcl---transaction-control-language)
+    - [**COMMIT**](#commit)
+    - [**ROLLBACK**](#rollback)
+    - [**SAVEPOINT**](#savepoint)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -8045,8 +8048,152 @@ FROM employees;
 
 ## **TCL - Transaction Control Language**
 
+*TCL stands for Transaction Control Language. TCL commands are used to manage transactions in a database, including saving changes or undoing changes made within a transaction.*
 
+**What is Transaction?**
 
+*A transaction is a group of database operations treated as one logical unit of work.*
+
+*Imagine transferring ₹1,000 from Rahul's account to Priya's account*
+- *Subtract ₹1,000 from Rahul's account*
+- *Add ₹1,000 to Priya's account*
+- *Save the changes together*
+
+---
+
+### **COMMIT**
+
+*```COMMIT``` is a TCL command used to save changes made during a transaction permanently to the database.*
+
+---
+
+**Syntax:**
+
+```sql
+COMMIT;
+```
+
+---
+
+**Example:** *Suppose Rahul's salary is ₹60,000 and we want to increase it to ₹65,000*
+
+```sql
+START TRANSACTION;
+
+UPDATE employees
+SET salary = 65000
+WHERE employee_id = 101;
+
+COMMIT;
+```
+
+| Statement           | What it does           |
+| ------------------- | ---------------------- |
+| `START TRANSACTION` | Starts a transaction   |
+| `UPDATE`            | Changes Rahul's salary |
+| `COMMIT`            | Confirms the change    |
+
+*After the transaction is committed, Rahul's salary is ₹65,000*
+
+---
+
+**What happens if you don't COMMIT?**
+
+*In a transaction where autocommit is disabled or an explicit transaction is active, changes can remain uncommitted until you commit or roll back.*
+
+*For example*
+
+```sql
+START TRANSACTION;
+
+UPDATE employees
+SET salary = 65000
+WHERE employee_id = 101;
+```
+
+*At this point we haven't explicitly committed the transaction*
+
+*We can choose*
+
+```sql
+COMMIT;
+```
+
+*to save the change or*
+
+```sql
+ROLLBACK;
+```
+
+*to undo the uncommitted change*
+
+---
+
+**COMMIT vs ROLLBACK**
+
+| COMMIT                           | ROLLBACK                                      |
+| -------------------------------- | --------------------------------------------- |
+| Confirms transaction changes     | Undoes uncommitted changes                    |
+| Saves the transaction            | Reverts the transaction                       |
+| Used when the operation succeeds | Used when the operation needs to be cancelled |
+
+---
+
+### **ROLLBACK**
+
+*```ROLLBACK``` is a TCL command used to undo changes made during the current transaction that have not been committed.*
+
+---
+
+**Syntax:**
+
+```sql
+ROLLBACK;
+```
+
+---
+
+**Example:** *Suppose Rahul's current salary is ₹60,000 We accidentally change it to ₹90,000*
+
+```sql
+START TRANSACTION;
+
+UPDATE employees
+SET salary = 90000
+WHERE employee_id = 101;
+
+ROLLBACK;
+```
+
+| Stage                         |  Salary |
+| ----------------------------- | ------- |
+| Before UPDATE                 | ₹60,000 |
+| After UPDATE, before ROLLBACK | ₹90,000 |
+| After ROLLBACK                | ₹60,000 |
+
+---
+
+*Once a transaction has been committed, a normal ```ROLLBACK``` cannot undo that committed transaction.*
+
+*For example*
+
+```sql
+START TRANSACTION;
+
+UPDATE employees
+SET salary = 65000
+WHERE employee_id = 101;
+
+COMMIT;
+
+ROLLBACK;
+```
+
+*The final ```ROLLBACK``` does not reverse the already committed salary update*
+
+---
+
+### **SAVEPOINT**
 
 
 
