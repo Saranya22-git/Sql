@@ -132,6 +132,7 @@ Hey!!
     - [**COMMIT**](#commit)
     - [**ROLLBACK**](#rollback)
     - [**SAVEPOINT**](#savepoint)
+  - [**DCL - Data Control Language**](#dcl---data-control-language)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -8194,6 +8195,82 @@ ROLLBACK;
 ---
 
 ### **SAVEPOINT**
+
+*```SAVEPOINT``` is a TCL command that creates a named point inside a transaction.*
+
+*You can use it to roll back part of a transaction instead of undoing all changes made since the transaction began*
+
+---
+
+**Syntax:**
+
+```sql
+SAVEPOINT savepoint_name;
+```
+
+*To roll back to that point*
+
+```sql
+ROLLBACK TO SAVEPOINT savepoint_name;
+```
+
+*To remove the savepoint*
+
+```sql
+RELEASE SAVEPOINT savepoint_name;
+```
+
+---
+
+**Example:**
+
+*Suppose we perform two salary updates but later discover that the second update was incorrect*
+
+```sql
+START TRANSACTION;
+
+-- First change
+UPDATE employees
+SET salary = 65000
+WHERE employee_id = 101;
+
+-- Mark this point
+SAVEPOINT after_rahul;
+
+-- Second change
+UPDATE employees
+SET salary = 70000
+WHERE employee_id = 102;
+
+-- Undo changes made after the savepoint
+ROLLBACK TO SAVEPOINT after_rahul;
+
+COMMIT;
+```
+
+| Operation                     | Result                              |
+| ----------------------------- | ----------------------------------- |
+| Rahul's salary updated        | Change retained                     |
+| Savepoint created             | Point marked                        |
+| Employee 102's salary updated | Change made temporarily             |
+| Roll back to savepoint        | Second update undone                |
+| COMMIT                        | Remaining transaction changes saved |
+
+*Rahul's salary change is saved, while the second salary update is undone*
+
+---
+
+**COMMIT vs ROLLBACK vs SAVEPOINT**
+
+| Command       | Purpose                              |
+| ------------- | ------------------------------------ |
+| **COMMIT**    | Confirm and save transaction changes |
+| **ROLLBACK**  | Undo uncommitted transaction changes |
+| **SAVEPOINT** | Mark a point for partial rollback    |
+
+---
+
+## **DCL - Data Control Language**
 
 
 
