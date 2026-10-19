@@ -8478,6 +8478,22 @@ WHERE employee_id = 101;
 
 ### **Subtraction**
 
+*The subtraction operator ```-``` is used to subtract one numeric value from another.*
+
+---
+
+**Syntax:**
+
+```sql
+value1 - value2
+```
+
+**Example:**
+
+```sql
+SELECT 100 - 30 AS result;
+```
+
 
 
 
