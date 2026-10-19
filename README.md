@@ -144,7 +144,7 @@ Hey!!
     - [**MOD()**](#mod)
   - [**Comparison Operators**](#comparison-operators)
     - [**Equal to**](#equal-to)
-    - [\*\*\*\*](#)
+    - [**Not Equal to**](#not-equal-to)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -8787,7 +8787,75 @@ WHERE salary = 50000;
 
 ---
 
-### ****
+### **Not Equal to**
+
+*The Not Equal to ```!=``` operator compares two values and checks whether they are different.*
+
+---
+
+**Syntax:**
+
+```sql
+SELECT column_names
+FROM table_name
+WHERE column_name != value;
+```
+
+- *```WHERE``` specifies the condition*
+- *```!=``` checks whether the column value differs from the specified value*
+- *Rows satisfying the condition are returned*
+
+| employee\_id | name  | salary |
+| ------------ | ----- | ------ |
+| 101          | Rahul | 60000  |
+| 102          | Priya | 55000  |
+| 103          | Arjun | 50000  |
+| 104          | Sneha | 65000  |
+
+
+**Example:** *Find employees who do not earn ₹50,000*
+
+```sql
+SELECT name, salary
+FROM employees
+WHERE salary != 50000;
+```
+
+**Output:**
+
+| name  | salary |
+| ----- | ------ |
+| Rahul | 60000  |
+| Priya | 55000  |
+| Sneha | 65000  |
+
+---
+
+**```!=``` vs ```<>```**
+
+*Both operators mean ```not equal to``` in many SQL databases*
+
+```sql
+SELECT * 
+FROM employees
+WHERE salary != 50000;
+```
+
+*Equivalent in MySQL*
+
+```sql
+SELECT * 
+FROM employees
+WHERE salary <> 50000;
+```
+
+*```<>``` is the standard SQL not-equal operator. ```!=``` is widely supported but support can vary by database*
+
+---
+
+
+
+
 
 
 
