@@ -137,14 +137,16 @@ Hey!!
     - [**REVOKE**](#revoke)
 - [**SQL Operators**](#sql-operators)
   - [**Arithmetic Operators**](#arithmetic-operators)
-    - [**Addition**](#addition)
-    - [**Subtraction**](#subtraction)
-    - [**Multiplication**](#multiplication)
-    - [**Division**](#division)
+    - [**Addition ```+```**](#addition-)
+    - [**Subtraction ```-```**](#subtraction--)
+    - [**Multiplication ```*```**](#multiplication-)
+    - [**Division ```/```**](#division-)
     - [**MOD()**](#mod)
   - [**Comparison Operators**](#comparison-operators)
-    - [**Equal to**](#equal-to)
-    - [**Not Equal to**](#not-equal-to)
+    - [**Equal to ```=```**](#equal-to-)
+    - [**Not Equal to ```!=```**](#not-equal-to-)
+    - [**Not Equal to ```<>```**](#not-equal-to--1)
+    - [**Greater Than ```>```**](#greater-than-)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -8440,7 +8442,7 @@ SELECT 10 + 5 AS result;
 
 ---
 
-### **Addition**
+### **Addition ```+```**
 
 *The addition operator ```+``` adds two or more numeric values*
 
@@ -8484,7 +8486,7 @@ WHERE employee_id = 101;
 
 ---
 
-### **Subtraction**
+### **Subtraction ```-```**
 
 *The subtraction operator ```-``` is used to subtract one numeric value from another.*
 
@@ -8528,7 +8530,7 @@ WHERE employee_id = 101;
 
 ---
 
-### **Multiplication**
+### **Multiplication ```*```**
 
 *The multiplication operator ```*``` is used to multiply numeric values*
 
@@ -8574,7 +8576,7 @@ FROM employees;
 
 ---
 
-### **Division**
+### **Division ```/```**
 
 *The division operator ```/``` is used to divide one numeric value by another.*
 
@@ -8713,7 +8715,7 @@ WHERE salary > 50000;
 
 ---
 
-### **Equal to**
+### **Equal to ```=```**
 
 *The Equal to ```=``` operator compares two values and checks whether they are equal.*
 
@@ -8787,7 +8789,7 @@ WHERE salary = 50000;
 
 ---
 
-### **Not Equal to**
+### **Not Equal to ```!=```**
 
 *The Not Equal to ```!=``` operator compares two values and checks whether they are different.*
 
@@ -8852,6 +8854,110 @@ WHERE salary <> 50000;
 *```<>``` is the standard SQL not-equal operator. ```!=``` is widely supported but support can vary by database*
 
 ---
+
+### **Not Equal to ```<>```**
+
+*The ```<>``` operator means not equal to. It compares two values and returns a condition that is true when the values are different.*
+
+---
+
+**Syntax:**
+
+```sql
+SELECT column_names
+FROM table_name
+WHERE column_name <> value;
+```
+
+---
+
+**Example:**
+
+*Suppose our ```employees``` table contains*
+
+| employee_id | name  | salary |
+| ----------- | ----- | ------ |
+| 101         | Rahul | 60000  |
+| 102         | Priya | 55000  |
+| 103         | Arjun | 50000  |
+| 104         | Sneha | 65000  |
+
+**Find employees whose salary is not ₹50,000**
+
+```sql
+SELECT name, salary
+FROM employees
+WHERE salary <> 50000;
+```
+
+**Result:**
+
+| name  | salary |
+| ----- | ------ |
+| Rahul | 60000  |
+| Priya | 55000  |
+| Sneha | 65000  |
+
+---
+
+### **Greater Than ```>```**
+
+*The Greater Than ```>``` operator compares two values and checks whether the value on the left is strictly greater than the value on the right.*
+
+---
+
+**Syntax:**
+
+```sql
+SELECT column_names
+FROM table_name
+WHERE column_name > value;
+```
+
+---
+
+**Example:**
+
+| employee_id | name  | salary |
+| ----------- | ----- | ------ |
+| 101         | Rahul | 60000  |
+| 102         | Priya | 55000  |
+| 103         | Arjun | 50000  |
+| 104         | Sneha | 65000  |
+
+**Find employees earning more than ₹50,000**
+
+```sql
+SELECT name, salary
+FROM employees
+WHERE salary > 50000;
+```
+
+**Result:**
+
+| name  | salary |
+| ----- | ------ |
+| Rahul | 60000  |
+| Priya | 55000  |
+| Sneha | 65000  |
+
+---
+
+**Can we use ```>``` with dates?**
+
+*Yes*
+
+```sql
+SELECT * 
+FROM employees
+WHERE joining_date > '2025-01-01'
+```
+
+*This retrieves employees whose joining date is later than January 1 2025*
+
+---
+
+
 
 
 
