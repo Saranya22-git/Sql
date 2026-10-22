@@ -149,6 +149,7 @@ Hey!!
     - [**Greater Than ```>```**](#greater-than-)
     - [**Less Than ```<```**](#less-than-)
     - [**Greater Than or Equal to ```>=```**](#greater-than-or-equal-to-)
+    - [**Less Than or Equal to ```<=```**](#less-than-or-equal-to-)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -9002,7 +9003,62 @@ WHERE salary < 55000;
 
 ### **Greater Than or Equal to ```>=```**
 
+*The Greater Than or Equal to ```>=``` operator compares two values and checks whether the left value is either greater than or equal to the right value.*
 
+---
+
+**Syntax:**
+
+```sql
+SELECT column_names
+FROM table_name
+WHERE column_name >= value;
+```
+
+---
+
+**Example:**
+
+| employee_id | name  | salary |
+| ----------- | ----- | ------ |
+| 101         | Rahul | 60000  |
+| 102         | Priya | 55000  |
+| 103         | Arjun | 50000  |
+| 104         | Sneha | 65000  |
+
+**Find employees earning at least ₹55,000**
+
+```sql
+SELECT name, salary
+FROM employees
+WHERE >= 55000;
+```
+
+**Result:**
+
+| name  | salary |
+| ----- | ------ |
+| Rahul | 60000  |
+| Priya | 55000  |
+| Sneha | 65000  |
+
+---
+
+**Difference between ```>``` and ```>=```?**
+
+| Operator | Meaning                   | Includes equality? |
+|----------|---------------------------|--------------------|
+| >        | Greater than              | No                 |
+| >=       | Greater than or equal to  | Yes                |
+
+- *```salary > 50000``` excludes ₹50,000*
+- *```salary >= 50000``` includes ₹50,000*
+
+---
+
+### **Less Than or Equal to ```<=```**
+
+*The Less*
 
 
 
