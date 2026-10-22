@@ -147,6 +147,8 @@ Hey!!
     - [**Not Equal to ```!=```**](#not-equal-to-)
     - [**Not Equal to ```<>```**](#not-equal-to--1)
     - [**Greater Than ```>```**](#greater-than-)
+    - [**Less Than ```<```**](#less-than-)
+    - [**Greater Than or Equal to ```>=```**](#greater-than-or-equal-to-)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -8956,6 +8958,51 @@ WHERE joining_date > '2025-01-01'
 *This retrieves employees whose joining date is later than January 1 2025*
 
 ---
+
+### **Less Than ```<```**
+
+*The Less Than ```<``` operator compares two values and checks whether the value on the left is strictly smaller than the value on the right.*
+
+---
+
+**Syntax:**
+
+```sql
+SELECT column_names
+FROM table_name
+WHERE column_name < value;
+```
+
+---
+
+**Example:**
+
+| employee_id | name  | salary |
+| ----------- | ----- | ------ |
+| 101         | Rahul | 60000  |
+| 102         | Priya | 55000  |
+| 103         | Arjun | 50000  |
+| 104         | Sneha | 65000  |
+
+**Find employees earning less than ₹55,000**
+
+```sql
+SELECT name, salary
+FROM employees
+WHERE salary < 55000;
+```
+
+**Result:**
+
+| name  | salary |
+| ----- | ------ |
+| Arjun | 50000  |
+
+---
+
+### **Greater Than or Equal to ```>=```**
+
+
 
 
 
