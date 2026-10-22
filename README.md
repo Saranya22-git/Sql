@@ -150,6 +150,7 @@ Hey!!
     - [**Less Than ```<```**](#less-than-)
     - [**Greater Than or Equal to ```>=```**](#greater-than-or-equal-to-)
     - [**Less Than or Equal to ```<=```**](#less-than-or-equal-to-)
+  - [**Logical Operators**](#logical-operators)
 
 # **SQL and DATABASE FOUNDATION**
 
@@ -9096,6 +9097,24 @@ WHERE salary <= 55000;
 | Priya | 55000  |
 | Arjun | 50000  |
 
+---
+
+**Difference between ```<``` and ```<=```?**
+
+|  Operator  |          Meaning       |    Includes equality?   |
+| ---------- | ---------------------- | ----------------------- |
+|      <     | Strictly less than     |            No           |
+|     <=     | Less than or equal to  |           Yes           |
+
+---
+
+## **Logical Operators**
+
+*Logical Operators are used to combine multiple conditions or change how a condition is evaluated in a SQL query.*
+
+---
+
+**Three Logical Operators**
 
 
 
