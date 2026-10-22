@@ -9058,7 +9058,48 @@ WHERE >= 55000;
 
 ### **Less Than or Equal to ```<=```**
 
-*The Less*
+*The Less Than or Equal to ```<=``` operator compares two values and checks whether the value on the left is either smaller than or equal to the value on the right.*
+
+---
+
+**Syntax:**
+
+```sql
+SELECT column_names
+FROM table_name
+WHERE column_name <= value;
+```
+
+---
+
+**Example:**
+
+| employee_id | name  | salary |
+| ----------- | ----- | ------ |
+| 101         | Rahul | 60000  |
+| 102         | Priya | 55000  |
+| 103         | Arjun | 50000  |
+| 104         | Sneha | 65000  |
+
+**Find employees earning ₹55,000 or less**
+
+```sql
+SELECT name, salary
+FROM employees
+WHERE salary <= 55000;
+```
+
+**Result:**
+
+| name  | salary |
+| ----- | ------ |
+| Priya | 55000  |
+| Arjun | 50000  |
+
+
+
+
+
 
 
 
